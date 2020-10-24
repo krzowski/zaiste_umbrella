@@ -13,3 +13,14 @@ import "../css/app.scss"
 //     import socket from "./socket"
 //
 import "phoenix_html"
+
+
+import React from "react"
+import ReactDOM from "react-dom"
+
+import Greeter from "./react"
+const greeting = document.getElementById("greeting")
+ReactDOM.render(
+  <Greeter name="Phoenix" />,
+  greeting
+)
