@@ -18,10 +18,6 @@ import "phoenix_html"
 
 import React from "react"
 import ReactDOM from "react-dom"
+import Root from './Root'
 
-import Greeter from "./react"
-const greeting = document.getElementById("greeting")
-ReactDOM.render(
-  <Greeter name="Phoenix" />,
-  greeting
-)
+ReactDOM.render(<Root />, document.getElementById('react'))
