@@ -11,6 +11,8 @@ defmodule ZaisteWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+
+    resources "/calendar_events", ZaisteWeb.CalendarEventController, except: [:new, :edit]
   end
 
   scope "/", ZaisteWeb do
