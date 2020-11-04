@@ -1,0 +1,21 @@
+#react {
+  display: grid;
+  grid-template-columns: 50px auto;
+  grid-template-rows: 50px auto;
+  grid-template-areas:
+    "nav header"
+    "nav container";
+}
+
+.container {
+  padding: 0 15px 15px;
+  grid-area: container;
+}
+
+.right-pane {
+  grid-area: nav;
+}
+
+.top-header {
+  grid-area: header;
+}

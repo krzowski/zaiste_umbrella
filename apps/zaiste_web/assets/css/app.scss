@@ -1,5 +1,39 @@
-/* This file is for your main application css. */
 @import 'reset-css';
+
+@import './layout/index.scss';
+@import './components/index.scss';
+
+// General site-wide
+
+* {
+  box-sizing: border-box;
+}
+
+body, #react {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+}
+
+a {
+  text-decoration: none;
+}
+
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+pre {
+  padding: 10px;
+  font-size: 11px;
+}
+
+
 
 /* Alerts and form errors */
 .alert {
