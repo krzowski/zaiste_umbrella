@@ -6,7 +6,9 @@ import { Link } from 'react-router-dom'
 const layout: React.FC = ({ children }) => (
   <React.Fragment>
     <div className="top-header">
-      {logo}
+      <Link to="/calendar">
+        {logo}
+      </Link>
     </div>
 
     <div className="right-pane">
