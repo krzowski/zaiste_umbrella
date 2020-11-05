@@ -1,0 +1,103 @@
+.calendar-container {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-template-areas: "calendar calendar_panel";
+  grid-template-columns: auto 450px;
+  background-color: rgba(0,0,0,0.6);
+
+  .calendar {
+    margin: 0 auto;
+    max-width: 900px;
+    width: 100%;
+    grid-area: calendar;
+    padding: 15px;
+
+    .calendar-heading {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 35px;
+    }
+
+    table {
+      width: 100%;
+
+      thead {
+        th {
+          text-align: center;
+          padding-bottom: 20px;
+        }
+      }
+
+      tbody {
+        td {
+          width: calc(100% / 7);
+        }
+
+        .today-day,
+        .month-day,
+        .non-month-day {
+          height: 80px;
+          padding: 7px;
+        }
+
+        .today-day .calendar-day {
+          color: $current-day-calendar-color !important;
+        }
+
+        .month-day .calendar-day {
+          width: 100%;
+          color: $main-font-color;
+        }
+
+        .non-month-day .calendar-day{
+          color: #444;
+        }
+
+        a {
+          display: block;
+          height: 100%;
+          width: 100%;
+          padding: 15px;
+          background-color: rgba(0,0,0,0.2);
+          text-decoration: none;
+          color: inherit;
+        }
+
+        a:hover {
+          background-color: rgba(255,255,255,0.2);
+        }
+      }
+    }
+  }
+
+  .calendar_panel {
+
+    display: grid;
+    grid-area: calendar_panel;
+    align-content: space-between
+  }
+
+  #calendar-side {
+    border-left: 15px solid $container-background;
+  }
+}
+
+
+// @media (max-width: 1200px) {
+//   .calendar-container {
+//     grid-template-areas:
+//       "calendar"
+//       "calendar_panel";
+//     grid-template-columns: 100%;
+
+//     .calendar {
+//       border-right: none;
+//       border-bottom: 15px solid $container-background;
+
+//       table tbody a {
+//         padding: 4px;
+//       }
+//     }
+//   }
+// }

@@ -3,8 +3,8 @@ import { logo } from './logo'
 import { Link } from 'react-router-dom'
 
 
-const layout: React.FC = ({ children }) => (
-  <React.Fragment>
+const Layout: React.FC = ({ children }) => (
+  <>
     <div className="top-header">
       <Link to="/calendar">
         {logo}
@@ -59,7 +59,7 @@ const layout: React.FC = ({ children }) => (
     <div className="container">
       {children}
     </div>
-  </React.Fragment>
+  </>
 )
 
-export default layout
+export default Layout
