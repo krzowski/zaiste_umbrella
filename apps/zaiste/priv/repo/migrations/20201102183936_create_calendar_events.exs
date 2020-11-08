@@ -10,6 +10,5 @@ defmodule Zaiste.Repo.Migrations.CreateCalendarEvents do
 
       timestamps()
     end
-
   end
 end

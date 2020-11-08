@@ -30,7 +30,12 @@ defmodule Zaiste.CalendarTest do
       included_calendar_event1 = calendar_event_fixture(position: 1)
       _excluded_calendar_event = calendar_event_fixture(date: ~D[2010-05-12])
       date = included_calendar_event1.date
-      assert Calendar.list_calendar_events_in_month(date) == [included_calendar_event1, included_calendar_event2, included_calendar_event3]
+
+      assert Calendar.list_calendar_events_in_month(date) == [
+               included_calendar_event1,
+               included_calendar_event2,
+               included_calendar_event3
+             ]
     end
 
     test "get_calendar_event!/1 returns the calendar_event with given id" do
@@ -39,7 +44,9 @@ defmodule Zaiste.CalendarTest do
     end
 
     test "create_calendar_event/1 with valid data creates a calendar_event" do
-      assert {:ok, %CalendarEvent{} = calendar_event} = Calendar.create_calendar_event(@valid_attrs)
+      assert {:ok, %CalendarEvent{} = calendar_event} =
+               Calendar.create_calendar_event(@valid_attrs)
+
       assert calendar_event.date == ~D[2010-04-17]
       assert calendar_event.done == true
       assert calendar_event.name == "some name"
@@ -52,7 +59,10 @@ defmodule Zaiste.CalendarTest do
 
     test "update_calendar_event/2 with valid data updates the calendar_event" do
       calendar_event = calendar_event_fixture()
-      assert {:ok, %CalendarEvent{} = calendar_event} = Calendar.update_calendar_event(calendar_event, @update_attrs)
+
+      assert {:ok, %CalendarEvent{} = calendar_event} =
+               Calendar.update_calendar_event(calendar_event, @update_attrs)
+
       assert calendar_event.date == ~D[2011-05-18]
       assert calendar_event.done == false
       assert calendar_event.name == "some updated name"
@@ -61,7 +71,10 @@ defmodule Zaiste.CalendarTest do
 
     test "update_calendar_event/2 with invalid data returns error changeset" do
       calendar_event = calendar_event_fixture()
-      assert {:error, %Ecto.Changeset{}} = Calendar.update_calendar_event(calendar_event, @invalid_attrs)
+
+      assert {:error, %Ecto.Changeset{}} =
+               Calendar.update_calendar_event(calendar_event, @invalid_attrs)
+
       assert calendar_event == Calendar.get_calendar_event!(calendar_event.id)
     end
 

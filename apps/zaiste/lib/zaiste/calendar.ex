@@ -34,9 +34,10 @@ defmodule Zaiste.Calendar do
     date_from = Date.beginning_of_month(date)
     date_to = Date.end_of_month(date)
 
-    query = from cm in CalendarEvent,
-      where: fragment("? BETWEEN ? AND ?", cm.date, ^date_from, ^date_to),
-      order_by: cm.position
+    query =
+      from cm in CalendarEvent,
+        where: fragment("? BETWEEN ? AND ?", cm.date, ^date_from, ^date_to),
+        order_by: cm.position
 
     Repo.all(query)
   end

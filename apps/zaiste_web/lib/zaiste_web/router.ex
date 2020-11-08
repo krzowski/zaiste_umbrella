@@ -15,6 +15,7 @@ defmodule ZaisteWeb.Router do
     scope "/calendar_events" do
       get "/month_events", ZaisteWeb.CalendarEventController, :month_events
     end
+
     resources "/calendar_events", ZaisteWeb.CalendarEventController, except: [:new, :edit]
   end
 

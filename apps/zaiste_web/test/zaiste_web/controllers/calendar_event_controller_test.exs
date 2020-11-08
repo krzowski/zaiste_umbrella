@@ -59,8 +59,15 @@ defmodule ZaisteWeb.CalendarEventControllerTest do
   describe "update calendar_event" do
     setup [:create_calendar_event]
 
-    test "renders calendar_event when data is valid", %{conn: conn, calendar_event: %CalendarEvent{id: id} = calendar_event} do
-      conn = put(conn, Routes.calendar_event_path(conn, :update, calendar_event), calendar_event: @update_attrs)
+    test "renders calendar_event when data is valid", %{
+      conn: conn,
+      calendar_event: %CalendarEvent{id: id} = calendar_event
+    } do
+      conn =
+        put(conn, Routes.calendar_event_path(conn, :update, calendar_event),
+          calendar_event: @update_attrs
+        )
+
       assert %{"id" => ^id} = json_response(conn, 200)["data"]
 
       conn = get(conn, Routes.calendar_event_path(conn, :show, id))
@@ -75,7 +82,11 @@ defmodule ZaisteWeb.CalendarEventControllerTest do
     end
 
     test "renders errors when data is invalid", %{conn: conn, calendar_event: calendar_event} do
-      conn = put(conn, Routes.calendar_event_path(conn, :update, calendar_event), calendar_event: @invalid_attrs)
+      conn =
+        put(conn, Routes.calendar_event_path(conn, :update, calendar_event),
+          calendar_event: @invalid_attrs
+        )
+
       assert json_response(conn, 422)["errors"] != %{}
     end
   end
@@ -94,14 +105,13 @@ defmodule ZaisteWeb.CalendarEventControllerTest do
   end
 
   describe "month_events" do
-    test "returns events grouped by day", %{conn: conn}  do
+    test "returns events grouped by day", %{conn: conn} do
       {:ok, event1} = Calendar.create_calendar_event(%{date: ~D[2020-11-10], name: "cal1"})
       {:ok, event2} = Calendar.create_calendar_event(%{date: ~D[2020-11-02], name: "cal2"})
       event1_id = event1.id
       event2_id = event2.id
 
       conn = get(conn, Routes.calendar_event_path(conn, :month_events))
-
 
       assert [
                %{
@@ -131,7 +141,7 @@ defmodule ZaisteWeb.CalendarEventControllerTest do
              ] = json_response(conn, 200)["data"]
     end
 
-    test "returns an empty list when there are no events in given month", %{conn: conn}  do
+    test "returns an empty list when there are no events in given month", %{conn: conn} do
       conn = get(conn, Routes.calendar_event_path(conn, :month_events))
       assert json_response(conn, 200)["data"] == []
     end

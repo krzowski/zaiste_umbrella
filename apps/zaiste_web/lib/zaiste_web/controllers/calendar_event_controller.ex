@@ -12,7 +12,8 @@ defmodule ZaisteWeb.CalendarEventController do
   end
 
   def create(conn, %{"calendar_event" => calendar_event_params}) do
-    with {:ok, %CalendarEvent{} = calendar_event} <- Calendar.create_calendar_event(calendar_event_params) do
+    with {:ok, %CalendarEvent{} = calendar_event} <-
+           Calendar.create_calendar_event(calendar_event_params) do
       conn
       |> put_status(:created)
       |> put_resp_header("location", Routes.calendar_event_path(conn, :show, calendar_event))
@@ -28,7 +29,8 @@ defmodule ZaisteWeb.CalendarEventController do
   def update(conn, %{"id" => id, "calendar_event" => calendar_event_params}) do
     calendar_event = Calendar.get_calendar_event!(id)
 
-    with {:ok, %CalendarEvent{} = calendar_event} <- Calendar.update_calendar_event(calendar_event, calendar_event_params) do
+    with {:ok, %CalendarEvent{} = calendar_event} <-
+           Calendar.update_calendar_event(calendar_event, calendar_event_params) do
       render(conn, "show.json", calendar_event: calendar_event)
     end
   end
@@ -41,12 +43,12 @@ defmodule ZaisteWeb.CalendarEventController do
     end
   end
 
-
   # Custom collection actions
 
   # Return all events from month, grouped by day.
   def month_events(conn, _params) do
     date = ~D[2020-11-01]
+
     calendar_events_by_day =
       Calendar.list_calendar_events_in_month(date)
       |> Enum.group_by(&Map.get(&1, :date))
