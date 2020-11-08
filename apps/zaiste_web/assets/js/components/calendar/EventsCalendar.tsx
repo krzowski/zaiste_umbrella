@@ -17,8 +17,6 @@ interface EventsCalendarProps {
 }
 
 export default function EventsCalendar(props: EventsCalendarProps) {
-  console.log(props.events_data)
-
   return (
     <div>
       {props.events_data.map( day_events => {
