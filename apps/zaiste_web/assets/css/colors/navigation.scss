@@ -1,0 +1,52 @@
+.right-pane {
+  background-color: $primary-background;
+}
+
+.top-header {
+  background-color: $container-background
+}
+
+.top-header,
+.right-pane {
+  a {
+    color: #444 !important;
+
+    i {
+      color: rgba(255, 255, 255, 0.2);
+    }
+
+    svg path {
+      color: rgba($color: #FFF, $alpha: 0.4);
+    }
+
+    &.active {
+      color: #111 !important;
+    }
+
+    &:hover {
+      background-color: inherit;
+      color: $main-font-color !important;
+
+      i,
+      svg path {
+        color: white;
+      }
+    }
+  }
+}
+
+.right-pane {
+  color: #FFF;
+
+  .nav {
+    border-top: 15px solid $container-background;
+  }
+
+  .operations {
+    border-bottom: 15px solid $container-background
+  }
+
+  .menu-divider {
+    border-bottom: 15px solid $container-background;
+  }
+}

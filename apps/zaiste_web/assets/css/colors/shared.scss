@@ -1,0 +1,40 @@
+body {
+  background-color: $primary-background;
+  color: $secondary-background;
+}
+
+pre {
+  background-color: $main-font-color;
+}
+
+a {
+  color: $main-font-color;
+  &:hover {
+    color: $hover-font-color;
+    background-color: $hover-background-color;
+  }
+}
+
+.container {
+  background-color: $container-background;
+}
+
+#logo {
+  fill: #D6D6D6;
+}
+
+#spinner div {
+  background: #333;
+}
+
+.background-image {
+  background-color: #000;
+}
+
+.mask {
+  background-color: rgba(0,0,0,0.3);
+}
+
+
+.green, .green path { color: $main-green !important; fill: $main-green !important; }
+.grey, .grey path   { color: $main-grey !important; fill: $main-grey !important; }

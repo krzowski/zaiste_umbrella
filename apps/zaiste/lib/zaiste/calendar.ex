@@ -22,6 +22,26 @@ defmodule Zaiste.Calendar do
   end
 
   @doc """
+  Returns the list of calendar_events in a month of a given date, ordered by position.
+
+  ## Examples
+
+      iex> list_calendar_events_in_month()
+      [%CalendarEvent{}, ...]
+
+  """
+  def list_calendar_events_in_month(date) do
+    date_from = Date.beginning_of_month(date)
+    date_to = Date.end_of_month(date)
+
+    query = from cm in CalendarEvent,
+      where: fragment("? BETWEEN ? AND ?", cm.date, ^date_from, ^date_to),
+      order_by: cm.position
+
+    Repo.all(query)
+  end
+
+  @doc """
   Gets a single calendar_event.
 
   Raises `Ecto.NoResultsError` if the Calendar event does not exist.

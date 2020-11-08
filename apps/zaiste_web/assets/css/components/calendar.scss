@@ -4,7 +4,6 @@
   height: 100%;
   grid-template-areas: "calendar calendar_panel";
   grid-template-columns: auto 450px;
-  background-color: rgba(0,0,0,0.6);
 
   .calendar {
     margin: 0 auto;
@@ -41,17 +40,8 @@
           padding: 7px;
         }
 
-        .today-day .calendar-day {
-          color: $current-day-calendar-color !important;
-        }
-
         .month-day .calendar-day {
           width: 100%;
-          color: $main-font-color;
-        }
-
-        .non-month-day .calendar-day{
-          color: #444;
         }
 
         a {
@@ -59,13 +49,8 @@
           height: 100%;
           width: 100%;
           padding: 15px;
-          background-color: rgba(0,0,0,0.2);
           text-decoration: none;
           color: inherit;
-        }
-
-        a:hover {
-          background-color: rgba(255,255,255,0.2);
         }
       }
     }
@@ -76,10 +61,6 @@
     display: grid;
     grid-area: calendar_panel;
     align-content: space-between
-  }
-
-  #calendar-side {
-    border-left: 15px solid $container-background;
   }
 }
 

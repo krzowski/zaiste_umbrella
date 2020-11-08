@@ -6,20 +6,19 @@ function fetchReducer(state, action) {
     return {
       isLoading: true,
       data: null,
-      error: null,
+      errorMessage: null,
     }
   } else if (action.type === 'success') {
     return {
       isLoading: false,
       data: action.data,
-      error: null,
+      errorMessage: null,
     }
   } else if (action.type === 'error') {
     return {
-      ...state,
       isLoading: false,
       data: null,
-      error: 'Error fetching data.',
+      errorMessage: 'Error fetching data.',
     }
   } else {
     throw new Error(`This action type isn't supported.`)
@@ -29,14 +28,14 @@ function fetchReducer(state, action) {
 
 interface fetchData {
   isLoading: boolean,
-  data: Array<object> | null,
-  error: string | null,
+  data: any,
+  errorMessage: string | null,
 }
 
-function useFetch(url: string, effect_condition: Array<any>): fetchData {
+function useFetch(url: string, use_effect_condition: Array<any>): fetchData {
   const [state, dispatch] = React.useReducer(
     fetchReducer,
-    { isLoading: true, data: null, error: null }
+    { isLoading: true, data: null, errorMessage: null }
   )
 
   React.useEffect(() => {
@@ -50,12 +49,12 @@ function useFetch(url: string, effect_condition: Array<any>): fetchData {
       .catch(_error => {
         dispatch({ type: 'error' })
       })
-  }, effect_condition)
+  }, use_effect_condition)
 
   return {
     isLoading: state.isLoading,
     data: state.data,
-    error: state.error
+    errorMessage: state.errorMessage
   }
 }
 

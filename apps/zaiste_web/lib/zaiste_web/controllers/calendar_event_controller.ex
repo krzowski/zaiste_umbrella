@@ -40,4 +40,17 @@ defmodule ZaisteWeb.CalendarEventController do
       send_resp(conn, :no_content, "")
     end
   end
+
+
+  # Custom collection actions
+
+  # Return all events from month, grouped by day.
+  def month_events(conn, _params) do
+    date = ~D[2020-11-01]
+    calendar_events_by_day =
+      Calendar.list_calendar_events_in_month(date)
+      |> Enum.group_by(&Map.get(&1, :date))
+
+    render(conn, "month_events.json", calendar_events_by_day: calendar_events_by_day)
+  end
 end
