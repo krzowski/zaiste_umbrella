@@ -21,7 +21,7 @@ config :zaiste_web,
 config :zaiste_web, ZaisteWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "bPcJr8uppYbympGVXkVMYganbQrKHqJRk7++WWVmma+/8iRMrd5rMyP7pqg1pYlQ",
-  render_errors: [view: ZaisteWeb.ErrorView, accepts: ~w(html json), layout: false],
+  render_errors: [view: ZaisteWeb.ErrorView, accepts: ~w(json), layout: false],
   pubsub_server: Zaiste.PubSub,
   live_view: [signing_salt: "VMb7OJPp"]
 

@@ -46,13 +46,19 @@ defmodule ZaisteWeb.CalendarEventController do
   # Custom collection actions
 
   # Return all events from month, grouped by day.
-  def month_events(conn, _params) do
-    date = ~D[2020-11-01]
+  def month_events(conn, %{"date" => date}) do
+    with {:ok, date} <- Date.from_iso8601(date) do
+      calendar_events_by_day =
+        Calendar.list_calendar_events_in_month(date)
+        |> Enum.group_by(&Map.get(&1, :date))
 
-    calendar_events_by_day =
-      Calendar.list_calendar_events_in_month(date)
-      |> Enum.group_by(&Map.get(&1, :date))
-
-    render(conn, "month_events.json", calendar_events_by_day: calendar_events_by_day)
+      render(conn, "month_events.json", calendar_events_by_day: calendar_events_by_day)
+    else
+      {:error, _} ->
+        conn
+          |> put_status(:bad_request)
+          |> put_view(ZaisteWeb.ErrorView)
+          |> render("400.json", message: "Wrong date format")
+    end
   end
 end

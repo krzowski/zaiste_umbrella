@@ -5,15 +5,12 @@ import useFetch from '../../hooks/useFetch'
 import Spinner from '../shared/Spinner'
 import ErrorMessage from '../shared/ErrorMessage'
 import EventsCalendar from './EventsCalendar'
-// import NewEvent from './NewEvent'
-// import EventsList from './EventsList'
 
 
 const Calendar: React.FC<RouteComponentProps> = () => {
-  const [calendarDate, setCalendarDate] = React.useState(Date.now())
+  const [calendarDate, setCalendarDate] = React.useState<string>(new Date().toISOString().slice(0,10))
 
-  // fetch month's events
-  const { isLoading, data, errorMessage } = useFetch('/calendar_events/month_events', [calendarDate])
+  const { isLoading, data, errorMessage } = useFetch('/calendar_events/month_events', { date: calendarDate })
 
   return (
     <div className="calendar-container">

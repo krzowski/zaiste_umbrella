@@ -1,5 +1,11 @@
 import * as React from 'react'
 
-function NewEvent() {}
+interface Props {
+
+}
+
+const NewEvent: React.FC<Props> = (props) => {
+  return <div></div>
+}
 
 export default NewEvent

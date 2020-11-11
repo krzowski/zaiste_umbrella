@@ -1,25 +1,25 @@
 import * as React from 'react'
 
-export interface EventObject {
-  id: number,
-  name: string,
-  date: string,
-  done: boolean,
+interface EventObject {
+  id: number
+  name: string
+  date: string
+  done: boolean
   position: number | null
 }
-export interface DayEvents {
-  date: string,
+interface DayEvents {
+  date: string
   events: Array<EventObject>
 }
-interface EventsCalendarProps {
-  month: number,
+interface Props {
+  month: string
   events_data: Array<DayEvents>
 }
 
-export default function EventsCalendar(props: EventsCalendarProps) {
+const EventsCalendar: React.FC<Props> = ({month, events_data}) => {
   return (
     <div>
-      {props.events_data.map( day_events => {
+      {events_data.map( day_events => {
         return (<div>
           {day_events.events.map( event => <div key={event.id}>{event.name}</div> )}
         </div>)
@@ -27,3 +27,5 @@ export default function EventsCalendar(props: EventsCalendarProps) {
     </div>
   )
 }
+
+export default EventsCalendar;

@@ -1,7 +1,12 @@
 import * as React from 'react'
 
 
-function fetchReducer(state, action) {
+type Action =
+  | { type: 'fetch' }
+  | { type: 'success', data: any }
+  | { type: 'error' }
+
+function fetchReducer(_state: object, action: Action) {
   if (action.type === 'fetch') {
     return {
       isLoading: true,
@@ -25,31 +30,35 @@ function fetchReducer(state, action) {
   }
 }
 
-
 interface fetchData {
-  isLoading: boolean,
-  data: any,
-  errorMessage: string | null,
+  isLoading: boolean
+  data: any
+  errorMessage: string | null
 }
 
-function useFetch(url: string, use_effect_condition: Array<any>): fetchData {
-  const [state, dispatch] = React.useReducer(
-    fetchReducer,
-    { isLoading: true, data: null, errorMessage: null }
-  )
+const initialState: fetchData = {
+  isLoading: true,
+  data: null,
+  errorMessage: null
+}
+
+function useFetch(url: string, params: any = null): fetchData {
+  const [state, dispatch] = React.useReducer(fetchReducer, initialState)
 
   React.useEffect(() => {
     dispatch({ type: 'fetch' })
 
-    fetch(url)
-      .then(res => res.json())
+    let full_url = url
+    if ( params ) full_url = url + '?' + new URLSearchParams(params)
+
+    fetch(full_url).then(res => res.json())
       .then(res_data => {
         dispatch({ type: 'success', data: res_data.data })
       })
       .catch(_error => {
         dispatch({ type: 'error' })
       })
-  }, use_effect_condition)
+  }, [])
 
   return {
     isLoading: state.isLoading,

@@ -111,7 +111,7 @@ defmodule ZaisteWeb.CalendarEventControllerTest do
       event1_id = event1.id
       event2_id = event2.id
 
-      conn = get(conn, Routes.calendar_event_path(conn, :month_events))
+      conn = get(conn, Routes.calendar_event_path(conn, :month_events, %{date: "2020-11-06"}))
 
       assert [
                %{
@@ -142,8 +142,13 @@ defmodule ZaisteWeb.CalendarEventControllerTest do
     end
 
     test "returns an empty list when there are no events in given month", %{conn: conn} do
-      conn = get(conn, Routes.calendar_event_path(conn, :month_events))
+      conn = get(conn, Routes.calendar_event_path(conn, :month_events, %{date: "2020-05-06"}))
       assert json_response(conn, 200)["data"] == []
+    end
+
+    test "returns an error when date format was invalid", %{conn: conn} do
+      conn = get(conn, Routes.calendar_event_path(conn, :month_events, %{date: "31-03-2032"}))
+      assert json_response(conn, 400)["errors"]["details"] == "Wrong date format"
     end
   end
 
