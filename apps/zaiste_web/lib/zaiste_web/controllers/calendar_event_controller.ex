@@ -56,9 +56,9 @@ defmodule ZaisteWeb.CalendarEventController do
     else
       {:error, _} ->
         conn
-          |> put_status(:bad_request)
-          |> put_view(ZaisteWeb.ErrorView)
-          |> render("400.json", message: "Wrong date format")
+        |> put_status(:bad_request)
+        |> put_view(ZaisteWeb.ErrorView)
+        |> render("400.json", message: "Wrong date format")
     end
   end
 end
