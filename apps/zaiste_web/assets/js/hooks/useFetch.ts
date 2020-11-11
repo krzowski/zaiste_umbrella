@@ -42,6 +42,9 @@ const initialState: fetchData = {
   errorMessage: null
 }
 
+// Usage:
+// const { isLoading, data, errorMessage } = useFetch(url, params)
+
 function useFetch(url: string, params: any = null): fetchData {
   const [state, dispatch] = React.useReducer(fetchReducer, initialState)
 
@@ -58,7 +61,7 @@ function useFetch(url: string, params: any = null): fetchData {
       .catch(_error => {
         dispatch({ type: 'error' })
       })
-  }, [])
+  }, [url, JSON.stringify(params)])
 
   return {
     isLoading: state.isLoading,

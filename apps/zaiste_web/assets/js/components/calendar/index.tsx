@@ -9,9 +9,8 @@ import EventsCalendar from './EventsCalendar'
 
 
 const Calendar: React.FC<RouteComponentProps> = () => {
-  const [calendarDate, setCalendarDate] = React.useState<string>(format(new Date(), 'yyyy-MM-dd'))
-
-  const { isLoading, data, errorMessage } = useFetch('/calendar_events/month_events', { date: calendarDate })
+  const [calendarDate, setCalendarDate] = React.useState<Date>(new Date())
+  const { isLoading, data, errorMessage } = useFetch('/calendar_events/month_events', { date: format(calendarDate, 'yyyy-MM-dd') })
 
   return (
     <div className="calendar-container">
@@ -20,8 +19,9 @@ const Calendar: React.FC<RouteComponentProps> = () => {
           isLoading && <Spinner /> ||
           errorMessage && <ErrorMessage message={errorMessage} /> ||
           <EventsCalendar
-            month={calendarDate}
+            calendar_date={calendarDate}
             events_data={data}
+            setCalendarDate={setCalendarDate}
           />
         }
       </div>
