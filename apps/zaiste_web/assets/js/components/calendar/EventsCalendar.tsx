@@ -1,6 +1,5 @@
 import * as React from 'react'
 import {
-  differenceInCalendarWeeks,
   format,
   startOfMonth,
   endOfMonth,
