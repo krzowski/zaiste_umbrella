@@ -47,7 +47,7 @@ defmodule ZaisteWeb.CalendarEventControllerTest do
                "done" => true,
                "name" => "some name",
                "position" => 42
-             } = json_response(conn, 200)["data"]
+             } == json_response(conn, 200)["data"]
     end
 
     test "renders errors when data is invalid", %{conn: conn} do
@@ -78,7 +78,7 @@ defmodule ZaisteWeb.CalendarEventControllerTest do
                "done" => false,
                "name" => "some updated name",
                "position" => 43
-             } = json_response(conn, 200)["data"]
+             } == json_response(conn, 200)["data"]
     end
 
     test "renders errors when data is invalid", %{conn: conn, calendar_event: calendar_event} do
@@ -108,8 +108,6 @@ defmodule ZaisteWeb.CalendarEventControllerTest do
     test "returns events grouped by day", %{conn: conn} do
       {:ok, event1} = Calendar.create_calendar_event(%{date: ~D[2020-11-10], name: "cal1"})
       {:ok, event2} = Calendar.create_calendar_event(%{date: ~D[2020-11-02], name: "cal2"})
-      event1_id = event1.id
-      event2_id = event2.id
 
       conn = get(conn, Routes.calendar_event_path(conn, :month_events, %{date: "2020-11-06"}))
 
@@ -120,7 +118,7 @@ defmodule ZaisteWeb.CalendarEventControllerTest do
                    %{
                      "date" => "2020-11-02",
                      "done" => false,
-                     "id" => event2_id,
+                     "id" => event2.id,
                      "name" => "cal2",
                      "position" => nil
                    }
@@ -132,13 +130,13 @@ defmodule ZaisteWeb.CalendarEventControllerTest do
                    %{
                      "date" => "2020-11-10",
                      "done" => false,
-                     "id" => event1_id,
+                     "id" => event1.id,
                      "name" => "cal1",
                      "position" => nil
                    }
                  ]
                }
-             ] = json_response(conn, 200)["data"]
+             ] == json_response(conn, 200)["data"]
     end
 
     test "returns an empty list when there are no events in given month", %{conn: conn} do

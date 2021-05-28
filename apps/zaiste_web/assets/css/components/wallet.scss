@@ -1,0 +1,99 @@
+.wallet-container {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  max-height: calc(100vh - 50px);
+  grid-template-areas: "months balance expenses";
+  grid-template-columns: 200px 300px auto 50px;
+  grid-template-rows: 100%;
+
+  .months {
+    grid-area: months;
+    padding: 15px;
+  }
+
+  .balance {
+    grid-area: balance;
+    padding: 15px;
+  }
+
+  .expenses {
+    padding: 15px;
+    grid-area: expenses;
+    overflow-y: auto;
+  }
+
+  .incomes-list {
+    margin-top: 50px;
+  }
+
+  .income-name {
+    max-width: 120px;
+  }
+  .income-amount-main {
+    display: inline-block;
+  }
+  .income-action {
+    display: inline-block;
+    width: 20px;
+    font-size: 12px;
+    text-align: right;
+  }
+
+  .expenses-show {
+    font-size: 12px;
+    cursor: pointer;
+    transition: 0.2s linear;
+  }
+
+  .expense {
+    div {
+      vertical-align: top;
+    }
+
+    .expense-item-add svg {
+      cursor: pointer;
+    }
+
+    .expense-date {
+      display: inline-block;
+      width: 100px;
+    }
+
+    .expense-name {
+      display: inline-block;
+      width: 200px;
+      cursor: pointer;
+    }
+
+    .expense-amount {
+      width: 100px;
+      display: inline-block;
+      text-align: right;
+    }
+    .expense-action {
+      display: inline-block;
+      width: 25px;
+      font-size: 12px;
+      text-decoration: none;
+      text-align: right;
+    }
+    .expense-submit {
+      display: inline-block;
+      width: 50px;
+    }
+
+    &.expense-item {
+      cursor: pointer;
+    }
+  }
+
+  .expense-form {
+    display: none;
+
+    input {
+      padding: 2px;
+    }
+  }
+
+}

@@ -17,6 +17,9 @@ defmodule ZaisteWeb.Router do
     end
 
     resources "/calendar_events", ZaisteWeb.CalendarEventController, except: [:new, :edit]
+
+    resources "/expenses", ZaisteWeb.ExpenseController, except: [:new, :edit]
+    get "/wallet/month", ZaisteWeb.WalletController, :month_events
   end
 
   scope "/", ZaisteWeb do
