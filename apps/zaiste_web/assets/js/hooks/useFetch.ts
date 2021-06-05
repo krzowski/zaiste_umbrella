@@ -7,26 +7,27 @@ type Action =
   | { type: 'error' }
 
 function fetchReducer(_state: object, action: Action) {
-  if (action.type === 'fetch') {
-    return {
-      isLoading: true,
-      data: null,
-      errorMessage: null,
-    }
-  } else if (action.type === 'success') {
-    return {
-      isLoading: false,
-      data: action.data,
-      errorMessage: null,
-    }
-  } else if (action.type === 'error') {
-    return {
-      isLoading: false,
-      data: null,
-      errorMessage: 'Error fetching data.',
-    }
-  } else {
-    throw new Error(`This action type isn't supported.`)
+  switch (action.type) {
+    case 'fetch':
+      return {
+        isLoading: true,
+        data: null,
+        errorMessage: null,
+      }
+    case 'success':
+      return {
+        isLoading: false,
+        data: action.data,
+        errorMessage: null,
+      }
+    case 'error':
+      return {
+        isLoading: false,
+        data: null,
+        errorMessage: 'Error fetching data.',
+      }
+    default:
+      throw new Error(`This action type isn't supported.`)
   }
 }
 
