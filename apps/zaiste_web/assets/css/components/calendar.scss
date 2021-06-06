@@ -1,22 +1,43 @@
 .calendar-container {
-  display: grid;
-  width: 100%;
-  height: 100%;
-  grid-template-areas: "calendar calendar_panel";
-  grid-template-columns: auto 450px;
+  .calendar-heading {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .calendar-title {
+      font-size: 15px;
+      font-weight: bold;
+      padding-left: 9px;
+    }
+    .calendar-nav-arrows {
+      font-size: 50px;
+      margin-top: -3px;
+
+      span {
+        cursor: pointer;
+
+        &:first-child {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
 
   .calendar {
+    user-select: none;
     margin: 0 auto;
-    max-width: 900px;
     width: 100%;
-    grid-area: calendar;
-    padding: 15px;
+    padding-left: 15px;
+    padding-top: 35px;
 
     .calendar-day-names {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      margin-bottom: 35px;
+      margin-bottom: 5px;
+      margin-top: 15px;
+      color: #777;
+      font-size: 10px;
 
       span {
         display: block;
@@ -28,25 +49,23 @@
     .calendar-days {
       .calendar-day-container {
         float: left;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        height: 80px;
-        padding: 15px;
+        height: 40px;
         width: calc(100% / 7);
+      }
 
-        .calendar-activities {
-          text-align: right;
-        }
+      .calendar-day {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+      }
+
+      .month-day .calendar-day:hover {
+        background-color: rgba(0, 0, 0, 0.2);
+        cursor: pointer;
       }
     }
-  }
-
-  .calendar_panel {
-
-    display: grid;
-    grid-area: calendar_panel;
-    align-content: space-between
   }
 }
 

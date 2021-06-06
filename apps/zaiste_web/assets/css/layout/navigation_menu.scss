@@ -1,0 +1,67 @@
+.navigation-menu {
+  display: flex;
+  padding: 15px 0;
+  flex-direction: column;
+  align-content: space-between;
+  justify-content: space-between;
+
+  a {
+    display: flex;
+    justify-content: start;
+    width: 250px;
+    height: 50px;
+    padding: 15px 0 15px 50px;
+    transition: 0.2s;
+
+    i {
+      display: flex;
+      justify-content: center;
+      font-size: 18px;
+      width: 30px;
+      margin-top: -1px;
+      margin-right: 10px;
+     }
+
+    svg {
+      display: block;
+      margin: 0 auto;
+    }
+
+    i,
+    svg path {
+      transition: 0.2s;
+    }
+  }
+
+  .nav-link-text {
+    font-size: 14px;
+    letter-spacing: 0.6px;
+  }
+
+  .nav {
+    display: block;
+  }
+  .operations {
+    display: block;
+  }
+
+  .logo {
+    display: flex;
+    font-size: 16px;
+    margin-bottom: 19px;
+
+    svg {
+      height: 19px;
+      margin-left: 19px;
+    }
+
+    a {
+      display: block;
+      line-height: 50px;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+  }
+
+}
+

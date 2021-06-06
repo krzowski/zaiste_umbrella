@@ -6,7 +6,7 @@ import useFetch from '../../hooks/useFetch'
 
 const Wallet: React.FC<RouteComponentProps> = () => {
   const [calendarDate, setCalendarDate] = React.useState<Date>(new Date())
-  const { isLoading, data, errorMessage } = useFetch('/calendar_events/month_events', { date: format(calendarDate, 'yyyy-MM-dd') })
+  // const { isLoading, data, errorMessage } = useFetch('/calendar_events/month_events', { date: format(calendarDate, 'yyyy-MM-dd') })
 
   return (
     <div className="wallet-container">

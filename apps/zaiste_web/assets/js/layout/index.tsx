@@ -1,58 +1,62 @@
 import * as React from 'react'
 import { logo } from './logo'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 
 const Layout: React.FC = ({ children }) => (
   <>
-    <div className="top-header">
-      <Link to="/calendar">
-        {logo}
-      </Link>
-    </div>
-
-    <div className="right-pane">
+    <div className="navigation-menu">
       <div className="nav">
-        <Link to="/calendar">
-          <i className="fas fa-calendar"></i>
-        </Link>
-        <Link to="">
-          <i className="fas fa-folder"></i>
-        </Link>
-        <Link to="">
-          <i className="fas fa-brain"></i>
-        </Link>
+        <div className="logo">
+          <Link to="/overview">
+            {logo}
+          </Link>
+        </div>
+
+        <NavLink to="/overview">
+          <i className="far fa-calendar"></i>
+          <span className="nav-link-text">Overview</span>
+        </NavLink>
+        <NavLink to="/projects">
+          <i className="far fa-folder"></i>
+          <span className="nav-link-text">Projects</span>
+        </NavLink>
+
+        <NavLink to="/patterns">
+          <i className="fas fa-circle-notch"></i>
+          <span className="nav-link-text">Patterns</span>
+        </NavLink>
 
         <div className="menu-divider"></div>
 
-        <Link to="">
-          <i className="fas fa-comments"></i>
-        </Link>
-        <Link to="">
-          <i className="fas fa-language"></i>
-        </Link>
-        <Link to="">
-          <i className="fas fa-pen"></i>
-        </Link>
-
-        <div className="menu-divider"></div>
-
-        <Link to="/wallet">
+        <NavLink to="/nothing">
+          <i className="fas fa-address-book"></i>
+          <span className="nav-link-text">Social</span>
+        </NavLink>
+        <NavLink to="/nothing">
+          <i className="fas fa-list-alt"></i>
+          <span className="nav-link-text">Topic cards</span>
+        </NavLink>
+        <NavLink to="/wallet">
           <i className="fas fa-wallet"></i>
-        </Link>
-        <Link to="">
+          <span className="nav-link-text">Wallet</span>
+        </NavLink>
+        <NavLink to="/nothing">
           <i className="fas fa-book"></i>
-        </Link>
+          <span className="nav-link-text">Cookbook</span>
+        </NavLink>
       </div>
 
       <div className="operations">
         <div className="menu-divider"></div>
-        <Link to="">
+        {/* <NavLink to="/nothing">
           <i className="fas fa-cog"></i>
-        </Link>
-        <Link to="">
+        </NavLink>
+        <span className="nav-link-text">Settings</span>*/}
+        <NavLink to="/nothing">
           <i className="fas fa-power-off"></i>
-        </Link>
+          <span className="nav-link-text">Sign out</span>
+        </NavLink>
       </div>
     </div>
 

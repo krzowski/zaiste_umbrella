@@ -1,9 +1,8 @@
 import * as React from 'react'
-import { RouteComponentProps } from 'react-router-dom'
 import EventsCalendar from './EventsCalendar'
 
 
-const Calendar: React.FC<RouteComponentProps> = () => {
+const Calendar: React.FC = () => {
   const [calendarDate, setCalendarDate] = React.useState<Date>(new Date())
 
   return (

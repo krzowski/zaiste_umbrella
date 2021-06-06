@@ -45,8 +45,9 @@ const EventsCalendar: React.FC<Props> = ({calendarDate, eventsData, setCalendarD
     return (
       <div className={`calendar-day-container ${class1} ${class2}`} key={+date}>
         <div className="calendar-day">{is_month_day ? date.getDate() : ''}</div>
-        {/* TODO: count events in eventsData for the day */}
-        <div className="calendar-activities">0</div>
+        {/* <div className="calendar-activities"> */}
+          {/* TODO: count events in eventsData for the day and show a dot when there are*/}
+        {/* </div> */}
       </div>
     )
   })
@@ -54,9 +55,11 @@ const EventsCalendar: React.FC<Props> = ({calendarDate, eventsData, setCalendarD
   return (
     <div className="simple-calendar">
       <div className="calendar-heading">
-        <span onClick={() => setCalendarDate(subMonths(calendarDate, 1))}>Previous</span>
         <span className="calendar-title">{format(calendarDate, "MMMM yyyy")}</span>
-        <span onClick={() => setCalendarDate(addMonths(calendarDate, 1))}>Next</span>
+        <div className='calendar-nav-arrows'>
+          <span onClick={() => setCalendarDate(subMonths(calendarDate, 1))}>&#8249;</span>
+          <span onClick={() => setCalendarDate(addMonths(calendarDate, 1))}>&#8250;</span>
+        </div>
       </div>
 
       <div className="calendar-day-names">
