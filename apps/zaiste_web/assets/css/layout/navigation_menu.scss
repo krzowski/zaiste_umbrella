@@ -13,6 +13,21 @@
     padding: 15px 0 15px 50px;
     transition: 0.2s;
 
+    &.active {
+      position: relative;
+
+      &:after {
+        display: block;
+        content: '';
+        position: absolute;
+        width: 3px;
+        height: 25px;
+        top: 12px;
+        right: 0;
+        z-index: 10;
+      }
+    }
+
     i {
       display: flex;
       justify-content: center;

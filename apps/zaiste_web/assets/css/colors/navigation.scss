@@ -3,7 +3,7 @@
   background-color: $primary-background;
 
   a {
-    color: #79787D !important;
+    color: #79787D;
 
     i {
       color: #79787D;
@@ -14,19 +14,13 @@
     }
 
     &.active {
-      position: relative;
-      color: #CACCD0 !important;
+      color: #CACCD0;
+      i {
+        color: #afb1b6;
+      }
 
       &:after {
-        display: block;
         background-color: #6672C5;
-        content: '';
-        position: absolute;
-        width: 3px;
-        height: 25px;
-        top: 12px;
-        right: 0;
-        z-index: 10;
       }
     }
 

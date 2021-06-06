@@ -53,10 +53,10 @@ const Layout: React.FC = ({ children }) => (
           <i className="fas fa-cog"></i>
         </NavLink>
         <span className="nav-link-text">Settings</span>*/}
-        <NavLink to="/nothing">
+        <Link to="/nothing">
           <i className="fas fa-power-off"></i>
           <span className="nav-link-text">Sign out</span>
-        </NavLink>
+        </Link>
       </div>
     </div>
 
