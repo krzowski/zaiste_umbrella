@@ -30,21 +30,26 @@ const Layout: React.FC = ({ children }) => (
         <div className="menu-divider"></div>
 
         <NavLink to="/nothing">
-          <i className="fas fa-address-book"></i>
-          <span className="nav-link-text">Social</span>
-        </NavLink>
-        <NavLink to="/nothing">
           <i className="fas fa-list-alt"></i>
           <span className="nav-link-text">Topic cards</span>
+        </NavLink>
+        <NavLink to="/nothing">
+          <i className="fas fa-book"></i>
+          <span className="nav-link-text">Thoughts</span>
+        </NavLink>
+
+        <div className="menu-divider"></div>
+
+        <NavLink to="/nothing">
+          <i className="fas fa-address-book"></i>
+          <span className="nav-link-text">Social</span>
         </NavLink>
         <NavLink to="/wallet">
           <i className="fas fa-wallet"></i>
           <span className="nav-link-text">Wallet</span>
         </NavLink>
-        <NavLink to="/nothing">
-          <i className="fas fa-book"></i>
-          <span className="nav-link-text">Cookbook</span>
-        </NavLink>
+
+
       </div>
 
       <div className="operations">
@@ -53,7 +58,7 @@ const Layout: React.FC = ({ children }) => (
           <i className="fas fa-cog"></i>
         </NavLink>
         <span className="nav-link-text">Settings</span>*/}
-        <Link to="/nothing">
+        <Link to="/nothing" className="logout">
           <i className="fas fa-power-off"></i>
           <span className="nav-link-text">Sign out</span>
         </Link>
