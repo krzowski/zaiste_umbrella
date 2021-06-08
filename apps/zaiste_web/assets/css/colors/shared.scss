@@ -27,6 +27,35 @@ a {
   background: #333;
 }
 
+.card {
+  border: 2px solid #282932;
+  background-color: #25262E;
+  color: #adb0b9;
+
+  .primary-title {
+    color: #C0C2C6;
+  }
+  .secondary-text {
+    color: #94969D;
+  }
+}
+
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #6672C5 #C2D2E4;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+	background-color: #C2D2E4;
+}
+.custom-scrollbar::-webkit-scrollbar {
+	width: 5px;
+	background-color: #C2D2E4;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+	background-color: #6672C5;;
+}
+
 
 .green, .green path { color: $main-green !important; fill: $main-green !important; }
 .grey, .grey path   { color: $main-grey !important; fill: $main-grey !important; }

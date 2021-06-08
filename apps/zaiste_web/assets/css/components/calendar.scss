@@ -1,4 +1,4 @@
-$calendar-height: 340px;
+$calendar-height: 350px;
 
 .calendar-container {
   height: $calendar-height;
@@ -71,27 +71,47 @@ $calendar-height: 340px;
   }
 }
 
+
 .events-container {
   height: calc(100vh - #{$calendar-height} - 15px);
-  border-radius: 3px;
   margin-left: 15px;
+  overflow-y: auto;
+
+  .event-card {
+    font-size: 12px;
+    position: relative;
+  }
+
+  .social-event-title {
+    display: inline-block;
+    width: calc(100% - 40px);
+    padding-right: 10px;
+  }
+
+  .social-event-time {
+    position: absolute;
+    right: 0;
+    top: calc(50% - 10px);
+    margin-right: 10px;
+  }
+
+  .event-title {
+    display: inline-block;
+    width: calc(100% - 30px);
+  }
+  .event-done-button {
+    position: absolute;
+    cursor: pointer;
+    right: 0;
+    top: calc(50% - 20px);
+    padding: 10px;
+
+    i { font-size: 20px; }
+
+    &.done {
+      right: 2px;
+      top: calc(50% - 19px);
+      i { font-size: 14px; }
+    }
+  }
 }
-
-
-// @media (max-width: 1200px) {
-//   .calendar-container {
-//     grid-template-areas:
-//       "calendar"
-//       "calendar_panel";
-//     grid-template-columns: 100%;
-
-//     .calendar {
-//       border-right: none;
-//       border-bottom: 15px solid $container-background-color;
-
-//       table tbody a {
-//         padding: 4px;
-//       }
-//     }
-//   }
-// }

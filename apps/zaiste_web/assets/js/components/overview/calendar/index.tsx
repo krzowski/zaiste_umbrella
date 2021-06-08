@@ -39,7 +39,7 @@ const Calendar: React.FC = () => {
         </div>
       </div>
 
-      <div className="events-container">
+      <div className="events-container custom-scrollbar">
         <EventsList
           eventsData={data}
         />
