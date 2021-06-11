@@ -2,98 +2,173 @@
   display: grid;
   width: 100%;
   height: 100%;
-  max-height: calc(100vh - 50px);
-  grid-template-areas: "months balance expenses";
-  grid-template-columns: 200px 300px auto 50px;
+  grid-template-areas: "transactions wallet_menu";
+  grid-template-columns: auto 230px;
   grid-template-rows: 100%;
+  overflow: hidden;
 
-  .months {
-    grid-area: months;
-    padding: 15px;
-  }
+  .transactions-container {
+    grid-area: transactions;
+    width: 100%;
+    height: 100%;
 
-  .balance {
-    grid-area: balance;
-    padding: 15px;
-  }
-
-  .expenses {
-    padding: 15px;
-    grid-area: expenses;
-    overflow-y: auto;
-  }
-
-  .incomes-list {
-    margin-top: 50px;
-  }
-
-  .income-name {
-    max-width: 120px;
-  }
-  .income-amount-main {
-    display: inline-block;
-  }
-  .income-action {
-    display: inline-block;
-    width: 20px;
-    font-size: 12px;
-    text-align: right;
-  }
-
-  .expenses-show {
-    font-size: 12px;
-    cursor: pointer;
-    transition: 0.2s linear;
-  }
-
-  .expense {
-    div {
-      vertical-align: top;
+    .transactions-summary {
+      height: 40px;
+      .summary-section {
+        display: inline-block;
+        width: 100px;
+      }
     }
 
-    .expense-item-add svg {
-      cursor: pointer;
-    }
+    .transactions-cards {
+      height: calc(100vh - 107px);
 
-    .expense-date {
-      display: inline-block;
-      width: 100px;
-    }
+      $transaction-date-width: 95px;
+      $transaction-amount-width: 80px;
+      $transaction-actions-width: 30px;
+      $transaction-actions-dimension: 45px;
 
-    .expense-name {
-      display: inline-block;
-      width: 200px;
-      cursor: pointer;
-    }
+      .card-summary {
+        display: flex;
+        flex-direction: row;
 
-    .expense-amount {
-      width: 100px;
-      display: inline-block;
-      text-align: right;
-    }
-    .expense-action {
-      display: inline-block;
-      width: 25px;
-      font-size: 12px;
-      text-decoration: none;
-      text-align: right;
-    }
-    .expense-submit {
-      display: inline-block;
-      width: 50px;
-    }
+        .transaction-date {
+          min-width: $transaction-date-width;
+          width: $transaction-date-width;
+          text-align: right;
+          font-family: Arial;
+        }
+        .transaction-name {
+          flex-grow: 1;
+          padding-left: 20px;
+        }
+        .transaction-amount {
+          width: $transaction-amount-width;
+          min-width: $transaction-amount-width;
+          text-align: right;
+        }
+      }
 
-    &.expense-item {
-      cursor: pointer;
+      .card-summary .transaction-items-toggle,
+      .card-item .card-item-actions {
+        position: relative;
+        padding-left: 15px;
+        font-size: 12px;
+        cursor: pointer;
+        width: $transaction-actions-width;
+
+        i {
+          position: absolute;
+          width: $transaction-actions-dimension;
+          height: $transaction-actions-dimension;
+          left: 0;
+          top: -14px;
+          line-height: $transaction-actions-dimension;
+          text-align: center;
+        }
+      }
+
+      .card-items {
+        width: 100%;
+        padding-top: 4px;
+
+        .card-item {
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          margin-top: 4px;
+
+          .card-item-name {
+            margin-left: $transaction-date-width;
+            padding-left: 20px;
+            flex-grow: 1;
+          }
+
+          .card-item-amount {
+            width: $transaction-amount-width;
+            min-width: $transaction-amount-width;
+            text-align: right;
+          }
+
+          .card-item-actions i {
+            height: calc(#{$transaction-actions-dimension} - 22px);
+            top: -2px;
+            line-height: calc(#{$transaction-actions-dimension} - 22px);
+          }
+        }
+      }
+      .card-form {
+        width: 100%;
+        padding-left: $transaction-date-width;
+        padding-top: 10px;
+
+        form {
+          display: flex;
+          flex-direction: row;
+
+          .form-name {
+            padding-left: 19px;
+            padding-right: 15px;
+            padding-top: 1px;
+            flex-grow: 1;
+          }
+
+          .form-amount {
+            width: 100px;
+            padding-right: 15px;
+            padding-top: 1px;
+
+            input {
+              text-align: right;
+            }
+          }
+
+          .form-button {
+            width: 60px;
+            padding-right: 10px;
+          }
+
+          input {
+            width: 100%;
+            max-width: 100%;
+          }
+        }
+      }
     }
   }
 
-  .expense-form {
-    display: none;
+  .wallet-menu {
+    grid-area: wallet_menu;
+    padding: 0 15px;
 
-    input {
-      padding: 2px;
+    .wallet-filters {
+      form {
+        .row {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+
+          &:first-child {
+            padding-bottom: 4px;
+            border-bottom: 1px solid #444;
+            margin-bottom: 4px;
+          }
+
+          label {
+            font-size: 10px;
+            color: #777;
+          }
+          input {
+            width: 120px;
+            text-align: right;
+          }
+        }
+        .form-button {
+          margin-top: 7px;
+          display: flex;
+          justify-content: end;
+        }
+      }
     }
   }
-
 }

@@ -1,24 +1,7 @@
 .wallet-container {
-  background-color: rgba(0,0,0,0.8);
-
-  .months {
-    border-right: 15px solid $container-background-color;
-  }
-
-  .balance {
-    border-right: 15px solid $container-background-color;
-  }
-
-  .expenses-show {
-    color: #FFFFFF88;
-  }
-  .expenses-show:hover {
-    color: #fff
-  }
-
-  .expense-form {
-    input {
-      background-color: rgba(0,0,0,0.5);
+  .card {
+    .transaction-name {
+      color: #EEE;
     }
   }
 }

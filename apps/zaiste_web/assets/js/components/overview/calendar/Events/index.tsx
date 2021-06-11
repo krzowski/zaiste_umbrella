@@ -13,21 +13,21 @@ const EventsList: React.FC<Props> = ({eventsData}) => {
       <div className="social-events">
         <div className="section-title">Social events</div>
         {/* <div className="section-no-events pl10 pt20">No events today</div> */}
-        <div className="card event-card p10 mt10">
-            <div className="social-event-title">
-              Meeting with Julia and Andrea
-            </div>
-            <div className="social-event-time">
-              20:30
-            </div>
+        <div className="card event-card p10 mt2">
+          <div className="social-event-title">
+            Meeting with Julia and Andrea
           </div>
+          <div className="social-event-time">
+            20:30
+          </div>
+        </div>
       </div>
 
       <div className="other-tasks pt30">
         <div className="section-title">Tasks</div>
         {/* <div className="section-no-events p20">No tasks today</div> */}
         <div className="section-events">
-          <div className="card event-card p10 mt10">
+          <div className="card event-card p10 mt2">
             <div className="event-title">
               Take trash out
               Take trash out
@@ -38,7 +38,7 @@ const EventsList: React.FC<Props> = ({eventsData}) => {
             </div>
           </div>
 
-          <div className="card event-card p10 mt10">
+          <div className="card event-card p10 mt2">
             <div className="event-title">
               Take trash out
             </div>
@@ -47,7 +47,7 @@ const EventsList: React.FC<Props> = ({eventsData}) => {
             </div>
           </div>
 
-          <div className="card event-card p10 mt10">
+          <div className="card event-card p10 mt2">
             <div className="event-title">
               Take trash out
             </div>
@@ -56,7 +56,7 @@ const EventsList: React.FC<Props> = ({eventsData}) => {
             </div>
           </div>
 
-          <div className="card event-card p10 mt10">
+          <div className="card event-card p10 mt2">
             <div className="event-title">
               Take trash out
             </div>
@@ -65,7 +65,7 @@ const EventsList: React.FC<Props> = ({eventsData}) => {
             </div>
           </div>
 
-          <div className="card event-card p10 mt10">
+          <div className="card event-card p10 mt2">
             <div className="event-title">
               Take trash out
             </div>
@@ -74,7 +74,7 @@ const EventsList: React.FC<Props> = ({eventsData}) => {
             </div>
           </div>
 
-          <div className="card event-card p10 mt10">
+          <div className="card event-card p10 mt2">
             <div className="event-title">
               Take trash out
             </div>
@@ -83,7 +83,7 @@ const EventsList: React.FC<Props> = ({eventsData}) => {
             </div>
           </div>
 
-          <div className="card event-card p10 mt10">
+          <div className="card event-card p10 mt2">
             <div className="event-title">
               Take trash out
             </div>
@@ -91,7 +91,7 @@ const EventsList: React.FC<Props> = ({eventsData}) => {
               <i className="fas fa-check green"></i>
             </div>
           </div>
-          <div className="card event-card p10 mt10">
+          <div className="card event-card p10 mt2">
             <div className="event-title">
               Take trash out
             </div>
@@ -99,7 +99,7 @@ const EventsList: React.FC<Props> = ({eventsData}) => {
               <i className="fas fa-check green"></i>
             </div>
           </div>
-          <div className="card event-card p10 mt10">
+          <div className="card event-card p10 mt2">
             <div className="event-title">
               Take trash out
             </div>

@@ -42,6 +42,7 @@ a {
 
 
 .custom-scrollbar {
+  overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: #6672C5 #C2D2E4;
 }
@@ -57,5 +58,11 @@ a {
 }
 
 
-.green, .green path { color: $main-green !important; fill: $main-green !important; }
-.grey, .grey path   { color: $main-grey !important; fill: $main-grey !important; }
+.green, .green path   { color: $main-green !important; fill: $main-green !important; }
+.red, .red path       { color: $main-red !important; fill: $main-red !important; }
+.orange, .orange path { color: $main-orange !important; fill: $main-orange !important; }
+.yellow, .yellow path { color: $main-yellow !important; fill: $main-yellow !important; }
+.grey, .grey path     { color: $main-grey !important; fill: $main-grey !important; }
+.blue, .blue path     { color: $main-blue !important; fill: $main-blue !important; }
+.navy, .navy path     { color: $main-navy !important; fill: $main-navy !important; }
+.olive, .olive path   { color: $main-olive !important; fill: $main-olive !important; }

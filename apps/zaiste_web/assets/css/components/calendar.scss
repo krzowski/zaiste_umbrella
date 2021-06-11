@@ -73,9 +73,8 @@ $calendar-height: 350px;
 
 
 .events-container {
-  height: calc(100vh - #{$calendar-height} - 15px);
+  height: calc(100vh - #{$calendar-height} - 17px);
   margin-left: 15px;
-  overflow-y: auto;
 
   .event-card {
     font-size: 12px;
