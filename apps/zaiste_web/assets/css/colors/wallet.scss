@@ -4,4 +4,33 @@
       color: #EEE;
     }
   }
+  .transaction-items-toggle {
+    i:hover {
+      color: #FFF;
+    }
+  }
+
+  .wallet-menu {
+    .wallet-filters {
+      form {
+        .row:first-child {
+          border-bottom: 1px solid #444;
+        }
+
+        label {
+          color: #777;
+        }
+      }
+    }
+
+    .calendar-nav-arrows span.disabled {
+      color: #777;
+    }
+
+    .wallet-month {
+      color: #BBB;
+      &.active { color: #EEE; }
+      &:hover { color: #FFF; }
+    }
+  }
 }

@@ -1,17 +1,48 @@
-form {
-  input {
-    background-color: transparent;
-    box-shadow: none;
-    border: none;
-    outline: none;
-    color: #EEE;
+input {
+  background-color: transparent;
+  box-shadow: none;
+  border: none;
+  outline: none;
+  color: #EEE;
+}
+
+button {
+  background-color: #6769EA33;
+  box-shadow: none;
+  border: none;
+  outline: none;
+  color: #EEE;
+
+  &:hover {
+    background-color: #6769EA77;
   }
 
-  button {
-    background-color: #6769EA;
-    box-shadow: none;
-    border: none;
-    outline: none;
-    color: #EEE;
+  &:active {
+    background-color: #6769EA66;
   }
+}
+
+[type="checkbox"]:not(:checked) + label:before {
+  background-color:#adb0b9;
+}
+[type="checkbox"]:checked + label:before {
+  background-color: #6769EA55;
+}
+/* checked mark aspect */
+[type="checkbox"]:not(:checked) + label:after,
+[type="checkbox"]:checked + label:after {
+  color: #EEE;
+}
+/* Disabled checkbox */
+[type="checkbox"]:disabled:not(:checked) + label:before,
+[type="checkbox"]:disabled:checked + label:before {
+  box-shadow: none;
+  border-color: #bbb;
+  background-color: #e9e9e9;
+}
+[type="checkbox"]:disabled:checked + label:after {
+  color: #777;
+}
+[type="checkbox"]:disabled + label {
+  color: #aaa;
 }

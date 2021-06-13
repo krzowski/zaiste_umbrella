@@ -11,7 +11,7 @@
 }
 
 body, #react {
-  font-family: "Trebuchet MS", Arial, helvetica, sans-serif;
+  font-family: "Lato", "Trebuchet MS", Arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
   position: absolute;
@@ -19,16 +19,11 @@ body, #react {
   height: 100vh;
 }
 
-.numeric-font {
-  font-family: Arial, serif;
-}
-
 a {
   text-decoration: none;
 }
 
 p, ol, ul, td {
-  font-family: Arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
 }

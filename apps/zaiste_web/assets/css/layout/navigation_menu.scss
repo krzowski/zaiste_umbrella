@@ -4,6 +4,8 @@
   flex-direction: column;
   align-content: space-between;
   justify-content: space-between;
+  height: 100vh;
+  font-family: "Ubuntu", "Trebuchet MS", Arial, helvetica, sans-serif;
 
   a {
     display: flex;
@@ -33,7 +35,6 @@
       justify-content: center;
       font-size: 18px;
       width: 30px;
-      margin-top: -1px;
       margin-right: 10px;
      }
 
