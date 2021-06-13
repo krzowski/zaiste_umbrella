@@ -39,7 +39,7 @@ const TransactionEntryItems: React.FC<Props> = ({ transaction_items }) => {
             name: '',
             amount: '',
           }}
-          onSubmit={async (values) => { }}
+          onSubmit={(values) => { }}
         >
           <Form>
             <div className="form-name">

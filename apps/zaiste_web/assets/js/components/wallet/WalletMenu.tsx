@@ -56,7 +56,7 @@ const WalletMenu: React.FC<Props> = ({ dates }) => {
             dateFrom: format(datesRange.start_date, "dd / MM / yyyy"),
             dateTo: format(datesRange.end_date, "dd / MM / yyyy")
           }}
-          onSubmit={async (values) => { }}
+          onSubmit={(values) => { }}
           enableReinitialize={true}
         >
           <Form className="pl10">
