@@ -26,7 +26,7 @@ const WalletMenu: React.FC<Props> = ({ dates }) => {
 
   return (
     <div className="wallet-menu">
-      <div className="wallet-filters mt30">
+      <div className="wallet-filters mt15">
 
         {/* TODO - labels for transactions */}
         {/* <div className="section-title mt20">Labels</div>

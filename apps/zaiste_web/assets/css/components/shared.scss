@@ -1,7 +1,10 @@
+$ubuntu-font: "Ubuntu", 'Trebuchet MS', Arial, sans-serif;
+
+
 .section-title {
   font-size: 15px;
   margin-left: 9px;
-  font-family: 'Ubuntu', 'Lato', "Trebuchet MS", Arial;
+  font-family: $ubuntu-font;
 }
 
 .card {

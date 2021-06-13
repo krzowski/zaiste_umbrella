@@ -11,6 +11,10 @@ button {
   transition: .1s linear;
 }
 
+label {
+  font-family: "Ubuntu", 'Trebuchet MS', Arial, sans-serif;
+}
+
 [type="checkbox"]:not(:checked),
 [type="checkbox"]:checked {
   position: absolute;
@@ -23,7 +27,7 @@ button {
   padding-left: 24px;
   font-size: 11px;
   cursor: pointer;
-  padding-top: 5px;
+  padding-top: 3px;
 }
 
 /* checkbox aspect */

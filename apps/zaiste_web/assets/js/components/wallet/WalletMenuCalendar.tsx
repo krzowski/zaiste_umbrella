@@ -24,7 +24,7 @@ const WalletMenuCalendar: React.FC<Props> = ({ setDatesRange }) => {
     isCurrentYear = currentYearDate.getFullYear() == today.getFullYear()
   }, [currentYearDate])
 
-  // component height depends on number of labels, height needs to be set for scrollbar
+  // component height depends on number of labels, fixed height needs to be set for a scrollbar
   const [monthsListHeight, setMonthsListHeight] = React.useState<number>(0)
   React.useEffect(() => {
     setMonthsListHeight(document.querySelector('.wallet-filters').clientHeight)
