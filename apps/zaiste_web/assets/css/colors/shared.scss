@@ -41,6 +41,26 @@ a {
 }
 
 
+.modalcard {
+  border: 1px solid #000;
+  background-color: #20212A;
+  box-shadow: 2px 2px #1114;
+
+  .top-panel {
+    background-color: #11111177;
+
+    .maximize-modalcard {
+      background-color: #0004;
+      &:hover { color: $main-yellow; }
+    }
+    .close-modalcard {
+      background-color: #0004;
+      &:hover { color: $main-red; }
+    }
+  }
+}
+
+
 .custom-scrollbar {
   overflow-y: auto;
   scrollbar-width: thin;
