@@ -24,7 +24,7 @@ const ModalCard: React.FC<ModalProps> = ({
   })
 
   React.useEffect(() => {
-    dragElement(document.getElementById(modalId))
+    dragElement(document.getElementById(modalId)!)
     elevateModal(modalId)
   }, [])
 
@@ -66,14 +66,13 @@ const ModalCard: React.FC<ModalProps> = ({
   )
 
   // Code below taken from https://www.w3schools.com/howto/howto_js_draggable.asp
-  function dragElement(elmnt) {
+  function dragElement(elmnt: HTMLElement) {
+    let styleTop: string, styleLeft: string
     let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0
-    let styleTop, styleLeft
-    const dragBar = elmnt.querySelector('.top-panel')
+    const dragBar: HTMLElement = elmnt.querySelector('.top-panel')!
     dragBar.onmousedown = dragMouseDown
 
-    function dragMouseDown(e) {
-      e = e || window.event
+    function dragMouseDown(e: MouseEvent) {
       e.preventDefault()
       // get the mouse cursor position at startup:
       pos3 = e.clientX
@@ -83,8 +82,7 @@ const ModalCard: React.FC<ModalProps> = ({
       document.onmousemove = elementDrag
     }
 
-    function elementDrag(e) {
-      e = e || window.event
+    function elementDrag(e: MouseEvent) {
       e.preventDefault()
       // calculate the new cursor position:
       pos1 = pos3 - e.clientX
@@ -98,12 +96,13 @@ const ModalCard: React.FC<ModalProps> = ({
       elmnt.style.left = styleLeft
     }
 
-    function closeDragElement(e) {
+    function closeDragElement() {
       // stop moving when mouse button is released:
       document.onmouseup = null
       document.onmousemove = null
 
-      setCoords({
+
+      styleTop && setCoords({
         top: styleTop,
         left: styleLeft
       })
@@ -111,12 +110,12 @@ const ModalCard: React.FC<ModalProps> = ({
   }
 }
 
-function elevateModal(modalId) {
+function elevateModal(modalId: string) {
   const INITIAL_Z_INDEX = 1001
-  const currentTopZIndex = parseInt(localStorage.getItem('currentTopZIndex'))
+  const currentTopZIndex: number = parseInt(localStorage.getItem('currentTopZIndex')!)
   const newTopZIndex = (currentTopZIndex ? currentTopZIndex + 1 : INITIAL_Z_INDEX).toString()
 
-  document.getElementById(modalId).style.zIndex = newTopZIndex
+  document.getElementById(modalId)!.style.zIndex = newTopZIndex
   localStorage.setItem('currentTopZIndex', newTopZIndex)
 }
 

@@ -1,10 +1,16 @@
 import * as React from 'react'
 
+
+interface Modal {
+  modalId: string
+}
+
+
 // Usage:
 // const { openedModals, openModal, closeModal } = useModalCards(id_prefix)
 
 function useModalCards(id_prefix: string) {
-  const [openedModals, setOpenedModals] = React.useState([])
+  const [openedModals, setOpenedModals] = React.useState<Modal[]>([])
 
   function openModal() {
     const newModal = {
@@ -13,7 +19,7 @@ function useModalCards(id_prefix: string) {
     setOpenedModals([...openedModals, newModal])
   }
 
-  function closeModal(modalId) {
+  function closeModal(modalId: string) {
     const filteredModals = openedModals.filter(modal => {
       return modal.modalId !== modalId
     })
