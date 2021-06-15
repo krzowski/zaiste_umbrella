@@ -5,12 +5,23 @@ import useFetch from '../../hooks/useFetch'
 import Transactions from './Transactions'
 import WalletMenu from './WalletMenu'
 
+import { Transaction, TransactionsFilters } from './interfaces'
+
+
+const initialTransactionFilters = {
+  show_incomes: true,
+  show_expenses: true
+}
+
 
 const Wallet: React.FC<RouteComponentProps> = () => {
-  // const { isLoading, data, errorMessage } = useFetch('/calendar_events/month_events', { date: format(calendarDate, 'yyyy-MM-dd') })
   // const [date, setDate] = React.useState<Date>(new Date())
+  // const { isLoading, data, errorMessage } = useFetch('/calendar_events/month_events', { date: format(calendarDate, 'yyyy-MM-dd') })
+  const [transactionsFilters, setTransactionsFilters] = React.useState<TransactionsFilters>(initialTransactionFilters)
 
-  const transactions_data = [{
+  // const transactions_data = []
+  const transactions_data = [
+    {
       id: 1,
       name: 'Zakupy w biedronce',
       income: false,
@@ -138,10 +149,26 @@ const Wallet: React.FC<RouteComponentProps> = () => {
     },
   ]
 
+  function filteredData(transactions_data: Transaction[]): Transaction[] {
+    const filteredData = transactions_data.filter(transaction => {
+      if (transactionsFilters.show_incomes && transaction.income) return true
+      if (transactionsFilters.show_expenses && !transaction.income) return true
+    })
+
+    return filteredData
+  }
+
   return (
     <div className="wallet-container">
-      <Transactions transactions_data={transactions_data} />
-      <WalletMenu dates={[]} />
+      <Transactions
+        transactions_data={filteredData(transactions_data)}
+      />
+
+      <WalletMenu
+        dates={[]}
+        transactionsFilters={transactionsFilters}
+        setTransactionsFilters={setTransactionsFilters}
+      />
     </div>
   )
 }

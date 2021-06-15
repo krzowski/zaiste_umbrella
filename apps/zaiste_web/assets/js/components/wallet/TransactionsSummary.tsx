@@ -1,6 +1,8 @@
 import * as React from 'react'
 
-import { Transaction, calculateTransactionsAmount } from './Transactions'
+import { calculateTransactionsAmount } from './Transactions'
+
+import { Transaction } from './interfaces'
 
 
 interface Props {

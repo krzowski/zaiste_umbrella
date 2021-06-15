@@ -67,7 +67,8 @@ const ModalCard: React.FC<ModalProps> = ({
 
   // Code below taken from https://www.w3schools.com/howto/howto_js_draggable.asp
   function dragElement(elmnt: HTMLElement) {
-    let styleTop: string, styleLeft: string
+    let styleTop: string, styleLeft: string // styles for cards restored from maximization/minimization
+
     let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0
     const dragBar: HTMLElement = elmnt.querySelector('.top-panel')!
     dragBar.onmousedown = dragMouseDown
@@ -100,7 +101,6 @@ const ModalCard: React.FC<ModalProps> = ({
       // stop moving when mouse button is released:
       document.onmouseup = null
       document.onmousemove = null
-
 
       styleTop && setCoords({
         top: styleTop,

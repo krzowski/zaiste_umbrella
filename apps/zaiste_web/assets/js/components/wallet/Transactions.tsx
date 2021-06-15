@@ -6,18 +6,8 @@ import TransactionEntry from './TransactionEntry'
 import TransactionsSummary from './TransactionsSummary'
 import NewTransactionModal from './NewTransactionModal'
 
+import { Transaction, TransactionItem } from './interfaces'
 
-export interface TransactionItem {
-  name: string
-  amount: number
-}
-export interface Transaction {
-  id: number
-  name: string
-  date: string
-  income: boolean
-  transaction_items: TransactionItem[]
-}
 
 interface Props {
   transactions_data: Transaction[]
@@ -48,13 +38,19 @@ const Transactions: React.FC<Props> = ({ transactions_data }) => {
       </div>
 
       <div className="transactions-cards custom-scrollbar pr15 pl15 mt20">
-        {
+        {transactions_data.length ?
           transactions_data.map(transaction => (
             <TransactionEntry
               transaction={transaction}
               key={transaction.id}
             />
           ))
+          :
+          <div className="card event mt2 p10">
+            <div className="card-summary transaction-name">
+              There are no transactions.
+            </div>
+          </div>
         }
       </div>
     </div>

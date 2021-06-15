@@ -1,9 +1,9 @@
 import * as React from 'react'
-import { Formik, Field, Form } from 'formik';
-
-import { Transaction, calculateItemsAmount } from './Transactions'
+import { calculateItemsAmount } from './Transactions'
 
 import TransactionEntryItems from './TransactionEntryItems'
+
+import { Transaction } from './interfaces'
 
 
 interface Props {
