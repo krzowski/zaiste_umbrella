@@ -24,10 +24,10 @@ defmodule Zaiste.CalendarTest do
       assert Calendar.list_calendar_events() == [calendar_event]
     end
 
-    test "list_calendar_events_in_month/1 returns all calendar_events in a month of a given date, sorted by position" do
-      included_calendar_event3 = calendar_event_fixture()
+    test "list_calendar_events_in_month/1 returns all calendar_events in a month of a given date" do
+      included_calendar_event1 = calendar_event_fixture()
       included_calendar_event2 = calendar_event_fixture(position: 2)
-      included_calendar_event1 = calendar_event_fixture(position: 1)
+      included_calendar_event3 = calendar_event_fixture(position: 1)
       _excluded_calendar_event = calendar_event_fixture(date: ~D[2010-05-12])
       date = included_calendar_event1.date
 

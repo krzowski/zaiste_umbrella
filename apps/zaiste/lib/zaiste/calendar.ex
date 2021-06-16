@@ -22,7 +22,7 @@ defmodule Zaiste.Calendar do
   end
 
   @doc """
-  Returns the list of calendar_events in a month of a given date, ordered by position.
+  Returns the list of calendar_events in a month of a given date
 
   ## Examples
 
@@ -36,8 +36,7 @@ defmodule Zaiste.Calendar do
 
     query =
       from cm in CalendarEvent,
-        where: fragment("? BETWEEN ? AND ?", cm.date, ^date_from, ^date_to),
-        order_by: cm.position
+        where: fragment("? BETWEEN ? AND ?", cm.date, ^date_from, ^date_to)
 
     Repo.all(query)
   end
