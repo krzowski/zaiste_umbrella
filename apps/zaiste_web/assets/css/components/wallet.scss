@@ -21,7 +21,7 @@
         height: 55px;
 
         .summary-section {
-          width: 160px;
+          width: 200px;
 
           div:last-child {
             text-align: right;
@@ -36,7 +36,7 @@
       height: calc(100vh - 107px);
 
       $transaction-date-width: 95px;
-      $transaction-amount-width: 80px;
+      $transaction-amount-width: 110px;
       $transaction-actions-width: 30px;
       $transaction-actions-dimension: 45px;
 

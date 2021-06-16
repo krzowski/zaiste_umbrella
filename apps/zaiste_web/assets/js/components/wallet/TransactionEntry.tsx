@@ -1,6 +1,8 @@
 import * as React from 'react'
 import { calculateItemsAmount } from './Transactions'
 
+import { UserSettingsContext } from '../../roots/userSettingsContext'
+
 import TransactionEntryItems from './TransactionEntryItems'
 
 import { Transaction } from './interfaces'
@@ -12,6 +14,7 @@ interface Props {
 
 
 const TransactionEntry: React.FC<Props> = ({ transaction }) => {
+  const { userSettings } = React.useContext(UserSettingsContext)
   const [areItemsOpened, setAreItemsOpened] = React.useState<boolean>(false)
 
   const transaction_amount = calculateItemsAmount(transaction.transaction_items).toFixed(2)
@@ -26,7 +29,7 @@ const TransactionEntry: React.FC<Props> = ({ transaction }) => {
           {transaction.name}
         </div>
         <div className={`transaction-amount numeric-font ${transaction.income ? 'green' : 'red'}`}>
-          {!transaction.income && '-'}{transaction_amount}
+          {!transaction.income && '-'}{transaction_amount} {userSettings.currency}
         </div>
         <div className="transaction-items-toggle" onClick={() => setAreItemsOpened(!areItemsOpened)}>
           <i className="fas fa-bars"></i>

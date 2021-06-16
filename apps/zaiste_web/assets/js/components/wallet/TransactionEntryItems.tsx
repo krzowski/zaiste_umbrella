@@ -1,6 +1,8 @@
 import * as React from 'react'
 import { Formik, Field, Form } from 'formik';
 
+import { UserSettingsContext } from '../../roots/userSettingsContext'
+
 import { TransactionItem } from './interfaces'
 
 interface Props {
@@ -8,6 +10,8 @@ interface Props {
 }
 
 const TransactionEntryItems: React.FC<Props> = ({ transaction_items }) => {
+  const { userSettings } = React.useContext(UserSettingsContext)
+
   return (
     <div className="card-items">
       {
@@ -20,7 +24,7 @@ const TransactionEntryItems: React.FC<Props> = ({ transaction_items }) => {
                 {item.name}
               </div>
               <div className="card-item-amount numeric-font">
-                {item.amount}
+                {item.amount.toFixed(2)} {userSettings.currency}
               </div>
               <div className="card-item-actions"
                 onMouseEnter={() => setRemoveHovered(true)}
