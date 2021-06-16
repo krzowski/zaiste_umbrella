@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { calculateItemsAmount } from './Transactions'
 
-import { UserSettingsContext } from '../../roots/userSettingsContext'
+import { UserSettingsContext } from '../../contexts/UserSettingsContext'
 
 import TransactionEntryItems from './TransactionEntryItems'
 

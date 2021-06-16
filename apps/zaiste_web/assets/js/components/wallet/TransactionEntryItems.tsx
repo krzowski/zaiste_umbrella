@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Formik, Field, Form } from 'formik';
 
-import { UserSettingsContext } from '../../roots/userSettingsContext'
+import { UserSettingsContext } from '../../contexts/UserSettingsContext'
 
 import { TransactionItem } from './interfaces'
 

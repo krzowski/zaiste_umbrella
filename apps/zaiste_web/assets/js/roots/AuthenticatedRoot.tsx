@@ -5,7 +5,7 @@ import Layout from '../layout'
 import Overview from '../components/overview'
 import Wallet from '../components/wallet'
 
-import { UserSettingsProvider } from './userSettingsContext'
+import { UserSettingsProvider } from '../contexts/UserSettingsContext'
 
 
 const AuthenticatedRoot: React.FC = () => {
