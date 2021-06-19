@@ -6,17 +6,11 @@ defmodule ZaisteWeb.CalendarEventController do
 
   action_fallback ZaisteWeb.FallbackController
 
-  def index(conn, _params) do
-    calendar_events = Calendar.list_calendar_events()
-    render(conn, "index.json", calendar_events: calendar_events)
-  end
-
   def create(conn, %{"calendar_event" => calendar_event_params}) do
     with {:ok, %CalendarEvent{} = calendar_event} <-
            Calendar.create_calendar_event(calendar_event_params) do
       conn
       |> put_status(:created)
-      |> put_resp_header("location", Routes.calendar_event_path(conn, :show, calendar_event))
       |> render("show.json", calendar_event: calendar_event)
     end
   end

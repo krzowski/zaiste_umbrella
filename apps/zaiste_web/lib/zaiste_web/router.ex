@@ -1,6 +1,15 @@
 defmodule ZaisteWeb.Router do
   use ZaisteWeb, :router
 
+  pipeline :api do
+    plug :accepts, ["json"]
+    plug :fetch_session
+  end
+
+  pipeline :api_auth do
+    plug :ensure_authenticated
+  end
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
@@ -25,14 +34,22 @@ defmodule ZaisteWeb.Router do
     end
   end
 
+  scope "/api" do
+    pipe_through :api
 
-  pipeline :api do
-    plug :accepts, ["json"]
+    resources "/users", ZaisteWeb.UserController, only: [:create, :show]
 
-    scope "/calendar_events" do
-      get "/month_events", ZaisteWeb.CalendarEventController, :month_events
-    end
-    resources "/calendar_events", ZaisteWeb.CalendarEventController, except: [:new, :edit]
+    post "/sign_in", ZaisteWeb.SessionController, :create
+    delete "/sign_out", ZaisteWeb.SessionController, :delete
+  end
+
+  scope "/api" do
+    pipe_through [:api, :api_auth]
+
+    get "/calendar_events/month_events", ZaisteWeb.CalendarEventController, :month_events
+
+    resources "/calendar_events", ZaisteWeb.CalendarEventController,
+      only: [:show, :create, :update, :delete]
 
     resources "/expenses", ZaisteWeb.ExpenseController, except: [:new, :edit]
     get "/wallet/month", ZaisteWeb.WalletController, :month_events
@@ -44,8 +61,18 @@ defmodule ZaisteWeb.Router do
     get "/*path", PageController, :index
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", ZaisteWeb do
-  #   pipe_through :api
-  # end
+  # Plug function
+  defp ensure_authenticated(conn, _opts) do
+    current_user_id = get_session(conn, :current_user_id)
+
+    if current_user_id do
+      conn
+    else
+      conn
+      |> put_status(:unauthorized)
+      |> put_view(ZaisteWeb.ErrorView)
+      |> render("401.json", message: "Unauthenticated user")
+      |> halt()
+    end
+  end
 end

@@ -3,6 +3,7 @@ defmodule ZaisteWeb.CalendarEventControllerTest do
 
   alias Zaiste.Calendar
   alias Zaiste.Calendar.CalendarEvent
+  alias Zaiste.Account.User
 
   @create_attrs %{
     date: ~D[2010-04-17],
@@ -24,14 +25,15 @@ defmodule ZaisteWeb.CalendarEventControllerTest do
   end
 
   setup %{conn: conn} do
-    {:ok, conn: put_req_header(conn, "accept", "application/json")}
-  end
+    user =
+      User.changeset(%User{}, %{email: "test@example.com", password: "password"})
+      |> Zaiste.Repo.insert!()
 
-  describe "index" do
-    test "lists all calendar_events", %{conn: conn} do
-      conn = get(conn, Routes.calendar_event_path(conn, :index))
-      assert json_response(conn, 200)["data"] == []
-    end
+    conn =
+      conn
+      |> Plug.Test.init_test_session(current_user_id: user.id)
+
+    {:ok, conn: conn}
   end
 
   describe "create calendar_event" do
@@ -97,10 +99,6 @@ defmodule ZaisteWeb.CalendarEventControllerTest do
     test "deletes chosen calendar_event", %{conn: conn, calendar_event: calendar_event} do
       conn = delete(conn, Routes.calendar_event_path(conn, :delete, calendar_event))
       assert response(conn, 204)
-
-      assert_error_sent 404, fn ->
-        get(conn, Routes.calendar_event_path(conn, :show, calendar_event))
-      end
     end
   end
 

@@ -11,8 +11,6 @@ defmodule ZaisteWeb.ExpenseView do
   end
 
   def render("expense.json", %{expense: expense}) do
-    %{id: expense.id,
-      date: expense.date,
-      name: expense.name}
+    %{id: expense.id, date: expense.date, name: expense.name}
   end
 end

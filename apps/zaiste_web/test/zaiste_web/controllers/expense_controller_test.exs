@@ -3,6 +3,7 @@ defmodule ZaisteWeb.ExpenseControllerTest do
 
   alias Zaiste.Wallet
   alias Zaiste.Wallet.Expense
+  alias Zaiste.Account.User
 
   @create_attrs %{
     date: ~D[2010-04-17],
@@ -20,7 +21,15 @@ defmodule ZaisteWeb.ExpenseControllerTest do
   end
 
   setup %{conn: conn} do
-    {:ok, conn: put_req_header(conn, "accept", "application/json")}
+    user =
+      User.changeset(%User{}, %{email: "test@example.com", password: "password"})
+      |> Zaiste.Repo.insert!()
+
+    conn =
+      conn
+      |> Plug.Test.init_test_session(current_user_id: user.id)
+
+    {:ok, conn: conn}
   end
 
   describe "index" do

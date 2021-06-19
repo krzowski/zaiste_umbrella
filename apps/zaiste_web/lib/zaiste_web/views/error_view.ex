@@ -17,4 +17,8 @@ defmodule ZaisteWeb.ErrorView do
   def render("400.json", %{message: message}) do
     %{errors: %{details: message}}
   end
+
+  def render("401.json", %{message: message}) do
+    %{errors: %{details: message}}
+  end
 end

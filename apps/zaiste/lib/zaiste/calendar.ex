@@ -22,7 +22,7 @@ defmodule Zaiste.Calendar do
   end
 
   @doc """
-  Returns the list of calendar_events in a month of a given date
+  Returns the list of calendar_events in a month of a given date.
 
   ## Examples
 
