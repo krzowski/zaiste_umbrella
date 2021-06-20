@@ -7,6 +7,7 @@ defmodule ZaisteWeb.Endpoint do
   @session_options [
     store: :cookie,
     key: "_zaiste_web_key",
+    same_site: "Strict",
     signing_salt: "t4XQNi0+"
   ]
 

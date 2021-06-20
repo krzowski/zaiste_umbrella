@@ -23,7 +23,7 @@ export interface DayEvents {
 
 const Calendar: React.FC = () => {
   const [calendarDate, setCalendarDate] = React.useState<Date>(new Date())
-  const { isLoading, data, errorMessage } = useFetch('/calendar_events/month_events', { date: format(startOfMonth(calendarDate), 'yyyy-MM-dd') })
+  const { isLoading, data, errorMessage } = useFetch('/api/calendar_events/month_events', { date: format(startOfMonth(calendarDate), 'yyyy-MM-dd') })
 
   if (errorMessage) return <ErrorMessage message={errorMessage} />
 

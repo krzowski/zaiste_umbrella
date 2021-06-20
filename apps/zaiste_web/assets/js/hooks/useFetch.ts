@@ -1,5 +1,5 @@
 import * as React from 'react'
-
+import { AuthContext } from '../contexts/AuthContext'
 
 type Action =
   | { type: 'fetch' }
@@ -47,21 +47,45 @@ const initialState: fetchData = {
 // const { isLoading, data, errorMessage } = useFetch(url, params)
 
 function useFetch(url: string, params: any = null): fetchData {
+  const { setAuthenticatedSession } = React.useContext(AuthContext)
   const [state, dispatch] = React.useReducer(fetchReducer, initialState)
 
+  function fetchUrl() {
+    if (params) {
+      return url + '?' + new URLSearchParams(params)
+    } else {
+      return url
+    }
+  }
+
+  function handleErrors(response) {
+    if (!response.ok) {
+      if (response.status === 401) setAuthenticatedSession(false)
+
+      throw Error(response.statusText)
+    }
+
+    return response;
+  }
+
+
   React.useEffect(() => {
+    // Change in authentication state on 401 code may break rendering.
+    // Perform fetch async actions only if component is still mounted.
+    let isMounted = true
+
     dispatch({ type: 'fetch' })
 
-    let full_url = url
-    if ( params ) full_url = url + '?' + new URLSearchParams(params)
-
-    fetch(full_url).then(res => res.json())
-      .then(res_data => {
-        dispatch({ type: 'success', data: res_data.data })
+    fetch(fetchUrl())
+      .then(handleErrors)
+      .then(response => {
+        if (isMounted) dispatch({ type: 'success', data: response.json().data })
       })
       .catch(_error => {
-        dispatch({ type: 'error' })
+        if (isMounted) dispatch({ type: 'error' })
       })
+
+    return () => { isMounted = false }
   }, [url, JSON.stringify(params)])
 
   return {
