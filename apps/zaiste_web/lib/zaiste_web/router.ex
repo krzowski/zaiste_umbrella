@@ -51,7 +51,7 @@ defmodule ZaisteWeb.Router do
     resources "/calendar_events", ZaisteWeb.CalendarEventController,
       only: [:show, :create, :update, :delete]
 
-    resources "/expenses", ZaisteWeb.ExpenseController, except: [:new, :edit]
+    resources "/transactions", ZaisteWeb.TransactionController, except: [:new, :edit]
     get "/wallet/month", ZaisteWeb.WalletController, :month_events
   end
 

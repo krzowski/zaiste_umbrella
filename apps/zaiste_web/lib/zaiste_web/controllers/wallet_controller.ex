@@ -2,7 +2,7 @@ defmodule ZaisteWeb.WalletController do
   use ZaisteWeb, :controller
 
   alias Zaiste.Wallet
-  alias Zaiste.Wallet.Expense
+  alias Zaiste.Wallet.Transaction
 
   action_fallback ZaisteWeb.FallbackController
 
