@@ -102,7 +102,6 @@ defmodule Zaiste.Account do
     User.changeset(user, attrs)
   end
 
-
   @doc """
   Authenticates user's password.
   """

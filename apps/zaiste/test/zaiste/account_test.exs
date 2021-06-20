@@ -70,7 +70,10 @@ defmodule Zaiste.AccountTest do
     test "authenticate_user/2 authenticates the user" do
       user = user_without_password_fixture()
       assert {:error, "Wrong email or password"} = Account.authenticate_user("noemail", "")
-      assert {:ok, authenticated_user} = Account.authenticate_user(user.email, @valid_attrs.password)
+
+      assert {:ok, authenticated_user} =
+               Account.authenticate_user(user.email, @valid_attrs.password)
+
       assert user == authenticated_user
     end
   end

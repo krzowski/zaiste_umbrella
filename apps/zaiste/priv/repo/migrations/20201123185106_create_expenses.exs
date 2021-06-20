@@ -8,6 +8,5 @@ defmodule Zaiste.Repo.Migrations.CreateExpenses do
 
       timestamps()
     end
-
   end
 end
