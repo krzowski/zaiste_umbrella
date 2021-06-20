@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Formik, Field, Form } from 'formik';
+import { useForm } from 'react-hook-form'
 import { format } from 'date-fns'
 
 import WalletMenuCalendar from './WalletMenuCalendar'
@@ -15,13 +15,27 @@ interface Props {
 
 const today = new Date()
 const initialDates = {
-  start_date: new Date(today.getFullYear(), today.getMonth(), 1),
-  end_date: new Date(today.getFullYear(), today.getMonth() + 1, 0),
+  startDate: new Date(today.getFullYear(), today.getMonth(), 1),
+  endDate: new Date(today.getFullYear(), today.getMonth() + 1, 0),
 }
 
 const WalletMenu: React.FC<Props> = ({ dates, transactionsFilters, setTransactionsFilters }) => {
   const [datesRange, setDatesRange] = React.useState<DatesRange>(initialDates)
   const filtersContainerClass = "wallet-filters"
+  const defaultValues = {
+    startDate: format(datesRange.startDate, "dd / MM / yyyy"),
+    endDate: format(datesRange.endDate, "dd / MM / yyyy")
+  }
+  const {
+    register,
+    handleSubmit,
+    setError,
+    clearErrors,
+    reset,
+    formState: { errors },
+  } = useForm({ defaultValues })
+  React.useEffect(() => reset(defaultValues), [datesRange])
+  const onSubmit = (data, e) => { }
 
   return (
     <div className="wallet-menu">
@@ -42,11 +56,11 @@ const WalletMenu: React.FC<Props> = ({ dates, transactionsFilters, setTransactio
               type="checkbox"
               name="type_income"
               id="type_income"
-              checked={transactionsFilters.show_incomes}
+              checked={transactionsFilters.showIncomes}
               onChange={() => setTransactionsFilters(
                 {
                   ...transactionsFilters,
-                  show_incomes: !transactionsFilters.show_incomes
+                  showIncomes: !transactionsFilters.showIncomes
                 }
               )}
             />
@@ -57,11 +71,11 @@ const WalletMenu: React.FC<Props> = ({ dates, transactionsFilters, setTransactio
               type="checkbox"
               name="type_expense"
               id="type_expense"
-              checked={transactionsFilters.show_expenses}
+              checked={transactionsFilters.showExpenses}
               onChange={() => setTransactionsFilters(
                 {
                   ...transactionsFilters,
-                  show_expenses: !transactionsFilters.show_expenses
+                  showExpenses: !transactionsFilters.showExpenses
                 }
               )}
             />
@@ -72,30 +86,25 @@ const WalletMenu: React.FC<Props> = ({ dates, transactionsFilters, setTransactio
 
         <div className="section-title mt30 mb8">Date</div>
 
-        <Formik
-          initialValues={{
-            dateFrom: format(datesRange.start_date, "dd / MM / yyyy"),
-            dateTo: format(datesRange.end_date, "dd / MM / yyyy")
-          }}
-          onSubmit={(values) => { }}
-          enableReinitialize={true}
-        >
-          <Form className="pl10">
-            <div className="row">
-              <label htmlFor="dateFrom">Date from</label>
-              <Field id="dateFrom" name="dateFrom" className='numeric-font' />
-            </div>
+        <form onSubmit={handleSubmit(onSubmit)} className="pl10">
+          <div className="row">
+            <label htmlFor="startDate">Date from</label>
+            <input {...register('startDate')}
+              id="startDate" name="startDate" required
+            />
+          </div>
 
-            <div className="row">
-              <label htmlFor="dateTo">Date to</label>
-              <Field id="dateTo" name="dateTo" className='numeric-font' />
-            </div>
+          <div className="row">
+            <label htmlFor="endDate">Date to</label>
+            <input  {...register('endDate')}
+              id="endDate" name="endDate" required
+            />
+          </div>
 
-            <div className="form-button">
-              <button type="submit">Filter</button>
-            </div>
-          </Form>
-        </Formik>
+          <div className="form-button">
+            <button type="submit">Filter</button>
+          </div>
+        </form>
       </div>
 
       <WalletMenuCalendar

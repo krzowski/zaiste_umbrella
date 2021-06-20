@@ -9,7 +9,7 @@ interface Modal {
 // Usage:
 // const { openedModals, openModal, closeModal } = useModalCards(id_prefix)
 //
-// Then in render map openedModals to react components implementing ModalCard (e.g. NewTransactionModal):
+// Then map openedModals to react components implementing ModalCard (e.g. NewTransactionModal):
 //
 //   {openedModals.map(modal => (
 //     <NewTransactionModal

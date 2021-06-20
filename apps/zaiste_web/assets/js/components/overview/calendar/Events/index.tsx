@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { DayEvents } from '../index';
+import { DayEvents } from '../index'
 
 
 interface Props {

@@ -20,8 +20,6 @@
   .login-form {
     font-family: $ubuntu-font;
 
-    width: 275px;
-
     .row {
       display: flex;
       flex-direction: column;
@@ -48,6 +46,11 @@
         padding-top: 6px;
         padding-bottom: 6px;
       }
+    }
+
+    .login-error {
+      margin-top: 10px;
+      text-align: center;
     }
   }
 }

@@ -1,11 +1,11 @@
 export interface DatesRange {
-  start_date: Date
-  end_date: Date
+  startDate: Date
+  endDate: Date
 }
 
 export interface TransactionsFilters {
-  show_incomes: boolean
-  show_expenses: boolean
+  showIncomes: boolean
+  showExpenses: boolean
 }
 
 export interface TransactionItem {

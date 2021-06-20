@@ -9,8 +9,8 @@ import { Transaction, TransactionsFilters } from './interfaces'
 
 
 const initialTransactionFilters = {
-  show_incomes: true,
-  show_expenses: true
+  showIncomes: true,
+  showExpenses: true
 }
 
 
@@ -151,8 +151,8 @@ const Wallet: React.FC<RouteComponentProps> = () => {
 
   function filteredData(transactions_data: Transaction[]): Transaction[] {
     const filteredData = transactions_data.filter(transaction => {
-      if (transactionsFilters.show_incomes && transaction.income) return true
-      if (transactionsFilters.show_expenses && !transaction.income) return true
+      if (transactionsFilters.showIncomes && transaction.income) return true
+      if (transactionsFilters.showExpenses && !transaction.income) return true
     })
 
     return filteredData

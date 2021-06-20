@@ -12,7 +12,7 @@ import {
   isToday
 } from 'date-fns'
 
-import { DayEvents } from '../index';
+import { DayEvents } from '../index'
 
 
 interface Props {
@@ -70,4 +70,4 @@ const EventsCalendar: React.FC<Props> = ({calendarDate, setCalendarDate, eventsD
   )
 }
 
-export default EventsCalendar;
+export default EventsCalendar

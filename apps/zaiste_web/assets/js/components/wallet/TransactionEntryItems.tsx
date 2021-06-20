@@ -1,8 +1,5 @@
 import * as React from 'react'
-import { Formik, Field, Form } from 'formik';
-
 import { UserSettingsContext } from '../../contexts/UserSettingsContext'
-
 import { TransactionItem } from './interfaces'
 
 interface Props {
@@ -36,28 +33,6 @@ const TransactionEntryItems: React.FC<Props> = ({ transaction_items }) => {
           )
         })
       }
-
-      <div className="card-form">
-        <Formik
-          initialValues={{
-            name: '',
-            amount: '',
-          }}
-          onSubmit={(values) => { }}
-        >
-          <Form>
-            <div className="form-name">
-              <Field id="name" name="name" placeholder="Name" />
-            </div>
-            <div className="form-amount">
-              <Field id="amount" name="amount" placeholder="Amount" />
-            </div>
-            <div className="form-button">
-              <button type="submit">Add</button>
-            </div>
-          </Form>
-        </Formik>
-      </div>
     </div>
   )
 }

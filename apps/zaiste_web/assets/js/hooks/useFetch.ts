@@ -65,7 +65,7 @@ function useFetch(url: string, params: any = null): fetchData {
       throw Error(response.statusText)
     }
 
-    return response;
+    return response
   }
 
 

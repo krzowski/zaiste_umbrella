@@ -53,8 +53,8 @@ const WalletMenuCalendar: React.FC<Props> = ({ setDatesRange, filtersContainerCl
             className="wallet-month"
             key={`stamp_${+monthDate}`}
             onClick={() => setDatesRange({
-              start_date: new Date(monthDate.getFullYear(), monthDate.getMonth(), 1),
-              end_date: new Date(monthDate.getFullYear(), monthDate.getMonth() + 1, 0),
+              startDate: new Date(monthDate.getFullYear(), monthDate.getMonth(), 1),
+              endDate: new Date(monthDate.getFullYear(), monthDate.getMonth() + 1, 0),
             })}
           >
             {format(monthDate, "MMMM")}
