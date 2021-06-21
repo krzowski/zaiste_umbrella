@@ -1,10 +1,6 @@
 defmodule ZaisteWeb.TransactionControllerTest do
   use ZaisteWeb.ConnCase
 
-  alias Zaiste.Wallet
-  alias Zaiste.Wallet.Transaction
-  alias Zaiste.Account.User
-
   @create_attrs %{
     date: ~D[2010-04-17],
     name: "some name"
@@ -15,27 +11,24 @@ defmodule ZaisteWeb.TransactionControllerTest do
   }
   @invalid_attrs %{date: nil, name: nil}
 
-  def fixture(:transaction) do
-    {:ok, transaction} = Wallet.create_transaction(@create_attrs)
-    transaction
-  end
-
   setup %{conn: conn} do
-    user =
-      User.changeset(%User{}, %{email: "test@example.com", password: "password"})
-      |> Zaiste.Repo.insert!()
+    user = insert(:user)
 
     conn =
       conn
       |> Plug.Test.init_test_session(current_user_id: user.id)
 
-    {:ok, conn: conn}
+    {:ok, conn: put_req_header(conn, "accept", "application/json"), user: user}
   end
 
   describe "index" do
-    test "lists all transactions", %{conn: conn} do
+    test "lists all transactions", %{conn: conn, user: user} do
       conn = get(conn, Routes.transaction_path(conn, :index))
       assert json_response(conn, 200)["data"] == []
+
+      insert(:transaction, user_id: user.id)
+      conn = get(conn, Routes.transaction_path(conn, :index))
+      assert json_response(conn, 200)["data"] |> Enum.any?()
     end
   end
 
@@ -60,11 +53,13 @@ defmodule ZaisteWeb.TransactionControllerTest do
   end
 
   describe "update transaction" do
-    setup [:create_transaction]
+    test "renders transaction when data is valid", %{conn: conn, user: user} do
+      transaction = insert(:transaction, user_id: user.id)
 
-    test "renders transaction when data is valid", %{conn: conn, transaction: %Transaction{id: id} = transaction} do
-      conn = put(conn, Routes.transaction_path(conn, :update, transaction), transaction: @update_attrs)
-      assert %{"id" => ^id} = json_response(conn, 200)["data"]
+      conn =
+        put(conn, Routes.transaction_path(conn, :update, transaction), transaction: @update_attrs)
+
+      assert %{"id" => id} = json_response(conn, 200)["data"]
 
       conn = get(conn, Routes.transaction_path(conn, :show, id))
 
@@ -75,16 +70,19 @@ defmodule ZaisteWeb.TransactionControllerTest do
              } == json_response(conn, 200)["data"]
     end
 
-    test "renders errors when data is invalid", %{conn: conn, transaction: transaction} do
-      conn = put(conn, Routes.transaction_path(conn, :update, transaction), transaction: @invalid_attrs)
+    test "renders errors when data is invalid", %{conn: conn, user: user} do
+      transaction = insert(:transaction, user_id: user.id)
+
+      conn =
+        put(conn, Routes.transaction_path(conn, :update, transaction), transaction: @invalid_attrs)
+
       assert json_response(conn, 422)["errors"] != %{}
     end
   end
 
   describe "delete transaction" do
-    setup [:create_transaction]
-
-    test "deletes chosen transaction", %{conn: conn, transaction: transaction} do
+    test "deletes chosen transaction", %{conn: conn, user: user} do
+      transaction = insert(:transaction, user_id: user.id)
       conn = delete(conn, Routes.transaction_path(conn, :delete, transaction))
       assert response(conn, 204)
 
@@ -92,10 +90,14 @@ defmodule ZaisteWeb.TransactionControllerTest do
         get(conn, Routes.transaction_path(conn, :show, transaction))
       end
     end
-  end
 
-  defp create_transaction(_) do
-    transaction = fixture(:transaction)
-    %{transaction: transaction}
+    test "doesn't delete other user's transaction", %{conn: conn} do
+      user2 = insert(:user)
+      transaction = insert(:transaction, user_id: user2.id)
+
+      assert_error_sent 404, fn ->
+        delete(conn, Routes.transaction_path(conn, :delete, transaction))
+      end
+    end
   end
 end

@@ -24,6 +24,7 @@ defmodule Zaiste.DataCase do
       import Ecto.Changeset
       import Ecto.Query
       import Zaiste.DataCase
+      import Zaiste.Factory
     end
   end
 

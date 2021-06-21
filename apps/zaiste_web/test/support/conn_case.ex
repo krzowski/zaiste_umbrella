@@ -23,6 +23,7 @@ defmodule ZaisteWeb.ConnCase do
       import Plug.Conn
       import Phoenix.ConnTest
       import ZaisteWeb.ConnCase
+      import Zaiste.Factory
 
       alias ZaisteWeb.Router.Helpers, as: Routes
 

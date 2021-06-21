@@ -40,7 +40,8 @@ defmodule Zaiste.MixProject do
       {:ecto_sql, "~> 3.4"},
       {:postgrex, ">= 0.0.0"},
       {:jason, "~> 1.0"},
-      {:bcrypt_elixir, "~> 2.0"}
+      {:bcrypt_elixir, "~> 2.0"},
+      {:ex_machina, "~> 2.7.0", only: :test}
     ]
   end
 

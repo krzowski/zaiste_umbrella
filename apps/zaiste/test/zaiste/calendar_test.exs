@@ -10,25 +10,16 @@ defmodule Zaiste.CalendarTest do
     @update_attrs %{date: ~D[2011-05-18], done: false, name: "some updated name", position: 43}
     @invalid_attrs %{date: nil, name: nil}
 
-    def calendar_event_fixture(attrs \\ %{}) do
-      {:ok, calendar_event} =
-        attrs
-        |> Enum.into(@valid_attrs)
-        |> Calendar.create_calendar_event()
-
-      calendar_event
-    end
-
     test "list_calendar_events/0 returns all calendar_events" do
-      calendar_event = calendar_event_fixture()
-      assert Calendar.list_calendar_events() == [calendar_event]
+      insert(:calendar_event)
+      assert Enum.any?(Calendar.list_calendar_events())
     end
 
     test "list_calendar_events_in_month/1 returns all calendar_events in a month of a given date" do
-      included_calendar_event1 = calendar_event_fixture()
-      included_calendar_event2 = calendar_event_fixture(position: 2)
-      included_calendar_event3 = calendar_event_fixture(position: 1)
-      _excluded_calendar_event = calendar_event_fixture(date: ~D[2010-05-12])
+      included_calendar_event1 = insert(:calendar_event)
+      included_calendar_event2 = insert(:calendar_event, position: 2)
+      included_calendar_event3 = insert(:calendar_event, position: 1)
+      _excluded_calendar_event = insert(:calendar_event, date: ~D[2010-05-12])
       date = included_calendar_event1.date
 
       assert Calendar.list_calendar_events_in_month(date) == [
@@ -39,7 +30,7 @@ defmodule Zaiste.CalendarTest do
     end
 
     test "get_calendar_event!/1 returns the calendar_event with given id" do
-      calendar_event = calendar_event_fixture()
+      calendar_event = insert(:calendar_event)
       assert Calendar.get_calendar_event!(calendar_event.id) == calendar_event
     end
 
@@ -58,7 +49,7 @@ defmodule Zaiste.CalendarTest do
     end
 
     test "update_calendar_event/2 with valid data updates the calendar_event" do
-      calendar_event = calendar_event_fixture()
+      calendar_event = insert(:calendar_event)
 
       assert {:ok, %CalendarEvent{} = calendar_event} =
                Calendar.update_calendar_event(calendar_event, @update_attrs)
@@ -70,7 +61,7 @@ defmodule Zaiste.CalendarTest do
     end
 
     test "update_calendar_event/2 with invalid data returns error changeset" do
-      calendar_event = calendar_event_fixture()
+      calendar_event = insert(:calendar_event)
 
       assert {:error, %Ecto.Changeset{}} =
                Calendar.update_calendar_event(calendar_event, @invalid_attrs)
@@ -79,13 +70,13 @@ defmodule Zaiste.CalendarTest do
     end
 
     test "delete_calendar_event/1 deletes the calendar_event" do
-      calendar_event = calendar_event_fixture()
+      calendar_event = insert(:calendar_event)
       assert {:ok, %CalendarEvent{}} = Calendar.delete_calendar_event(calendar_event)
       assert_raise Ecto.NoResultsError, fn -> Calendar.get_calendar_event!(calendar_event.id) end
     end
 
     test "change_calendar_event/1 returns a calendar_event changeset" do
-      calendar_event = calendar_event_fixture()
+      calendar_event = insert(:calendar_event)
       assert %Ecto.Changeset{} = Calendar.change_calendar_event(calendar_event)
     end
   end
