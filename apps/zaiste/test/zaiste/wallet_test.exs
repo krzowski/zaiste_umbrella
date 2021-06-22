@@ -15,26 +15,27 @@ defmodule Zaiste.WalletTest do
     @update_attrs %{date: ~D[2011-05-18], name: "some updated name", income: false}
     @invalid_attrs %{date: nil, name: nil}
 
-    test "list_transactions/0 returns all transactions", %{user: user} do
+    test "list_transactions/1 returns all transactions", %{user: user} do
       transaction = insert(:transaction, user_id: user.id)
       assert Enum.any?(Wallet.list_transactions(transaction.user_id))
     end
 
-    test "list_transactions_in_month/1 returns all transactions in a month of a given date, sorted by date",
+    test "list_transactions_between_dates/3 returns all transactions in a month of a given date, sorted by date",
          %{user: user} do
       included_transaction1 = insert(:transaction, user_id: user.id, date: ~D[2010-05-11])
       included_transaction2 = insert(:transaction, user_id: user.id, date: ~D[2010-05-12])
       _excluded_transaction = insert(:transaction, user_id: user.id, date: ~D[2010-06-12])
 
-      date = included_transaction1.date
+      date_from = ~D[2010-05-01]
+      date_to = ~D[2010-05-31]
 
-      assert Wallet.list_transactions_in_month(date, user.id) == [
-               included_transaction1,
-               included_transaction2
+      assert Wallet.list_transactions_between_dates(date_from, date_to, user.id) == [
+               included_transaction2,
+               included_transaction1
              ]
     end
 
-    test "get_transaction!/1 returns the transaction with given id", %{user: user} do
+    test "get_transaction!/2 returns the transaction with given id", %{user: user} do
       transaction = insert(:transaction, user_id: user.id)
       assert Wallet.get_transaction!(transaction.id, transaction.user_id) == transaction
     end
@@ -104,7 +105,7 @@ defmodule Zaiste.WalletTest do
       transaction_item
     end
 
-    test "get_transaction_item!/1 returns the transaction_item with given id", %{
+    test "get_transaction_item!/2 returns the transaction_item with given id", %{
       transaction: transaction
     } do
       transaction_item = insert(:transaction_item, transaction_id: transaction.id)

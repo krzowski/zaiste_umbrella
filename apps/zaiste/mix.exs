@@ -41,7 +41,8 @@ defmodule Zaiste.MixProject do
       {:postgrex, ">= 0.0.0"},
       {:jason, "~> 1.0"},
       {:bcrypt_elixir, "~> 2.0"},
-      {:ex_machina, "~> 2.7.0", only: :test}
+      {:ex_machina, "~> 2.7.0", only: :test},
+      {:timex, "~> 3.0"}
     ]
   end
 

@@ -27,23 +27,19 @@ defmodule Zaiste.Wallet do
   end
 
   @doc """
-  Returns the list of transactions in a month of a given date, ordered by date.
+  Returns the list of transactions between dates.
 
   ## Examples
 
-      iex> list_transactions_in_month()
+      iex> list_transactions_between_dates()
       [%Transaction{}, ...]
 
   """
-  def list_transactions_in_month(date, user_id) do
-    date_from = Date.beginning_of_month(date)
-    date_to = Date.end_of_month(date)
-
+  def list_transactions_between_dates(date_from, date_to, user_id) do
     query =
       from t in Transaction,
         where: t.user_id == ^user_id,
-        where: fragment("? BETWEEN ? AND ?", t.date, ^date_from, ^date_to),
-        order_by: t.date
+        where: fragment("? BETWEEN ? AND ?", t.date, ^date_from, ^date_to)
 
     Repo.all(query)
   end

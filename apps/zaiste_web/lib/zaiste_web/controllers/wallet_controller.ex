@@ -1,24 +1,34 @@
 defmodule ZaisteWeb.WalletController do
   use ZaisteWeb, :controller
+  use ZaisteWeb.Helpers.CurrentUser
 
+  alias Zaiste.Repo
   alias Zaiste.Wallet
   alias Zaiste.Wallet.Transaction
 
   action_fallback ZaisteWeb.FallbackController
 
-  def month(conn, %{"date" => date}) do
-    with {:ok, date} <- Date.from_iso8601(date) do
-      calendar_events_by_day =
-        Calendar.list_calendar_events_in_month(date)
-        |> Enum.group_by(&Map.get(&1, :date))
+  def transactions(conn, %{"date_from" => date_from, "date_to" => date_to}, current_user) do
+    with date_from <-
+           date_from
+           |> String.replace(" ", "")
+           |> Timex.parse!("{D}/{M}/{YYYY}")
+           |> Timex.to_date(),
+         date_to <-
+           date_to |> String.replace(" ", "") |> Timex.parse!("{D}/{M}/{YYYY}") |> Timex.to_date() do
+      transactions =
+        Wallet.list_transactions_between_dates(date_from, date_to, current_user.id)
+        |> Repo.preload(:transaction_items)
 
-      render(conn, "month_events.json", calendar_events_by_day: calendar_events_by_day)
+      conn
+      |> put_view(ZaisteWeb.TransactionView)
+      |> render("index.json", transactions: transactions)
     else
       {:error, _} ->
         conn
         |> put_status(:bad_request)
         |> put_view(ZaisteWeb.ErrorView)
-        |> render("400.json", message: "Wrong date format")
+        |> render("400.json", message: "Wrong dates format")
     end
   end
 end
