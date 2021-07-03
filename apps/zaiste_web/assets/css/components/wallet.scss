@@ -138,6 +138,30 @@
     }
   }
 
+  .card-summary .transaction-items-toggle-icons {
+    width: 120px;
+
+    i {
+      display: inline-block;
+      width: 40px;
+      font-size: 11px;
+      height: $transaction-actions-dimension;
+      line-height: $transaction-actions-dimension;
+      text-align: center;
+      transition: .1s linear;
+
+      &:hover {
+        color: #777;
+        cursor: pointer;
+      }
+
+      &:first-child {
+        font-size: 12px;
+        padding-top: 1px;
+      }
+    }
+  }
+
   .card-summary .transaction-items-toggle,
   .card-item .card-item-actions {
     position: relative;

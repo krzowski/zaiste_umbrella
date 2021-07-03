@@ -5,6 +5,7 @@ import TransactionEntry from './TransactionEntry'
 import TransactionsSummary from './TransactionsSummary'
 import NewTransactionModal from './NewTransactionModal'
 import EditTransactionModal from './EditTransactionModal'
+import EditTransactionItemsModal from './EditTransactionItemsModal'
 
 
 const Transactions: React.FC = () => {
@@ -19,6 +20,11 @@ const Transactions: React.FC = () => {
     openModal: openEditTransactionModal,
     closeModal: closeEditTransactionModal
   } = useModalCards("edit_transaction")
+  const {
+    openedModals: openedEditTransactionItemsModals,
+    openModal: openEditTransactionItemsModal,
+    closeModal: closeEditTransactionItemsModal
+  } = useModalCards("edit_transaction_items")
 
   return (
     <div className="transactions-container">
@@ -39,6 +45,7 @@ const Transactions: React.FC = () => {
               key={transaction.id}
               transaction={transaction}
               openEditTransactionModal={openEditTransactionModal}
+              openEditTransactionItemsModal={openEditTransactionItemsModal}
             />
           ))
           :
@@ -55,7 +62,7 @@ const Transactions: React.FC = () => {
           key={modal.modalId}
           modalId={modal.modalId}
           closeModal={closeNewTransactionModal}
-          openEditTransactionModal={openEditTransactionModal}
+          openEditTransactionItemsModal={openEditTransactionItemsModal}
         />
       ))}
 
@@ -67,6 +74,18 @@ const Transactions: React.FC = () => {
           key={modal.modalId}
           modalId={modal.modalId}
           closeModal={closeEditTransactionModal}
+          transaction={transaction}
+        />
+      })}
+
+      { openedEditTransactionItemsModals.map(modal => {
+        const transaction = transactions.find(t => t.id == modal.additionalProps.transaction_id)
+        if (!transaction) return null
+
+        return <EditTransactionItemsModal
+          key={modal.modalId}
+          modalId={modal.modalId}
+          closeModal={closeEditTransactionItemsModal}
           transaction={transaction}
         />
       })}

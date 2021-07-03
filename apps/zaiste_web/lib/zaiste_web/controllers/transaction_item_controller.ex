@@ -3,7 +3,6 @@ defmodule ZaisteWeb.TransactionItemController do
   use ZaisteWeb.Helpers.CurrentUser
 
   alias Zaiste.Wallet
-  alias Zaiste.Wallet.Transaction
   alias Zaiste.Wallet.TransactionItem
 
   action_fallback ZaisteWeb.FallbackController

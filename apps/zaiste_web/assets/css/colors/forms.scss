@@ -38,12 +38,11 @@ button {
   outline: none;
   color: #EEE;
 
-  &:hover {
-    background-color: #6769EA55;
-  }
+  &:hover { background-color: #6769EA55; }
+  &:active { background-color: #6769EA77; }
 
-  &:active {
-    background-color: #6769EA77;
+  &.warning-btn {
+    &:hover { color: $main-red; }
   }
 }
 

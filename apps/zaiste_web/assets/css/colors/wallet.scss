@@ -34,3 +34,20 @@
     }
   }
 }
+
+
+.transactions-cards {
+  .card-summary .transaction-items-toggle-icons {
+    i {
+      color: #999;
+
+      &:hover {
+        color: #EEE;
+      }
+
+      &:last-child:hover {
+        color: $main-red;
+      }
+    }
+  }
+}

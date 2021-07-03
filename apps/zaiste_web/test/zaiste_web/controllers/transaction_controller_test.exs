@@ -3,11 +3,13 @@ defmodule ZaisteWeb.TransactionControllerTest do
 
   @create_attrs %{
     date: "20 / 06 / 2021",
-    name: "some name"
+    name: "some name",
+    income: true
   }
   @update_attrs %{
     date: "21 / 06 / 2021",
-    name: "some updated name"
+    name: "some updated name",
+    income: false
   }
   @invalid_attrs %{date: nil, name: nil}
 
@@ -37,6 +39,13 @@ defmodule ZaisteWeb.TransactionControllerTest do
       conn = post(conn, Routes.transaction_path(conn, :create), transaction: @create_attrs)
 
       assert response(conn, 201)
+
+      assert %{
+               "id" => _id,
+               "date" => "2021-06-20",
+               "income" => true,
+               "name" => "some name"
+             } = json_response(conn, 201)["data"]
     end
 
     test "renders errors when data is invalid", %{conn: conn} do
@@ -46,13 +55,20 @@ defmodule ZaisteWeb.TransactionControllerTest do
   end
 
   describe "update transaction" do
-    test "returns 204 when data is valid", %{conn: conn, user: user} do
+    test "returns 200 when data is valid", %{conn: conn, user: user} do
       transaction = insert(:transaction, user_id: user.id)
 
       conn =
         put(conn, Routes.transaction_path(conn, :update, transaction), transaction: @update_attrs)
 
-      assert response(conn, 204)
+      assert response(conn, 200)
+
+      assert %{
+               "id" => _id,
+               "date" => "2021-06-21",
+               "income" => false,
+               "name" => "some updated name"
+             } = json_response(conn, 200)["data"]
     end
 
     test "renders errors when data is invalid", %{conn: conn, user: user} do

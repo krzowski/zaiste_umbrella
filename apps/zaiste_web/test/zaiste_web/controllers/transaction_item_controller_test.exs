@@ -29,6 +29,12 @@ defmodule ZaisteWeb.TransactionItemControllerTest do
         )
 
       assert conn.status == 201
+
+      assert %{
+               "id" => _id,
+               "amount" => "120.5",
+               "name" => "some name"
+             } = json_response(conn, 201)["data"]
     end
 
     test "renders errors when data is invalid", %{conn: conn, transaction: transaction} do

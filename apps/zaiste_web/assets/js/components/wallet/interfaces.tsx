@@ -21,3 +21,9 @@ export interface Transaction {
   income: boolean
   transaction_items: TransactionItem[]
 }
+
+export interface TransactionFormFields {
+  name: string
+  date: string
+  income: string
+}

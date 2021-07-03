@@ -6,7 +6,7 @@ defmodule Zaiste.Account.User do
     field :email, :string
     field :password, :string, virtual: true
     field :password_hash, :string
-    has_many :transactions, Zaiste.Wallet.Transaction
+    has_many :transactions, Zaiste.Wallet.Transaction, on_delete: :delete_all
 
     timestamps()
   end

@@ -12,6 +12,20 @@ export function createTransaction(transaction_data: object) {
   })
 }
 
+export function updateTransaction(transaction_id: number, transaction_data: object) {
+  return fetch(`/api/transactions/${transaction_id}`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ transaction: transaction_data })
+  })
+}
+
+export function deleteTransaction(transaction_id: number) {
+  return fetch(`/api/transactions/${transaction_id}`, {
+    method: 'DELETE'
+  })
+}
+
 export function createTransactionItem(transaction_id: number, transaction_item_data: object) {
   return fetch(`/api/transactions/${transaction_id}/transaction_items`, {
     method: 'POST',

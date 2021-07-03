@@ -7,7 +7,7 @@ defmodule Zaiste.Wallet.Transaction do
     field :date, :date
     field :name, :string
     field :income, :boolean
-    has_many :transaction_items, Zaiste.Wallet.TransactionItem
+    has_many :transaction_items, Zaiste.Wallet.TransactionItem, on_delete: :delete_all
 
     timestamps()
   end

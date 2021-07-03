@@ -39,9 +39,11 @@ defmodule ZaisteWeb.TransactionController do
       transaction_params
       |> Map.put("date", parse_date_param(transaction_params["date"]))
 
-    with {:ok, %Transaction{}} <-
+    with {:ok, %Transaction{} = transaction} <-
            Wallet.update_transaction(transaction, update_attrs) do
-      send_resp(conn, :no_content, "")
+      conn
+      |> put_status(:ok)
+      |> render("transaction.json", transaction: transaction)
     end
   end
 
