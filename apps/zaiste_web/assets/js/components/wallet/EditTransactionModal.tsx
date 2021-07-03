@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useForm } from 'react-hook-form'
-import { calculateItemsAmount } from './Transactions'
+import { calculateItemsAmount } from './helper_functions'
 import TransactionItemEntry from './TransactionItemEntry'
 import { TransactionsContext } from '../../contexts/TransactionsContext'
 import { UserSettingsContext } from '../../contexts/UserSettingsContext'

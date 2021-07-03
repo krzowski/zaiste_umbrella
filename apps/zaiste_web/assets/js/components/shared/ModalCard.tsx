@@ -49,7 +49,6 @@ const ModalCard: React.FC<ModalProps> = ({
     }
   }
 
-
   return (
     <div
       id={modalId}

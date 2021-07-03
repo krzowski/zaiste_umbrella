@@ -2,9 +2,10 @@ import * as React from 'react'
 import { RouteComponentProps } from 'react-router-dom'
 import { TransactionsProvider } from '../../contexts/TransactionsContext'
 import Transactions from './Transactions'
-import WalletMenu, { formatDatesRange } from './WalletMenu'
+import WalletMenu from './WalletMenu'
 import { DatesRange } from './interfaces'
 import { fetchTransactions } from './api_calls'
+import { formatDatesRange } from './helper_functions'
 
 
 const today = new Date()

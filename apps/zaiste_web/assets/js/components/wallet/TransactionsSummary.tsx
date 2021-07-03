@@ -1,8 +1,7 @@
 import * as React from 'react'
 import { UserSettingsContext } from '../../contexts/UserSettingsContext'
 import { TransactionsContext } from '../../contexts/TransactionsContext'
-import { Transaction } from './interfaces'
-import { calculateItemsAmount } from './Transactions'
+import { calculateTransactionsAmount } from './helper_functions'
 
 
 const TransactionsSummary: React.FC = () => {
@@ -36,16 +35,6 @@ const TransactionsSummary: React.FC = () => {
       </div>
     </div>
   )
-}
-
-export function calculateTransactionsAmount(transactions: Transaction[], income: boolean) {
-  const items = transactions.filter(transaction => (
-    transaction.income === income
-  )).flatMap(transaction => (
-    transaction.transaction_items
-  ))
-
-  return calculateItemsAmount(items)
 }
 
 export default TransactionsSummary

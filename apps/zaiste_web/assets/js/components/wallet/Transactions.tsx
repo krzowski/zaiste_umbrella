@@ -5,7 +5,6 @@ import TransactionEntry from './TransactionEntry'
 import TransactionsSummary from './TransactionsSummary'
 import NewTransactionModal from './NewTransactionModal'
 import EditTransactionModal from './EditTransactionModal'
-import { TransactionItem } from './interfaces'
 
 
 const Transactions: React.FC = () => {
@@ -20,7 +19,6 @@ const Transactions: React.FC = () => {
     openModal: openEditTransactionModal,
     closeModal: closeEditTransactionModal
   } = useModalCards("edit_transaction")
-
 
   return (
     <div className="transactions-container">
@@ -74,12 +72,6 @@ const Transactions: React.FC = () => {
       })}
     </div>
   )
-}
-
-export function calculateItemsAmount(items: TransactionItem[]) {
-  return items.reduce((sum, item) => {
-    return sum + parseFloat(item.amount)
-  }, 0)
 }
 
 export default Transactions

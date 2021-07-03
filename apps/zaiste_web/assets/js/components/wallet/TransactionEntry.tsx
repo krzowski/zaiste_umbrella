@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { calculateItemsAmount } from './Transactions'
+import { calculateItemsAmount } from './helper_functions'
 import { UserSettingsContext } from '../../contexts/UserSettingsContext'
 import { Transaction } from './interfaces'
 

@@ -1,9 +1,10 @@
 import * as React from 'react'
 import { useForm } from 'react-hook-form'
-import { format, parse as parseDate } from 'date-fns'
+import { parse as parseDate } from 'date-fns'
 import { TransactionsContext } from '../../contexts/TransactionsContext'
 import WalletMenuCalendar from './WalletMenuCalendar'
 import { DatesRange } from './interfaces'
+import { formatDatesRange } from './helper_functions'
 
 
 interface DateFields {
@@ -18,7 +19,6 @@ interface Props {
 
 const WalletMenu: React.FC<Props> = ({ datesRange, setDatesRange }) => {
   const { transactionsFilters, setTransactionsFilters } = React.useContext(TransactionsContext)
-  const filtersContainerClass = "wallet-filters"
   const defaultValues = formatDatesRange(datesRange)
   const {
     register,
@@ -38,7 +38,7 @@ const WalletMenu: React.FC<Props> = ({ datesRange, setDatesRange }) => {
 
   return (
     <div className="wallet-menu">
-      <div className={`${filtersContainerClass} mt15`}>
+      <div className={`wallet-filters mt15`}>
 
         {/* TODO - labels for transactions */}
         {/* <div className="section-title mt20">Labels</div>
@@ -106,19 +106,9 @@ const WalletMenu: React.FC<Props> = ({ datesRange, setDatesRange }) => {
         </form>
       </div>
 
-      <WalletMenuCalendar
-        setDatesRange={setDatesRange}
-        filtersContainerClass={filtersContainerClass}
-      />
+      <WalletMenuCalendar setDatesRange={setDatesRange} />
     </div>
   )
-}
-
-export function formatDatesRange(datesRange: DatesRange) {
-  return {
-    startDate: format(datesRange.startDate, "dd / MM / yyyy"),
-    endDate: format(datesRange.endDate, "dd / MM / yyyy")
-  }
 }
 
 export default WalletMenu
