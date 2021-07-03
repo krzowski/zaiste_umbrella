@@ -1,41 +1,40 @@
 import * as React from 'react'
 import { useForm } from 'react-hook-form'
-import { format } from 'date-fns'
-
+import { format, parse as parseDate } from 'date-fns'
+import { TransactionsContext } from '../../contexts/TransactionsContext'
 import WalletMenuCalendar from './WalletMenuCalendar'
-import { DatesRange, TransactionsFilters } from './interfaces'
+import { DatesRange } from './interfaces'
 
+
+interface DateFields {
+  startDate: string
+  endDate: string
+}
 
 interface Props {
-  dates: Date[]
-  transactionsFilters: TransactionsFilters
-  setTransactionsFilters: React.Dispatch<React.SetStateAction<TransactionsFilters>>
+  datesRange: DatesRange
+  setDatesRange: React.Dispatch<React.SetStateAction<DatesRange>>
 }
 
-
-const today = new Date()
-const initialDates = {
-  startDate: new Date(today.getFullYear(), today.getMonth(), 1),
-  endDate: new Date(today.getFullYear(), today.getMonth() + 1, 0),
-}
-
-const WalletMenu: React.FC<Props> = ({ dates, transactionsFilters, setTransactionsFilters }) => {
-  const [datesRange, setDatesRange] = React.useState<DatesRange>(initialDates)
+const WalletMenu: React.FC<Props> = ({ datesRange, setDatesRange }) => {
+  const { transactionsFilters, setTransactionsFilters } = React.useContext(TransactionsContext)
   const filtersContainerClass = "wallet-filters"
-  const defaultValues = {
-    startDate: format(datesRange.startDate, "dd / MM / yyyy"),
-    endDate: format(datesRange.endDate, "dd / MM / yyyy")
-  }
+  const defaultValues = formatDatesRange(datesRange)
   const {
     register,
     handleSubmit,
     setError,
     clearErrors,
     reset,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm({ defaultValues })
   React.useEffect(() => reset(defaultValues), [datesRange])
-  const onSubmit = (data, e) => { }
+  const onSubmit = (data: DateFields): void => {
+    setDatesRange({
+      startDate: parseDate(data.startDate, 'dd / MM / yyyy', new Date()),
+      endDate: parseDate(data.endDate, 'dd / MM / yyyy', new Date())
+    })
+  }
 
   return (
     <div className="wallet-menu">
@@ -102,7 +101,7 @@ const WalletMenu: React.FC<Props> = ({ dates, transactionsFilters, setTransactio
           </div>
 
           <div className="form-button">
-            <button type="submit">Filter</button>
+            <button type="submit" disabled={isSubmitting}>Filter</button>
           </div>
         </form>
       </div>
@@ -113,6 +112,13 @@ const WalletMenu: React.FC<Props> = ({ dates, transactionsFilters, setTransactio
       />
     </div>
   )
+}
+
+export function formatDatesRange(datesRange: DatesRange) {
+  return {
+    startDate: format(datesRange.startDate, "dd / MM / yyyy"),
+    endDate: format(datesRange.endDate, "dd / MM / yyyy")
+  }
 }
 
 export default WalletMenu

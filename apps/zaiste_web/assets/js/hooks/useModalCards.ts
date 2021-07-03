@@ -3,13 +3,14 @@ import * as React from 'react'
 
 interface Modal {
   modalId: string
+  additionalProps: any
 }
 
 
 // Usage:
 // const { openedModals, openModal, closeModal } = useModalCards(id_prefix)
 //
-// Then map openedModals to react components implementing ModalCard (e.g. NewTransactionModal):
+// In render, map openedModals to react component which implements ModalCard (e.g. NewTransactionModal):
 //
 //   {openedModals.map(modal => (
 //     <NewTransactionModal
@@ -18,14 +19,28 @@ interface Modal {
 //       closeModal={closeModal}
 //     />
 //   ))}
-
+//
+// openModal takes an optional object with props which will be passed to openedModals, e.g.:
+//
+//   openModal({ additionalProp: 1000 })
+//
+//   {openedModals.map(modal => (
+//     <NewTransactionModal
+//       key={modal.modalId}
+//       additionalProp={modal.additionalProps.additionalProp}
+//       modalId={modal.modalId}
+//       closeModal={closeModal}
+//     />
+//   ))}
+//
 
 function useModalCards(id_prefix: string) {
   const [openedModals, setOpenedModals] = React.useState<Modal[]>([])
 
-  function openModal() {
+  function openModal(props = {}) {
     const newModal = {
-      modalId: id_prefix + +new Date()
+      modalId: id_prefix + +new Date(),
+      additionalProps: props
     }
     setOpenedModals([...openedModals, newModal])
   }

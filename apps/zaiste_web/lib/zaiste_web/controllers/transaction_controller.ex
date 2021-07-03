@@ -14,9 +14,16 @@ defmodule ZaisteWeb.TransactionController do
   end
 
   def create(conn, %{"transaction" => transaction_params}, current_user) do
-    with {:ok, %Transaction{}} <-
-           Wallet.create_transaction(Map.put(transaction_params, "user_id", current_user.id)) do
-      send_resp(conn, :no_content, "")
+    create_attrs =
+      transaction_params
+      |> Map.put("user_id", current_user.id)
+      |> Map.put("date", parse_date_param(transaction_params["date"]))
+
+    with {:ok, %Transaction{} = transaction} <-
+           Wallet.create_transaction(create_attrs) do
+      conn
+      |> put_status(:created)
+      |> render("transaction.json", transaction: transaction)
     end
   end
 
@@ -28,8 +35,12 @@ defmodule ZaisteWeb.TransactionController do
   def update(conn, %{"id" => id, "transaction" => transaction_params}, current_user) do
     transaction = Wallet.get_transaction!(id, current_user.id)
 
+    update_attrs =
+      transaction_params
+      |> Map.put("date", parse_date_param(transaction_params["date"]))
+
     with {:ok, %Transaction{}} <-
-           Wallet.update_transaction(transaction, transaction_params) do
+           Wallet.update_transaction(transaction, update_attrs) do
       send_resp(conn, :no_content, "")
     end
   end
@@ -40,5 +51,15 @@ defmodule ZaisteWeb.TransactionController do
     with {:ok, %Transaction{}} <- Wallet.delete_transaction(transaction) do
       send_resp(conn, :no_content, "")
     end
+  end
+
+  defp parse_date_param(nil), do: nil
+  defp parse_date_param(""), do: nil
+
+  defp parse_date_param(date_string) do
+    date_string
+    |> String.replace(" ", "")
+    |> Timex.parse!("{D}/{M}/{YYYY}")
+    |> Timex.to_date()
   end
 end

@@ -8,7 +8,7 @@ defmodule ZaisteWeb.WalletController do
 
   action_fallback ZaisteWeb.FallbackController
 
-  def transactions(conn, %{"date_from" => date_from, "date_to" => date_to}, current_user) do
+  def transactions(conn, %{"startDate" => date_from, "endDate" => date_to}, current_user) do
     with date_from <-
            date_from
            |> String.replace(" ", "")

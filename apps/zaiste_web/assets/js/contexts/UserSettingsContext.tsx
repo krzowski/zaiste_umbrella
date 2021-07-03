@@ -5,6 +5,10 @@ interface UserSettings {
   currency: string
 }
 
+interface Props {
+  children: JSX.Element
+}
+
 // TODO : query settings from db
 const initialState = {
   currency: 'PLN'
@@ -17,7 +21,7 @@ export const UserSettingsContext = React.createContext<{
 }>({} as any)
 
 
-export const UserSettingsProvider = ({ children }) => {
+export const UserSettingsProvider: React.FC<Props> = ({ children }) => {
   const [userSettings, setUserSettings] = React.useState<UserSettings>(initialState)
 
   return (

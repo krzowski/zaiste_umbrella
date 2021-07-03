@@ -1,12 +1,9 @@
 import * as React from 'react'
 import { format, startOfMonth } from 'date-fns'
-
-import useFetch from '../../../hooks/useFetch'
-import Spinner from '../../shared/Spinner'
 import ErrorMessage from '../../shared/ErrorMessage'
-
 import EventsCalendar from './EventsCalendar'
 import EventsList from './Events'
+import { fetchCalendarEvents } from '../api_calls'
 
 
 export interface EventObject {
@@ -23,7 +20,7 @@ export interface DayEvents {
 
 const Calendar: React.FC = () => {
   const [calendarDate, setCalendarDate] = React.useState<Date>(new Date())
-  const { isLoading, data, errorMessage } = useFetch('/api/calendar_events/month_events', { date: format(startOfMonth(calendarDate), 'yyyy-MM-dd') })
+  const { data, errorMessage } = fetchCalendarEvents(format(startOfMonth(calendarDate), 'yyyy-MM-dd'))
 
   if (errorMessage) return <ErrorMessage message={errorMessage} />
 

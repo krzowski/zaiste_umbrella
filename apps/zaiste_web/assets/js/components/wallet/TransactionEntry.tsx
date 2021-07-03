@@ -1,22 +1,17 @@
 import * as React from 'react'
 import { calculateItemsAmount } from './Transactions'
-
 import { UserSettingsContext } from '../../contexts/UserSettingsContext'
-
-import TransactionEntryItems from './TransactionEntryItems'
-
 import { Transaction } from './interfaces'
 
 
 interface Props {
   transaction: Transaction
+  openEditTransactionModal: Function
 }
 
 
-const TransactionEntry: React.FC<Props> = ({ transaction }) => {
+const TransactionEntry: React.FC<Props> = ({ transaction, openEditTransactionModal }) => {
   const { userSettings } = React.useContext(UserSettingsContext)
-  const [areItemsOpened, setAreItemsOpened] = React.useState<boolean>(false)
-
   const transaction_amount = calculateItemsAmount(transaction.transaction_items).toFixed(2)
 
   return (
@@ -31,15 +26,10 @@ const TransactionEntry: React.FC<Props> = ({ transaction }) => {
         <div className={`transaction-amount numeric-font ${transaction.income ? 'green' : 'red'}`}>
           {!transaction.income && '-'}{transaction_amount} {userSettings.currency}
         </div>
-        <div className="transaction-items-toggle" onClick={() => setAreItemsOpened(!areItemsOpened)}>
-          <i className="fas fa-bars"></i>
+        <div className="transaction-items-toggle" onClick={() => openEditTransactionModal({ transaction_id: transaction.id })}>
+          <i className="fas fa-edit"></i>
         </div>
       </div>
-
-      {areItemsOpened &&
-        <TransactionEntryItems transaction_items={transaction.transaction_items} />
-      }
-
     </div>
   )
 }

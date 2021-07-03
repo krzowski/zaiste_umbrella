@@ -28,126 +28,6 @@
           }
         }
       }
-
-
-    }
-
-    .transactions-cards {
-      height: calc(100vh - 107px);
-
-      $transaction-date-width: 95px;
-      $transaction-amount-width: 110px;
-      $transaction-actions-width: 30px;
-      $transaction-actions-dimension: 45px;
-
-      .card-summary {
-        display: flex;
-        flex-direction: row;
-
-        .transaction-date {
-          min-width: $transaction-date-width;
-          width: $transaction-date-width;
-          text-align: right;
-          font-size: 11px;
-        }
-        .transaction-name {
-          flex-grow: 1;
-          padding-left: 20px;
-        }
-        .transaction-amount {
-          width: $transaction-amount-width;
-          min-width: $transaction-amount-width;
-          text-align: right;
-        }
-      }
-
-      .card-summary .transaction-items-toggle,
-      .card-item .card-item-actions {
-        position: relative;
-        padding-left: 15px;
-        font-size: 12px;
-        cursor: pointer;
-        width: $transaction-actions-width;
-
-        i {
-          position: absolute;
-          width: $transaction-actions-dimension;
-          height: $transaction-actions-dimension;
-          left: 0;
-          top: -14px;
-          line-height: $transaction-actions-dimension;
-          text-align: center;
-          transition: .1s linear;
-        }
-      }
-
-      .card-items {
-        width: 100%;
-        padding-top: 4px;
-
-        .card-item {
-          width: 100%;
-          display: flex;
-          flex-direction: row;
-          margin-top: 4px;
-          transition: .1s linear;
-
-          .card-item-name {
-            margin-left: $transaction-date-width;
-            padding-left: 20px;
-            flex-grow: 1;
-          }
-
-          .card-item-amount {
-            width: $transaction-amount-width;
-            min-width: $transaction-amount-width;
-            text-align: right;
-          }
-
-          .card-item-actions i {
-            height: calc(#{$transaction-actions-dimension} - 22px);
-            top: -2px;
-            line-height: calc(#{$transaction-actions-dimension} - 22px);
-          }
-        }
-      }
-      .card-form {
-        width: 100%;
-        padding-left: $transaction-date-width;
-        padding-top: 10px;
-
-        form {
-          display: flex;
-          flex-direction: row;
-
-          .form-name {
-            padding-left: 20px;
-            padding-right: 15px;
-            padding-top: 3px;
-            flex-grow: 1;
-          }
-
-          .form-amount {
-            width: 100px;
-            padding-right: 15px;
-            padding-top: 3px;
-
-            input {
-              text-align: right;
-            }
-          }
-
-          .form-button {
-            width: 60px;
-            padding-right: 10px;
-          }
-
-          input {
-            width: 100%;
-            max-width: 100%;
-          }
-        }
-      }
     }
   }
 
@@ -202,6 +82,7 @@
   }
 
   .card-form.new-transaction {
+    margin: 0 auto;
     max-width: 300px;
 
     label {
@@ -216,6 +97,130 @@
     }
     button {
       float: right;
+    }
+    .form-button {
+      position: absolute;
+      top: 173px;
+      left: 225px;
+    }
+  }
+}
+
+.transactions-cards {
+  height: calc(100vh - 107px);
+}
+
+.transactions-cards,
+.edit-transaction {
+  $transaction-date-width: 95px;
+  $transaction-amount-width: 110px;
+  $transaction-actions-width: 30px;
+  $transaction-actions-dimension: 45px;
+
+  .card-summary {
+    display: flex;
+    flex-direction: row;
+
+    .transaction-date {
+      min-width: $transaction-date-width;
+      width: $transaction-date-width;
+      text-align: right;
+      font-size: 11px;
+    }
+    .transaction-name {
+      flex-grow: 1;
+      padding-left: 20px;
+    }
+    .transaction-amount {
+      width: $transaction-amount-width;
+      min-width: $transaction-amount-width;
+      text-align: right;
+    }
+  }
+
+  .card-summary .transaction-items-toggle,
+  .card-item .card-item-actions {
+    position: relative;
+    padding-left: 15px;
+    font-size: 12px;
+    cursor: pointer;
+    width: $transaction-actions-width;
+
+    i {
+      position: absolute;
+      width: $transaction-actions-dimension;
+      height: $transaction-actions-dimension;
+      left: 0;
+      top: -14px;
+      line-height: $transaction-actions-dimension;
+      text-align: center;
+      transition: .1s linear;
+    }
+  }
+
+  .card-items {
+    width: 100%;
+    padding-top: 4px;
+
+    .card-item {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      margin-top: 4px;
+      transition: .1s linear;
+
+      .card-item-name {
+        padding-left: 20px;
+        flex-grow: 1;
+      }
+
+      .card-item-amount {
+        width: $transaction-amount-width;
+        min-width: $transaction-amount-width;
+        text-align: right;
+      }
+
+      .card-item-actions i {
+        height: calc(#{$transaction-actions-dimension} - 22px);
+        top: -2px;
+        line-height: calc(#{$transaction-actions-dimension} - 22px);
+      }
+    }
+  }
+  .card-form {
+    width: 100%;
+    padding-top: 10px;
+
+    form {
+      display: flex;
+      flex-direction: row;
+
+      .form-name {
+        padding-left: 20px;
+        padding-right: 15px;
+        padding-top: 3px;
+        flex-grow: 1;
+      }
+
+      .form-amount {
+        width: 100px;
+        padding-right: 15px;
+        padding-top: 3px;
+
+        input {
+          text-align: right;
+        }
+      }
+
+      .form-button {
+        width: 60px;
+        padding-right: 10px;
+      }
+
+      input {
+        width: 100%;
+        max-width: 100%;
+      }
     }
   }
 }

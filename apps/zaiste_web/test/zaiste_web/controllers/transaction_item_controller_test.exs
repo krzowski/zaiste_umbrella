@@ -28,7 +28,7 @@ defmodule ZaisteWeb.TransactionItemControllerTest do
           )
         )
 
-      assert conn.status == 204
+      assert conn.status == 201
     end
 
     test "renders errors when data is invalid", %{conn: conn, transaction: transaction} do
@@ -45,7 +45,7 @@ defmodule ZaisteWeb.TransactionItemControllerTest do
   end
 
   describe "delete transaction_item" do
-    test "deletes chosen transaction_item", %{conn: conn, transaction: transaction} do
+    test "deletes transaction_item", %{conn: conn, transaction: transaction} do
       transaction_item = insert(:transaction_item, transaction_id: transaction.id)
 
       conn =
@@ -74,7 +74,7 @@ defmodule ZaisteWeb.TransactionItemControllerTest do
       end
     end
 
-    test "doens't delete transaction item that's not yours", %{
+    test "doesn't delete transaction item associated with other user", %{
       conn: conn,
       transaction: transaction
     } do

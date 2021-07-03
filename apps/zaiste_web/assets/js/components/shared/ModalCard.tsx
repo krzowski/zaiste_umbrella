@@ -22,9 +22,10 @@ const ModalCard: React.FC<ModalProps> = ({
     top: initialTopPosition + "px",
     left: initialLeftPosition + "px"
   })
+  const modalCardContainerRef = React.useRef<HTMLDivElement>(null)
 
   React.useEffect(() => {
-    dragElement(document.getElementById(modalId)!)
+    dragElement(modalCardContainerRef.current!)
     elevateModal(modalId)
   }, [])
 
@@ -37,9 +38,13 @@ const ModalCard: React.FC<ModalProps> = ({
       left: "0px",
     }
   } else {
+    // Don't extend modal size beyond window.
+    const width = modalWidth < window.innerWidth - initialLeftPosition ? modalWidth : window.innerWidth - initialLeftPosition
+    const height = modalHeight < window.innerHeight - initialTopPosition ? modalHeight : window.innerHeight - initialTopPosition
+
     modalStyle = {
-      width: modalWidth + "px",
-      height: modalHeight + "px",
+      width: width + "px",
+      height: height + "px",
       ...coords
     }
   }
@@ -51,6 +56,7 @@ const ModalCard: React.FC<ModalProps> = ({
       className="modalcard"
       onMouseDown={() => elevateModal(modalId)}
       style={modalStyle}
+      ref={modalCardContainerRef}
     >
       <div className="top-panel flex-row-justify">
         <div className="modal-title pl8">{modalTitle}</div>
@@ -59,15 +65,15 @@ const ModalCard: React.FC<ModalProps> = ({
           <div className="close-modalcard" onClick={() => closeModal(modalId)}>x</div>
         </div>
       </div>
-      <div className="body">
+      <div className="body custom-scrollbar">
         {children}
       </div>
     </div>
   )
 
-  // Code below taken from https://www.w3schools.com/howto/howto_js_draggable.asp
-  function dragElement(elmnt: HTMLElement) {
-    let styleTop: string, styleLeft: string // styles for cards restored from maximization/minimization
+  // dragElement taken from https://www.w3schools.com/howto/howto_js_draggable.asp
+  function dragElement(elmnt: HTMLDivElement) {
+    let styleTop: string, styleLeft: string // keep last used styles for maximization/minimization
 
     let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0
     const dragBar: HTMLElement = elmnt.querySelector('.top-panel')!
@@ -111,9 +117,9 @@ const ModalCard: React.FC<ModalProps> = ({
 }
 
 function elevateModal(modalId: string) {
-  const INITIAL_Z_INDEX = 1001
-  const currentTopZIndex: number = parseInt(localStorage.getItem('currentTopZIndex')!)
-  const newTopZIndex = (currentTopZIndex ? currentTopZIndex + 1 : INITIAL_Z_INDEX).toString()
+  const INITIAL_Z_INDEX = '1001'
+  const currentTopZIndex: number = parseInt(localStorage.getItem('currentTopZIndex') || INITIAL_Z_INDEX)
+  const newTopZIndex = (currentTopZIndex + 1).toString()
 
   document.getElementById(modalId)!.style.zIndex = newTopZIndex
   localStorage.setItem('currentTopZIndex', newTopZIndex)

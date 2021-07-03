@@ -12,7 +12,7 @@ $ubuntu-font: "Ubuntu", 'Trebuchet MS', Arial, sans-serif;
 }
 
 .numeric-font {
-  font-family: 'Ubuntu', Arial, serif;
+  font-family: $ubuntu-font;
 }
 
 .modalcard {
@@ -26,6 +26,8 @@ $ubuntu-font: "Ubuntu", 'Trebuchet MS', Arial, sans-serif;
     cursor: move;
     user-select: none;
     font-size: 11px;
+    font-family: $ubuntu-font;
+
 
     .maximize-modalcard,
     .close-modalcard {
@@ -42,5 +44,6 @@ $ubuntu-font: "Ubuntu", 'Trebuchet MS', Arial, sans-serif;
   .body {
     width: 100%;
     flex-grow: 1;
+    overflow: auto;
   }
 }

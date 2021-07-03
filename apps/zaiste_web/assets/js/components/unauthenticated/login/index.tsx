@@ -1,11 +1,10 @@
 import * as React from 'react'
 import { RouteComponentProps } from 'react-router-dom'
-
 import { logo } from '../../../layout/logo'
 import { useForm } from 'react-hook-form'
-
-
 import { AuthContext } from '../../../contexts/AuthContext'
+import { createSession } from '../api_calls'
+
 
 const Login: React.FC<RouteComponentProps> = ({ location }) => {
   const { setAuthenticatedSession } = React.useContext(AuthContext)
@@ -14,18 +13,11 @@ const Login: React.FC<RouteComponentProps> = ({ location }) => {
     handleSubmit,
     setError,
     clearErrors,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm()
 
-  const onSubmit = (data, e) => {
-    fetch('/api/sign_in', {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: 'post',
-      body: JSON.stringify(data),
-    }).then(response => {
+  const onSubmit = (data: { email: string, password: string }) => {
+    createSession(data).then(response => {
       if (response.status === 204) setAuthenticatedSession(true)
       if (response.status === 401) setError("password", { type: "manual", message: "Email or password is invalid" })
     })
@@ -62,7 +54,7 @@ const Login: React.FC<RouteComponentProps> = ({ location }) => {
           {errors.password && <div className="login-error">{errors.password.message}</div>}
 
           <div className="form-button mt10">
-            <button type="submit">Sign in</button>
+            <button type="submit" disabled={isSubmitting}>Sign in</button>
           </div>
         </form>
       </div>

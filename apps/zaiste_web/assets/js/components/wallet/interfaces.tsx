@@ -9,8 +9,9 @@ export interface TransactionsFilters {
 }
 
 export interface TransactionItem {
+  id: number
   name: string
-  amount: number
+  amount: string
 }
 
 export interface Transaction {

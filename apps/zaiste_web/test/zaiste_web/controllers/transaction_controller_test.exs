@@ -2,11 +2,11 @@ defmodule ZaisteWeb.TransactionControllerTest do
   use ZaisteWeb.ConnCase
 
   @create_attrs %{
-    date: ~D[2010-04-17],
+    date: "20 / 06 / 2021",
     name: "some name"
   }
   @update_attrs %{
-    date: ~D[2011-05-18],
+    date: "21 / 06 / 2021",
     name: "some updated name"
   }
   @invalid_attrs %{date: nil, name: nil}
@@ -33,9 +33,10 @@ defmodule ZaisteWeb.TransactionControllerTest do
   end
 
   describe "create transaction" do
-    test "returns 204 when data is valid", %{conn: conn} do
+    test "returns 201 with transaction json when data is valid", %{conn: conn} do
       conn = post(conn, Routes.transaction_path(conn, :create), transaction: @create_attrs)
-      assert response(conn, 204)
+
+      assert response(conn, 201)
     end
 
     test "renders errors when data is invalid", %{conn: conn} do

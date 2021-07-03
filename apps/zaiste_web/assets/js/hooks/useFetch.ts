@@ -58,7 +58,7 @@ function useFetch(url: string, params: any = null): fetchData {
     }
   }
 
-  function handleErrors(response) {
+  function handleErrors(response: any) {
     if (!response.ok) {
       if (response.status === 401) setAuthenticatedSession(false)
 
@@ -76,10 +76,13 @@ function useFetch(url: string, params: any = null): fetchData {
 
     dispatch({ type: 'fetch' })
 
-    fetch(fetchUrl())
+    fetch(fetchUrl(), {
+      headers: { 'Content-Type': 'application/json' },
+    })
       .then(handleErrors)
-      .then(response => {
-        if (isMounted) dispatch({ type: 'success', data: response.json().data })
+      .then(response => response.json())
+      .then(json => {
+        if (isMounted) dispatch({ type: 'success', data: json.data })
       })
       .catch(_error => {
         if (isMounted) dispatch({ type: 'error' })

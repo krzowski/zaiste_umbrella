@@ -7,7 +7,6 @@ import {
   startOfYear,
   endOfYear,
 } from 'date-fns'
-
 import { DatesRange } from './interfaces'
 
 
@@ -25,7 +24,7 @@ const WalletMenuCalendar: React.FC<Props> = ({ setDatesRange, filtersContainerCl
     isCurrentYear = currentYearDate.getFullYear() == today.getFullYear()
   }, [currentYearDate])
 
-  // component height depends on number of labels, fixed height needs to be set for a scrollbar
+  // set fixed height for a scrollbar, as component height depends on number of labels
   const [monthsListHeight, setMonthsListHeight] = React.useState<number>(0)
   React.useEffect(() => {
     setMonthsListHeight(document.querySelector(`.${filtersContainerClass}`)!.clientHeight)

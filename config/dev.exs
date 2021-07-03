@@ -16,7 +16,15 @@ config :zaiste, Zaiste.Repo,
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
 config :zaiste_web, ZaisteWeb.Endpoint,
-  http: [port: 4000],
+  http: [
+    port: 4000,
+    protocol_options: [
+      request_timeout: 100_000_000,
+      shutdown_timeout: 100_000_000,
+      idle_timeout: 100_000_000,
+      linger_timeout: 100_000_000,
+    ]
+  ],
   debug_errors: true,
   code_reloader: true,
   check_origin: false,

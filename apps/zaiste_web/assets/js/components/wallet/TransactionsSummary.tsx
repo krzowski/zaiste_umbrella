@@ -1,19 +1,14 @@
 import * as React from 'react'
-
-import { calculateTransactionsAmount } from './Transactions'
 import { UserSettingsContext } from '../../contexts/UserSettingsContext'
-
+import { TransactionsContext } from '../../contexts/TransactionsContext'
 import { Transaction } from './interfaces'
+import { calculateItemsAmount } from './Transactions'
 
 
-interface Props {
-  transactions_data: Transaction[]
-}
-
-
-const TransactionsSummary: React.FC<Props> = ({ transactions_data }) => {
-  const incomesAmount = calculateTransactionsAmount(transactions_data, true)
-  const expensesAmount = calculateTransactionsAmount(transactions_data, false)
+const TransactionsSummary: React.FC = () => {
+  const { filteredTransactions } = React.useContext(TransactionsContext)
+  const incomesAmount = calculateTransactionsAmount(filteredTransactions, true)
+  const expensesAmount = calculateTransactionsAmount(filteredTransactions, false)
   const balanceAmount = incomesAmount - expensesAmount
   const balanceColorClass = balanceAmount > 0 ? 'green' : balanceAmount < 0 ? 'red' : ''
 
@@ -41,6 +36,16 @@ const TransactionsSummary: React.FC<Props> = ({ transactions_data }) => {
       </div>
     </div>
   )
+}
+
+export function calculateTransactionsAmount(transactions: Transaction[], income: boolean) {
+  const items = transactions.filter(transaction => (
+    transaction.income === income
+  )).flatMap(transaction => (
+    transaction.transaction_items
+  ))
+
+  return calculateItemsAmount(items)
 }
 
 export default TransactionsSummary

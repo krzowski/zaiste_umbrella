@@ -21,8 +21,8 @@ defmodule ZaisteWeb.WalletControllerTest do
         get(
           conn,
           Routes.wallet_path(conn, :transactions, %{
-            date_from: "1 / 11 / 2020",
-            date_to: "30 / 11 / 2020"
+            startDate: "1 / 11 / 2020",
+            endDate: "30 / 11 / 2020"
           })
         )
 
@@ -48,8 +48,8 @@ defmodule ZaisteWeb.WalletControllerTest do
         get(
           conn,
           Routes.wallet_path(conn, :transactions, %{
-            date_from: "1 / 10 / 2020",
-            date_to: "11 / 10 / 2020"
+            startDate: "1 / 10 / 2020",
+            endDate: "11 / 10 / 2020"
           })
         )
 

@@ -60,6 +60,11 @@ a {
   }
 }
 
+.no-background {
+  background-color: transparent !important;
+  outline: none !important;
+  border: none !important;
+}
 
 .custom-scrollbar {
   overflow-y: auto;
