@@ -1,0 +1,20 @@
+.calendar-container {
+  .calendar {
+    .calendar-day-names { color: #777; }
+    .today-day .calendar-day { color: $main-red !important; }
+    .month-day .calendar-day {
+      color: $main-font-color;
+      &:hover { background-color: rgba(0, 0, 0, 0.2); }
+    }
+
+    a { background-color: rgba(0,0,0,0.2); }
+    a:hover { background-color: rgba(255,255,255,0.2); }
+  }
+
+  #calendar-side { border-left: 15px solid $container-background-color; }
+}
+
+.events-container {
+  .section-no-events { color: #94969D; }
+  .social-event-title { border-right: 2px solid #282932; }
+}

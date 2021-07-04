@@ -32,14 +32,9 @@ a {
   background-color: #25262E;
   color: #adb0b9;
 
-  .primary-title {
-    color: #C0C2C6;
-  }
-  .secondary-text {
-    color: #94969D;
-  }
+  .primary-title { color: #C0C2C6; }
+  .secondary-text { color: #94969D; }
 }
-
 
 .modalcard {
   border: 1px solid #000;
@@ -81,7 +76,6 @@ a {
 .custom-scrollbar::-webkit-scrollbar-thumb {
 	background-color: #6672C5;;
 }
-
 
 .green, .green path   { color: $main-green !important; fill: $main-green !important; }
 .red, .red path       { color: $main-red !important; fill: $main-red !important; }

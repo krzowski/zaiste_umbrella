@@ -1,31 +1,20 @@
 .wallet-container {
   .card {
-    .transaction-name {
-      color: #EEE;
-    }
+    .transaction-name { color: #EEE; }
   }
   .transaction-items-toggle {
-    i:hover {
-      color: #FFF;
-    }
+    i:hover { color: #FFF; }
   }
 
   .wallet-menu {
     .wallet-filters {
       form {
-        .row:first-child {
-          border-bottom: 1px solid #444;
-        }
-
-        label {
-          color: #777;
-        }
+        .row:first-child { border-bottom: 1px solid #444; }
+        label { color: #777; }
       }
     }
 
-    .calendar-nav-arrows span.disabled {
-      color: #777;
-    }
+    .calendar-nav-arrows span.disabled { color: #777; }
 
     .wallet-month {
       color: #CCC;
@@ -35,19 +24,13 @@
   }
 }
 
-
 .transactions-cards {
   .card-summary .transaction-items-toggle-icons {
     i {
       color: #999;
 
-      &:hover {
-        color: #EEE;
-      }
-
-      &:last-child:hover {
-        color: $main-red;
-      }
+      &:hover { color: #EEE; }
+      &:last-child:hover { color: $main-red; }
     }
   }
 }
