@@ -40,12 +40,14 @@ defmodule ZaisteWeb.TransactionControllerTest do
 
       assert response(conn, 201)
 
+      %{"id" => id} = json_response(conn, 201)["data"]
+
       assert %{
-               "id" => _id,
+               "id" => id,
                "date" => "2021-06-20",
                "income" => true,
                "name" => "some name"
-             } = json_response(conn, 201)["data"]
+             } == json_response(conn, 201)["data"]
     end
 
     test "renders errors when data is invalid", %{conn: conn} do
@@ -63,12 +65,14 @@ defmodule ZaisteWeb.TransactionControllerTest do
 
       assert response(conn, 200)
 
+      %{"id" => id} = json_response(conn, 200)["data"]
+
       assert %{
-               "id" => _id,
+               "id" => id,
                "date" => "2021-06-21",
                "income" => false,
                "name" => "some updated name"
-             } = json_response(conn, 200)["data"]
+             } == json_response(conn, 200)["data"]
     end
 
     test "renders errors when data is invalid", %{conn: conn, user: user} do

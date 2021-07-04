@@ -21,10 +21,12 @@ defmodule ZaisteWeb.UserControllerTest do
     test "renders user when data is valid", %{conn: conn} do
       conn = post(conn, Routes.user_path(conn, :create), user: @create_attrs)
 
+      %{"id" => id} = json_response(conn, 201)["data"]
+
       assert %{
-               "id" => _id,
+               "id" => id,
                "email" => "test@example.com"
-             } = json_response(conn, 201)["data"]
+             } == json_response(conn, 201)["data"]
     end
 
     test "renders errors when data is invalid", %{conn: conn} do
