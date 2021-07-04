@@ -3,7 +3,7 @@ import { calculateItemsAmount } from './helper_functions'
 import { UserSettingsContext } from '../../contexts/UserSettingsContext'
 import { TransactionsContext } from '../../contexts/TransactionsContext'
 import { Transaction } from './interfaces'
-import { deleteTransaction } from './api_calls'
+import { deleteTransaction } from '../../api_calls/wallet'
 
 
 interface Props {

@@ -1,13 +1,12 @@
 import * as React from 'react'
-
-import { DayEvents } from '../index'
+import { DayEvents } from './interfaces'
 
 
 interface Props {
   eventsData: Array<DayEvents>,
 }
 
-const EventsList: React.FC<Props> = ({eventsData}) => {
+const CalendarEvent: React.FC<Props> = ({eventsData}) => {
   return (
     <>
       <div className="social-events">
@@ -113,4 +112,4 @@ const EventsList: React.FC<Props> = ({eventsData}) => {
   )
 }
 
-export default EventsList
+export default CalendarEvent

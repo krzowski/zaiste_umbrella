@@ -6,7 +6,7 @@ import { TransactionsContext } from '../../contexts/TransactionsContext'
 import { UserSettingsContext } from '../../contexts/UserSettingsContext'
 import ModalCard from '../shared/ModalCard'
 import { Transaction, TransactionItem } from './interfaces'
-import { createTransactionItem, deleteTransactionItem } from './api_calls'
+import { createTransactionItem, deleteTransactionItem } from '../../api_calls/wallet'
 
 interface Props {
   transaction: Transaction

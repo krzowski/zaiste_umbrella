@@ -1,4 +1,4 @@
-import useFetch from '../../hooks/useFetch'
+import useFetch from '../hooks/useFetch'
 
 export function fetchTransactions(formattedDatesRange: object) {
   return useFetch('/api/wallet/transactions', formattedDatesRange)

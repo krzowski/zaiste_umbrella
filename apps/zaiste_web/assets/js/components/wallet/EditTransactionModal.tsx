@@ -2,7 +2,7 @@ import * as React from 'react'
 import { format, parseISO } from 'date-fns'
 import ModalCard from '../shared/ModalCard'
 import { TransactionsContext } from '../../contexts/TransactionsContext'
-import { updateTransaction } from './api_calls'
+import { updateTransaction } from '../../api_calls/wallet'
 import { Transaction, TransactionFormFields } from './interfaces'
 import TransactionModalForm from './TransactionModalForm'
 

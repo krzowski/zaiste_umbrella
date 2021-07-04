@@ -1,22 +1,10 @@
 import * as React from 'react'
 import { format, startOfMonth } from 'date-fns'
-import ErrorMessage from '../../shared/ErrorMessage'
+import ErrorMessage from '../shared/ErrorMessage'
 import EventsCalendar from './EventsCalendar'
-import EventsList from './Events'
-import { fetchCalendarEvents } from '../api_calls'
+import CalendarEvent from './CalendarEvent'
+import { fetchCalendarEvents } from '../../api_calls/overview'
 
-
-export interface EventObject {
-  id: number
-  name: string
-  date: string
-  done: boolean
-  position: number | null
-}
-export interface DayEvents {
-  date: string // YYYY-MM-DD
-  events: Array<EventObject>
-}
 
 const Calendar: React.FC = () => {
   const [calendarDate, setCalendarDate] = React.useState<Date>(new Date())
@@ -37,7 +25,7 @@ const Calendar: React.FC = () => {
       </div>
 
       <div className="events-container custom-scrollbar">
-        <EventsList
+        <CalendarEvent
           eventsData={data}
         />
       </div>

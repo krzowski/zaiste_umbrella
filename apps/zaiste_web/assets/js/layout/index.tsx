@@ -2,7 +2,7 @@ import * as React from 'react'
 import { logo } from './logo'
 import { Link, NavLink } from 'react-router-dom'
 import { AuthContext } from '../contexts/AuthContext'
-import { deleteSession } from './api_calls'
+import { deleteSession } from '../api_calls/session'
 
 
 const Layout: React.FC = ({ children }) => {

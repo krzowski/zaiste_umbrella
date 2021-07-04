@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { RouteComponentProps } from 'react-router-dom'
-import Calendar from './calendar'
+import SideCalendarPanel from './SideCalendarPanel'
 
 
 function resolveMainComponent(pathname: String) {
@@ -26,7 +26,7 @@ const Overview: React.FC<RouteComponentProps> = ({location}) => {
         {MainComponent}
       </div>
       <div className="events-calendar-container">
-        <Calendar />
+        <SideCalendarPanel />
       </div>
     </div>
   )

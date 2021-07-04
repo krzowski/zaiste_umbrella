@@ -4,7 +4,7 @@ import { TransactionsProvider } from '../../contexts/TransactionsContext'
 import Transactions from './Transactions'
 import WalletMenu from './WalletMenu'
 import { DatesRange } from './interfaces'
-import { fetchTransactions } from './api_calls'
+import { fetchTransactions } from '../../api_calls/wallet'
 import { formatDatesRange } from './helper_functions'
 
 

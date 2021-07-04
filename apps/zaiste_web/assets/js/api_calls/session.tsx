@@ -8,3 +8,9 @@ export function createSession(credentials: object) {
     body: JSON.stringify(credentials)
   })
 }
+
+export function deleteSession() {
+  return fetch('/api/sign_out', {
+    method: 'delete'
+  })
+}
