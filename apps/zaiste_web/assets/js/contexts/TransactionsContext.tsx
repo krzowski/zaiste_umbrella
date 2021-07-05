@@ -32,8 +32,8 @@ export const TransactionsProvider: React.FC<Props> = ({ fetchedTransactions, dat
   const [transactions, setTransactions] = React.useState<Transaction[]>(fetchedTransactions)
   const [transactionsFilters, setTransactionsFilters] = React.useState<TransactionsFilters>(initialTransactionFilters)
 
-  // In case EditTransactionModals are opened when transations are outside the dates range,
-  // transactions state must contain all previously fetched transactions.
+  // transactions must include all previously fetched data because opened modals may
+  // still be using them.
   React.useEffect(() => {
     const unfetchedTransactions = transactions.filter(t => (
       !fetchedTransactions.find(ft => ft.id === t.id)

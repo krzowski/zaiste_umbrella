@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { Transaction, TransactionItem } from './interfaces'
 
+
 interface Props {
   transaction: Transaction
   transaction_item: TransactionItem
