@@ -1,45 +1,45 @@
 import * as React from 'react'
 
 
-interface Modal {
+export interface Modal {
   modalId: string
   additionalProps: any
 }
 
 
 // Usage:
-// const { openedModals, openModal, closeModal } = useModalCards(id_prefix)
+// const { openedModals, openModal, closeModal } = useModalCards(idPrefix)
 //
-// In render, map openedModals to react component which implements ModalCard (e.g. NewTransactionModal):
+// Render openedModals to ModalCard elements (e.g. NewTransactionModal):
 //
 //   {openedModals.map(modal => (
 //     <NewTransactionModal
 //       key={modal.modalId}
-//       modalId={modal.modalId}
-//       closeModal={closeModal}
+//       modal={modal}
 //     />
 //   ))}
 //
-// openModal takes an optional object with props which will be passed to openedModals, e.g.:
+// openModal takes an optional props argument that will be passed to a Modal object, e.g.:
 //
 //   openModal({ additionalProp: 1000 })
 //
 //   {openedModals.map(modal => (
 //     <NewTransactionModal
 //       key={modal.modalId}
-//       additionalProp={modal.additionalProps.additionalProp}
 //       modalId={modal.modalId}
-//       closeModal={closeModal}
+//       additionalProp={modal.additionalProps.additionalProp}
 //     />
 //   ))}
 //
+// Modals are closed by invoking closeModal function with modalId.
 
-function useModalCards(id_prefix: string) {
+function useModalCards(idPrefix: string) {
   const [openedModals, setOpenedModals] = React.useState<Modal[]>([])
 
   function openModal(props = {}) {
     const newModal = {
-      modalId: id_prefix + +new Date(),
+      modalId: idPrefix + +new Date(),
+      closeModal: closeModal,
       additionalProps: props
     }
     setOpenedModals([...openedModals, newModal])

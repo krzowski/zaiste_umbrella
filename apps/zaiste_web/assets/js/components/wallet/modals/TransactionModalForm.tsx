@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { TransactionFormFields } from './interfaces'
+import { TransactionFormFields } from '../interfaces'
 import { useForm, SubmitHandler } from 'react-hook-form'
 
 
@@ -9,6 +9,7 @@ interface Props {
   buttonName: string
   modalId: string
 }
+
 
 const TransactionModalForm: React.FC<Props> = ({ modalId, onSubmit, defaultValues, buttonName }) => {
   const {

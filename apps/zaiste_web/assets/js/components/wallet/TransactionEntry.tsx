@@ -28,19 +28,19 @@ const TransactionEntry: React.FC<Props> = ({ transaction, openEditTransactionMod
   return (
     <div className="card event-card mt2">
       <div className="card-summary">
-        <div className="transaction-date pt14 numeric-font">
+        <div className="transaction-date numeric-font secondary-text">
           {transaction.date}
         </div>
-        <div className="transaction-name pt14">
+        <div className="transaction-name">
           {transaction.name}
         </div>
-        <div className={`transaction-amount pt14 mr20 numeric-font ${transaction.income ? 'green' : 'red'}`}>
+        <div className={`transaction-amount mr20 numeric-font ${transaction.income ? 'green' : 'red'}`}>
           {!transaction.income && '-'}{transaction_amount} {userSettings.currency}
         </div>
-        <div className="transaction-items-toggle-icons d-f">
-          <i className="fas fa-list" onClick={() => openEditTransactionItemsModal({ transaction_id: transaction.id })}></i>
-          <i className="fas fa-edit" onClick={() => openEditTransactionModal({ transaction_id: transaction.id })}></i>
-          <i className="fas fa-trash" onClick={handleDeleteClick}></i>
+        <div className="action-icons d-f">
+          <i className="fas fa-list" onClick={() => openEditTransactionItemsModal({ transactionId: transaction.id })}></i>
+          <i className="fas fa-edit" onClick={() => openEditTransactionModal({ transactionId: transaction.id })}></i>
+          <i className="fas fa-trash remove-icon" onClick={handleDeleteClick}></i>
         </div>
       </div>
     </div>

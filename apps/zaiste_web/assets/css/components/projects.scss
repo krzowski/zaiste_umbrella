@@ -1,0 +1,89 @@
+.projects-container {
+  .card-form.new-project {
+    margin: 0 auto;
+    max-width: 300px;
+
+    input {
+      width: 100%;
+    }
+
+    button {
+      position: absolute;
+      top: 75px;
+      right: 15px;
+    }
+  }
+
+  .cards {
+    .card-summary {
+      .project-drag {
+        width: 48px;
+        text-align: center;
+        i {
+          padding: 8px;
+          cursor: move;
+        }
+      }
+      .project-name {
+        flex-grow: 1;
+        padding-left: 20px;
+      }
+      .project-tasks {
+        width: 100px;
+        min-width: 100px;
+        text-align: right;
+      }
+    }
+
+    .project-category {
+      height: 40px;
+      line-height: 40px;
+
+
+      &:first-child {
+        .category-indicator:before {
+          height: 28px;
+          top: -8px;
+        }
+      }
+
+      .category-indicator {
+        width: 60px;
+        position: relative;
+
+        &:last-child {
+          &:before {
+            height: 20px !important;
+          }
+        }
+
+        &:before {
+          height: 40px;
+          position: absolute;
+          left: 23px;
+          top: -20px;
+          content: '';
+        }
+
+        &:after {
+          width: 25px;
+          position: absolute;
+          top: 19px;
+          left: 23px;
+          content: '';
+        }
+      }
+      .category-name {
+        flex-grow: 1;
+      }
+      .project-tasks {
+        width: 85px;
+        text-align: right;
+      }
+      .project-last-action {
+        width: 160px;
+        text-align: right;
+      }
+    }
+  }
+}

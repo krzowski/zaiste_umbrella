@@ -1,20 +1,24 @@
 import * as React from 'react'
 import { format, parseISO } from 'date-fns'
-import ModalCard from '../shared/ModalCard'
-import { TransactionsContext } from '../../contexts/TransactionsContext'
-import { updateTransaction } from '../../api_calls/wallet'
-import { Transaction, TransactionFormFields } from './interfaces'
+import ModalCard from '../../shared/ModalCard'
+import { TransactionsContext } from '../../../contexts/TransactionsContext'
+import { updateTransaction } from '../../../api_calls/wallet'
+import { Transaction, TransactionFormFields } from '../interfaces'
 import TransactionModalForm from './TransactionModalForm'
 
 
 interface Props {
-  transaction: Transaction
   modalId: string
+  transactionId: number
   closeModal: Function
 }
 
-const EditTransactionModal: React.FC<Props> = ({ transaction, modalId, closeModal }) => {
-  const { editTransaction } = React.useContext(TransactionsContext)
+
+const EditTransactionModal: React.FC<Props> = ({ modalId, transactionId, closeModal }) => {
+  const { transactions, editTransaction } = React.useContext(TransactionsContext)
+  const transaction: Transaction = transactions.find(t => t.id === transactionId)
+  if (!transaction) return null
+
   const defaultFormValues: TransactionFormFields = {
     date: format(parseISO(transaction.date), "dd / MM / yyyy"),
     name: transaction.name,
@@ -39,7 +43,7 @@ const EditTransactionModal: React.FC<Props> = ({ transaction, modalId, closeModa
       modalWidth={300}
       modalHeight={235}
       initialTopPosition={20}
-      initialLeftPosition={window.innerWidth - 500}
+      initialLeftPosition={window.innerWidth - 330}
     >
       <div className="card-form new-transaction p-r p15">
         <TransactionModalForm

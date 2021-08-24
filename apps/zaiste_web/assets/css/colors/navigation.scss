@@ -1,6 +1,7 @@
 .navigation-menu {
   background-color: $primary-background;
   color: #FFF;
+  border-right: 1px solid #3339;
   .nav { border-top: 15px solid $container-background-color; }
   .operations { border-bottom: 15px solid $container-background-color }
   .menu-divider { border-bottom: 15px solid $container-background-color; }

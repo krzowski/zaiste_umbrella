@@ -30,10 +30,20 @@ a {
 .card {
   border: 2px solid #282932;
   background-color: #25262E;
-  color: #adb0b9;
+  color: #EEE;
 
-  .primary-title { color: #C0C2C6; }
   .secondary-text { color: #94969D; }
+
+  .card-summary {
+    .action-icons {
+      i {
+        color: #999;
+
+        &:hover { color: #EEE; }
+        &.remove-icon:hover { color: $main-red; }
+      }
+    }
+  }
 }
 
 .modalcard {
@@ -64,14 +74,14 @@ a {
 .custom-scrollbar {
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: #6672C5 #C2D2E4;
+  scrollbar-color: #6672C5 transparent;
 }
 .custom-scrollbar::-webkit-scrollbar-track {
-	background-color: #C2D2E4;
+	background-color: transparent;
 }
 .custom-scrollbar::-webkit-scrollbar {
 	width: 5px;
-	background-color: #C2D2E4;
+	background-color: transparent;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb {
 	background-color: #6672C5;;

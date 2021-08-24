@@ -2,8 +2,8 @@
   display: grid;
   width: 100%;
   height: 100%;
-  grid-template-areas: "transactions wallet_menu";
-  grid-template-columns: auto 230px;
+  grid-template-areas: "wallet_menu transactions";
+  grid-template-columns: 250px auto;
   grid-template-rows: 100%;
   overflow: hidden;
 
@@ -33,33 +33,32 @@
 
   .wallet-menu {
     grid-area: wallet_menu;
-    padding: 0 15px;
+    padding-left: 25px;
+    padding-right: 35px;
 
-    .wallet-filters {
-      form {
-        .row {
-          display: flex;
-          flex-direction: row;
-          justify-content: space-between;
+    form.wallet-dates-form {
+      .row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
 
-          &:first-child {
-            padding-bottom: 4px;
-            margin-bottom: 4px;
-          }
-
-          label {
-            font-size: 10px;
-          }
-          input {
-            width: 120px;
-            text-align: right;
-          }
+        &:first-child {
+          padding-bottom: 4px;
+          margin-bottom: 4px;
         }
-        .form-button {
-          margin-top: 7px;
-          display: flex;
-          justify-content: end;
+
+        label {
+          font-size: 10px;
         }
+        input {
+          width: 120px;
+          text-align: right;
+        }
+      }
+      .form-button {
+        margin-top: 7px;
+        display: flex;
+        justify-content: end;
       }
     }
 
@@ -68,11 +67,10 @@
       font-size: 40px;
       cursor: pointer;
       height: 25px;
+      font-family: $lato-font;
     }
 
     .wallet-months {
-      text-align: right;
-
       .wallet-month {
         cursor: pointer;
         transition: .1s linear;
@@ -107,7 +105,7 @@
 }
 
 .transactions-cards {
-  height: calc(100vh - 107px);
+  height: calc(100vh - 37px);
 }
 
 .transactions-cards,
@@ -117,10 +115,9 @@
   $transaction-actions-width: 30px;
   $transaction-actions-dimension: 45px;
 
-  .card-summary {
-    display: flex;
-    flex-direction: row;
+  label { font-size: 11px; }
 
+  .card-summary {
     .transaction-date {
       min-width: $transaction-date-width;
       width: $transaction-date-width;
@@ -138,28 +135,8 @@
     }
   }
 
-  .card-summary .transaction-items-toggle-icons {
+  .card-summary .action-icons {
     width: 120px;
-
-    i {
-      display: inline-block;
-      width: 40px;
-      font-size: 11px;
-      height: $transaction-actions-dimension;
-      line-height: $transaction-actions-dimension;
-      text-align: center;
-      transition: .1s linear;
-
-      &:hover {
-        color: #777;
-        cursor: pointer;
-      }
-
-      &:first-child {
-        font-size: 12px;
-        padding-top: 1px;
-      }
-    }
   }
 
   .card-summary .transaction-items-toggle,

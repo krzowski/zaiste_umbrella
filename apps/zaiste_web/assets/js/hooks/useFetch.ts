@@ -70,8 +70,8 @@ function useFetch(url: string, params: any = null): fetchData {
 
 
   React.useEffect(() => {
-    // Change in authentication state on 401 code may break rendering.
-    // Perform fetch async actions only if component is still mounted.
+    // 401 code may break rendering because of change in authentication state.
+    // Run async functions only if component is still mounted.
     let isMounted = true
 
     dispatch({ type: 'fetch' })

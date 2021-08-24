@@ -1,11 +1,12 @@
 import * as React from 'react'
+import { RouteComponentProps } from 'react-router-dom'
 import { logo } from '../../../layout/logo'
 import { useForm } from 'react-hook-form'
 import { AuthContext } from '../../../contexts/AuthContext'
 import { createSession } from '../../../api_calls/session'
 
 
-const Login: React.FC = () => {
+const Login: React.FC<RouteComponentProps> = () => {
   const { setAuthenticatedSession } = React.useContext(AuthContext)
   const {
     register,

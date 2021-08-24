@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { UserSettingsContext } from '../../contexts/UserSettingsContext'
-import { TransactionsContext } from '../../contexts/TransactionsContext'
-import { calculateTransactionsAmount } from './helper_functions'
+import { UserSettingsContext } from '../../../contexts/UserSettingsContext'
+import { TransactionsContext } from '../../../contexts/TransactionsContext'
+import { calculateTransactionsAmount } from '../helper_functions'
 
 
 const TransactionsSummary: React.FC = () => {

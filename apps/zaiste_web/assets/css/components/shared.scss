@@ -1,18 +1,77 @@
 $ubuntu-font: "Ubuntu", 'Trebuchet MS', Arial, sans-serif;
-
+$lato-font: "Lato", "Trebuchet MS", Arial, helvetica, sans-serif;
 
 .section-title {
   font-size: 15px;
-  margin-left: 9px;
   font-family: $ubuntu-font;
-}
-
-.card {
-  border-radius: 3px;
 }
 
 .numeric-font {
   font-family: $ubuntu-font;
+}
+
+.page-container {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-template-areas: 'page_menu page';
+  grid-template-columns: 250px auto;
+  grid-template-rows: 100%;
+  overflow: hidden;
+
+  .page-menu {
+    grid-area: page_menu;
+    padding-left: 25px;
+    padding-right: 35px;
+  }
+
+  .page-main {
+    grid-area: page;
+    width: 100%;
+    height: 100%;
+
+    .cards {
+      height: calc(100vh - 37px);
+    }
+  }
+}
+
+.card {
+  border-radius: 3px;
+
+  .card-summary {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .action-icons {
+    width: 120px;
+
+    i {
+      display: inline-block;
+      width: 40px;
+      font-size: 11px;
+      height: 45px;
+      line-height: 45px;
+      text-align: center;
+      transition: .1s linear;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &:first-child {
+        font-size: 12px;
+      }
+      &:not(:first-child) {
+        margin-top: -1px;
+      }
+    }
+    i.fa-edit {
+      padding-left: 2px;
+    }
+  }
 }
 
 .modalcard {

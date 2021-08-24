@@ -38,16 +38,16 @@ const Layout: React.FC = ({ children }) => {
             <span className="nav-link-text">Patterns</span>
           </NavLink>
 
-          <div className="menu-divider"></div>
+          {/* <div className="menu-divider"></div> */}
 
           <NavLink to="/nothing">
             <i className="fas fa-list-alt"></i>
             <span className="nav-link-text">Topic cards</span>
           </NavLink>
-          <NavLink to="/nothing">
+          {/* <NavLink to="/nothing">
             <i className="fas fa-book"></i>
             <span className="nav-link-text">Thoughts</span>
-          </NavLink>
+          </NavLink> */}
 
           <div className="menu-divider"></div>
 

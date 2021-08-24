@@ -45,7 +45,7 @@ const EventsCalendar: React.FC<Props> = ({calendarDate, setCalendarDate, eventsD
   return (
     <div className="simple-calendar">
       <div className="calendar-heading">
-        <span className="section-title">{format(calendarDate, "MMMM yyyy")}</span>
+        <span className="section-title pl8 pt2">{format(calendarDate, "MMMM yyyy")}</span>
         <div className='calendar-nav-arrows'>
           <span onClick={() => setCalendarDate(subMonths(calendarDate, 1))}>&#8249;</span>
           <span onClick={() => setCalendarDate(addMonths(calendarDate, 1))}>&#8250;</span>

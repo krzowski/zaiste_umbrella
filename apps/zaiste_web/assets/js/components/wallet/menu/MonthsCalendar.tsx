@@ -7,7 +7,7 @@ import {
   startOfYear,
   endOfYear,
 } from 'date-fns'
-import { DatesRange } from './interfaces'
+import { DatesRange } from '../interfaces'
 
 
 interface Props {
@@ -15,7 +15,7 @@ interface Props {
 }
 
 
-const WalletMenuCalendar: React.FC<Props> = ({ setDatesRange }) => {
+const MonthsCalendar: React.FC<Props> = ({ setDatesRange }) => {
   const today = new Date()
   const [currentYearDate, setCurrentYearDate] = React.useState<Date>(today)
   let isCurrentYear = currentYearDate.getFullYear() == today.getFullYear()
@@ -26,8 +26,8 @@ const WalletMenuCalendar: React.FC<Props> = ({ setDatesRange }) => {
 
   return (
     <>
-      <div className="section-title mt30 mb8 flex-row-justify">
-        <div className="mt2">{currentYearDate.getFullYear()}</div>
+      <div className="section-title mt30 mb3 flex-row-justify">
+        <div className="pt4">{currentYearDate.getFullYear()}</div>
         <div className='calendar-nav-arrows'>
           <span className="pl5 pr5" onClick={() => setCurrentYearDate(subYears(currentYearDate, 1))}>&#8249;</span>
           {isCurrentYear ?
@@ -37,7 +37,7 @@ const WalletMenuCalendar: React.FC<Props> = ({ setDatesRange }) => {
         </div>
       </div>
 
-      <div className="wallet-months custom-scrollbar pl10">
+      <div className="wallet-months custom-scrollbar">
         {eachMonthOfInterval({
           start: startOfYear(currentYearDate),
           end: isCurrentYear ? today : endOfYear(currentYearDate)
@@ -58,4 +58,4 @@ const WalletMenuCalendar: React.FC<Props> = ({ setDatesRange }) => {
   )
 }
 
-export default WalletMenuCalendar
+export default MonthsCalendar

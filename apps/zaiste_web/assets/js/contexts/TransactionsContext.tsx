@@ -69,8 +69,8 @@ export const TransactionsProvider: React.FC<Props> = ({ fetchedTransactions, dat
     setTransactions([...transactions, newTransaction])
   }
 
-  function addTransactionItem(transaction: Transaction, transaction_item: TransactionItem) {
-    transaction.transaction_items = [...transaction.transaction_items, transaction_item]
+  function addTransactionItem(transaction: Transaction, transactionItem: TransactionItem) {
+    transaction.transaction_items = [...transaction.transaction_items, transactionItem]
     editTransaction(transaction)
   }
 
@@ -79,13 +79,13 @@ export const TransactionsProvider: React.FC<Props> = ({ fetchedTransactions, dat
     setTransactions([...unchangedTransactions, editedTransaction])
   }
 
-  function removeTransaction(transaction_id: number) {
-    const remainingTransactions = transactions.filter(t => t.id !== transaction_id)
+  function removeTransaction(transactionId: number) {
+    const remainingTransactions = transactions.filter(t => t.id !== transactionId)
     setTransactions(remainingTransactions)
   }
 
-  function removeTransactionItem(transaction: Transaction, transaction_item_id: number) {
-    transaction.transaction_items = transaction.transaction_items.filter(item => item.id !== transaction_item_id)
+  function removeTransactionItem(transaction: Transaction, transactionItemId: number) {
+    transaction.transaction_items = transaction.transaction_items.filter(item => item.id !== transactionItemId)
     editTransaction(transaction)
   }
 

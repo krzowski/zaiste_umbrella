@@ -1,0 +1,23 @@
+.projects-container {
+  .cards {
+    .card-summary {
+      .project-drag {
+        i {
+          border: 1px solid #555;
+        }
+      }
+    }
+
+    .project-category {
+      .category-indicator {
+        &:before {
+          border-left: 1px solid #555;
+        }
+
+        &:after {
+          border-bottom: 1px solid #555;
+        }
+      }
+    }
+  }
+}
