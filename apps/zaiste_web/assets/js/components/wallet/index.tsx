@@ -26,17 +26,17 @@ const Wallet: React.FC<RouteComponentProps> = () => {
   const {
     openedModals: openedNewTransactionModals,
     openModal: openNewTransactionModal,
-    closeModal: closeNewTransactionModal
+    closeModal: closeNewTransactionModal,
   } = useModalCards("new_transaction")
   const {
     openedModals: openedEditTransactionModals,
     openModal: openEditTransactionModal,
-    closeModal: closeEditTransactionModal
+    closeModal: closeEditTransactionModal,
   } = useModalCards("edit_transaction")
   const {
     openedModals: openedEditTransactionItemsModals,
     openModal: openEditTransactionItemsModal,
-    closeModal: closeEditTransactionItemsModal
+    closeModal: closeEditTransactionItemsModal,
   } = useModalCards("edit_transaction_items")
 
   return (

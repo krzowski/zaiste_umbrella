@@ -40,7 +40,7 @@ interface fetchData {
 const initialState: fetchData = {
   isLoading: true,
   data: null,
-  errorMessage: null
+  errorMessage: null,
 }
 
 // Usage:
@@ -52,7 +52,7 @@ function useFetch(url: string, params: any = null): fetchData {
 
   function fetchUrl() {
     if (params) {
-      return url + '?' + new URLSearchParams(params)
+      return `${url}?${new URLSearchParams(params)}`
     } else {
       return url
     }
@@ -94,7 +94,7 @@ function useFetch(url: string, params: any = null): fetchData {
   return {
     isLoading: state.isLoading,
     data: state.data,
-    errorMessage: state.errorMessage
+    errorMessage: state.errorMessage,
   }
 }
 

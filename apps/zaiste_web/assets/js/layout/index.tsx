@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { logo } from './logo'
 import { Link, NavLink } from 'react-router-dom'
+import { logo } from './logo'
 import { AuthContext } from '../contexts/AuthContext'
 import { deleteSession } from '../api_calls/session'
 
@@ -25,23 +25,23 @@ const Layout: React.FC = ({ children }) => {
           </div>
 
           <NavLink to="/overview">
-            <i className="far fa-calendar"></i>
+            <i className="far fa-calendar" />
             <span className="nav-link-text">Overview</span>
           </NavLink>
           <NavLink to="/projects">
-            <i className="far fa-folder"></i>
+            <i className="far fa-folder" />
             <span className="nav-link-text">Projects</span>
           </NavLink>
 
           <NavLink to="/patterns">
-            <i className="fas fa-circle-notch"></i>
+            <i className="fas fa-circle-notch" />
             <span className="nav-link-text">Patterns</span>
           </NavLink>
 
           {/* <div className="menu-divider"></div> */}
 
           <NavLink to="/nothing">
-            <i className="fas fa-list-alt"></i>
+            <i className="fas fa-list-alt" />
             <span className="nav-link-text">Topic cards</span>
           </NavLink>
           {/* <NavLink to="/nothing">
@@ -49,14 +49,14 @@ const Layout: React.FC = ({ children }) => {
             <span className="nav-link-text">Thoughts</span>
           </NavLink> */}
 
-          <div className="menu-divider"></div>
+          <div className="menu-divider" />
 
           <NavLink to="/nothing">
-            <i className="fas fa-address-book"></i>
+            <i className="fas fa-address-book" />
             <span className="nav-link-text">Contacts</span>
           </NavLink>
           <NavLink to="/wallet">
-            <i className="fas fa-wallet"></i>
+            <i className="fas fa-wallet" />
             <span className="nav-link-text">Wallet</span>
           </NavLink>
 
@@ -64,13 +64,19 @@ const Layout: React.FC = ({ children }) => {
         </div>
 
         <div className="operations">
-          <div className="menu-divider"></div>
+          <div className="menu-divider" />
           {/* <NavLink to="/nothing">
             <i className="fas fa-cog"></i>
           </NavLink>
-          <span className="nav-link-text">Settings</span>*/}
-          <a className="logout" onClick={handleSignOut}>
-            <i className="fas fa-power-off"></i>
+          <span className="nav-link-text">Settings</span> */}
+          <a
+            className="logout"
+            role="button"
+            tabIndex={0}
+            onClick={handleSignOut}
+            onKeyPress={handleSignOut}
+          >
+            <i className="fas fa-power-off" />
             <span className="nav-link-text">Sign out</span>
           </a>
         </div>

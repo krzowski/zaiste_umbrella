@@ -11,12 +11,12 @@ const Projects: React.FC<RouteComponentProps> = () => {
   const {
     openedModals: openedNewProjectModals,
     openModal: openNewProjectModal,
-    closeModal: closeNewProjectModal
+    closeModal: closeNewProjectModal,
   } = useModalCards("new_project")
   const {
     openedModals: openedProjectModals,
     openModal: openProjectModal,
-    closeModal: closeProjectModal
+    closeModal: closeProjectModal,
   } = useModalCards("project")
 
   return (
@@ -42,8 +42,8 @@ const Projects: React.FC<RouteComponentProps> = () => {
 
       <ProjectModalCard
         key={321313}
-        modalId={'321321321'}
-        closeModal={() => {}}
+        modalId="321321321"
+        closeModal={() => { }}
       />
 
       {openedProjectModals.map(modal => (

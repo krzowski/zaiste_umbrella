@@ -6,7 +6,9 @@ interface Props {
   eventsData: Array<DayEvents>,
 }
 
-const CalendarEvent: React.FC<Props> = ({eventsData}) => {
+
+// eslint-disable-next-line arrow-body-style
+const CalendarEvent: React.FC<Props> = ({ eventsData }) => {
   return (
     <>
       <div className="social-events">
@@ -33,7 +35,7 @@ const CalendarEvent: React.FC<Props> = ({eventsData}) => {
               Take trash out
             </div>
             <div className="event-done-button">
-              <i className="fas fa-check-square"></i>
+              <i className="fas fa-check-square" />
             </div>
           </div>
 
@@ -42,7 +44,7 @@ const CalendarEvent: React.FC<Props> = ({eventsData}) => {
               Take trash out
             </div>
             <div className="event-done-button done">
-              <i className="fas fa-check green"></i>
+              <i className="fas fa-check green" />
             </div>
           </div>
 
@@ -51,7 +53,7 @@ const CalendarEvent: React.FC<Props> = ({eventsData}) => {
               Take trash out
             </div>
             <div className="event-done-button done">
-              <i className="fas fa-check green"></i>
+              <i className="fas fa-check green" />
             </div>
           </div>
 
@@ -60,7 +62,7 @@ const CalendarEvent: React.FC<Props> = ({eventsData}) => {
               Take trash out
             </div>
             <div className="event-done-button done">
-              <i className="fas fa-check green"></i>
+              <i className="fas fa-check green" />
             </div>
           </div>
 
@@ -69,7 +71,7 @@ const CalendarEvent: React.FC<Props> = ({eventsData}) => {
               Take trash out
             </div>
             <div className="event-done-button done">
-              <i className="fas fa-check green"></i>
+              <i className="fas fa-check green" />
             </div>
           </div>
 
@@ -78,7 +80,7 @@ const CalendarEvent: React.FC<Props> = ({eventsData}) => {
               Take trash out
             </div>
             <div className="event-done-button done">
-              <i className="fas fa-check green"></i>
+              <i className="fas fa-check green" />
             </div>
           </div>
 
@@ -87,7 +89,7 @@ const CalendarEvent: React.FC<Props> = ({eventsData}) => {
               Take trash out
             </div>
             <div className="event-done-button done">
-              <i className="fas fa-check green"></i>
+              <i className="fas fa-check green" />
             </div>
           </div>
           <div className="card event-card p10 mt2">
@@ -95,7 +97,7 @@ const CalendarEvent: React.FC<Props> = ({eventsData}) => {
               Take trash out
             </div>
             <div className="event-done-button done">
-              <i className="fas fa-check green"></i>
+              <i className="fas fa-check green" />
             </div>
           </div>
           <div className="card event-card p10 mt2">
@@ -103,7 +105,7 @@ const CalendarEvent: React.FC<Props> = ({eventsData}) => {
               Take trash out
             </div>
             <div className="event-done-button done">
-              <i className="fas fa-check green"></i>
+              <i className="fas fa-check green" />
             </div>
           </div>
         </div>

@@ -4,8 +4,8 @@ interface Props {
 
 }
 
-const NewEvent: React.FC<Props> = (props) => {
-  return <div></div>
-}
+const NewEvent: React.FC<Props> = (props) => (
+  <div />
+)
 
 export default NewEvent

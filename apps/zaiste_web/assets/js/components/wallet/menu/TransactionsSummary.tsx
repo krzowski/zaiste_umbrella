@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { UserSettingsContext } from '../../../contexts/UserSettingsContext'
 import { TransactionsContext } from '../../../contexts/TransactionsContext'
-import { calculateTransactionsAmount } from '../helper_functions'
+import { balanceColorClass, calculateTransactionsAmount } from '../helper_functions'
 
 
 const TransactionsSummary: React.FC = () => {
@@ -9,7 +9,6 @@ const TransactionsSummary: React.FC = () => {
   const incomesAmount = calculateTransactionsAmount(filteredTransactions, true)
   const expensesAmount = calculateTransactionsAmount(filteredTransactions, false)
   const balanceAmount = incomesAmount - expensesAmount
-  const balanceColorClass = balanceAmount > 0 ? 'green' : balanceAmount < 0 ? 'red' : ''
 
   const { userSettings } = React.useContext(UserSettingsContext)
 
@@ -29,7 +28,7 @@ const TransactionsSummary: React.FC = () => {
       </div>
       <div className="summary-section flex-row-justify">
         <div className="title">Balance:</div>
-        <div className={balanceColorClass}>
+        <div className={balanceColorClass(balanceAmount)}>
           {balanceAmount.toFixed(2)} {userSettings.currency}
         </div>
       </div>

@@ -6,16 +6,14 @@ import Login from '../components/unauthenticated/login'
 import { UserSettingsProvider } from '../contexts/UserSettingsContext'
 
 
-const UnauthenticatedRoot: React.FC = () => {
-  return (
-    <UserSettingsProvider>
-      <BrowserRouter>
-        <Switch>
-          <Route path="/" component={Login} />
-        </Switch>
-      </BrowserRouter>
-    </UserSettingsProvider>
-  )
-}
+const UnauthenticatedRoot: React.FC = () => (
+  <UserSettingsProvider>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/" component={Login} />
+      </Switch>
+    </BrowserRouter>
+  </UserSettingsProvider>
+)
 
 export default UnauthenticatedRoot

@@ -7,12 +7,13 @@ interface Props {
 }
 
 
-const Project: React.FC<Props> = ({ project }) => {
+// eslint-disable-next-line arrow-body-style
+const ProjectCard: React.FC<Props> = ({ project }) => {
   return (
     <div className="project-modal p15">
-
+      Text
     </div>
   )
 }
 
-export default Project
+export default ProjectCard

@@ -5,10 +5,15 @@ interface Props {
   openNewProjectModal: React.MouseEventHandler<HTMLButtonElement>
 }
 
+// eslint-disable-next-line arrow-body-style
 const ProjectsMenu: React.FC<Props> = ({ openNewProjectModal }) => {
   return (
     <div className="page-menu pt40">
-      <button className="d-b m0a" onClick={openNewProjectModal}>
+      <button
+        type="button"
+        className="d-b m0a"
+        onClick={openNewProjectModal}
+      >
         Add project
       </button>
 

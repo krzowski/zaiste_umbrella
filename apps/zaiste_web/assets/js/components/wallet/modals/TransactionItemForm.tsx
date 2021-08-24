@@ -12,13 +12,21 @@ interface Props {
 
 const TransactionItemForm: React.FC<Props> = ({ transaction }) => {
   const { addTransactionItem } = React.useContext(TransactionsContext)
+
+  const nameInputId = `name${transaction.id}`
+  function focusNameInput() {
+    const nameInput: HTMLElement = document.getElementById(nameInputId)!
+    nameInput.focus()
+  }
+  React.useEffect(() => focusNameInput(), [])
+
   const {
     register,
     handleSubmit,
-    setError,
-    clearErrors,
+    // setError,
+    // clearErrors,
     reset,
-    formState: { errors, isSubmitting },
+    formState: { isSubmitting },
   } = useForm()
   const onSubmit = (data: { name: string, amount: string }): void => {
     createTransactionItem(transaction.id, data)
@@ -28,32 +36,30 @@ const TransactionItemForm: React.FC<Props> = ({ transaction }) => {
         reset()
         focusNameInput()
       })
-      .catch(_error => { })
+      // .catch(_error => { })
   }
-
-  const nameInputId = `name${transaction.id}`
-  function focusNameInput() {
-    const nameInput: HTMLElement = document.getElementById(nameInputId)!
-    nameInput.focus()
-  }
-  React.useEffect(() => focusNameInput(), [])
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="form-name row">
         <label htmlFor="name">Name</label>
-        <input {...register('name')}
+        <input
+          // eslint-disable-next-line react/jsx-props-no-spreading
+          {...register('name')}
           id={nameInputId}
           required
-          className='in-box p4'
+          className="in-box p4"
         />
       </div>
 
       <div className="form-amount">
-        <label htmlFor="date">Amount</label>
-        <input {...register('amount')}
+        <label htmlFor="amount">Amount</label>
+        <input
+          // eslint-disable-next-line react/jsx-props-no-spreading
+          {...register('amount')}
+          id="amount"
           required
-          className='in-box p4'
+          className="in-box p4"
         />
       </div>
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import * as React from 'react'
 
 
@@ -14,13 +15,19 @@ interface ModalProps {
 
 
 const ModalCard: React.FC<ModalProps> = ({
-  modalWidth, modalHeight, initialTopPosition, initialLeftPosition,
-  modalId, modalTitle, closeModal, children
+  modalWidth,
+  modalHeight,
+  initialTopPosition,
+  initialLeftPosition,
+  modalId,
+  modalTitle,
+  closeModal,
+  children,
 }) => {
   const [maximized, setMaximized] = React.useState<boolean>(false)
   const [coords, setCoords] = React.useState<object>({
-    top: initialTopPosition + "px",
-    left: initialLeftPosition + "px"
+    top: `${initialTopPosition}px`,
+    left: `${initialLeftPosition}px`,
   })
   const modalCardContainerRef = React.useRef<HTMLDivElement>(null)
 
@@ -32,25 +39,29 @@ const ModalCard: React.FC<ModalProps> = ({
   let modalStyle
   if (maximized) {
     modalStyle = {
-      width: window.innerWidth + "px",
-      height: window.innerHeight + "px",
+      width: `${window.innerWidth}px`,
+      height: `${window.innerHeight}px`,
       top: "0px",
       left: "0px",
     }
   } else {
-    // Don't extend modal size beyond window.
+    // Cap modal size at window size.
+    // eslint-disable-next-line max-len
     const width = modalWidth < window.innerWidth - initialLeftPosition ? modalWidth : window.innerWidth - initialLeftPosition
+    // eslint-disable-next-line max-len
     const height = modalHeight < window.innerHeight - initialTopPosition ? modalHeight : window.innerHeight - initialTopPosition
 
     modalStyle = {
-      width: width + "px",
-      height: height + "px",
-      ...coords
+      width: `${width}px`,
+      height: `${height}px`,
+      ...coords,
     }
   }
 
   return (
     <div
+      role="tab"
+      tabIndex={0}
       id={modalId}
       className="modalcard"
       onMouseDown={() => elevateModal(modalId)}
@@ -60,8 +71,25 @@ const ModalCard: React.FC<ModalProps> = ({
       <div className="top-panel flex-row-justify">
         <div className="modal-title pl8">{modalTitle}</div>
         <div className="modal-actions flex-row-justify">
-          <div className="maximize-modalcard" onClick={() => setMaximized(!maximized)}>&#9645;</div>
-          <div className="close-modalcard" onClick={() => closeModal(modalId)}>x</div>
+          <div
+            role="button"
+            tabIndex={0}
+            className="maximize-modalcard"
+            onClick={() => setMaximized(!maximized)}
+            onKeyPress={() => setMaximized(!maximized)}
+          >
+            &#9645;
+          </div>
+
+          <div
+            role="button"
+            tabIndex={0}
+            className="close-modalcard"
+            onClick={() => closeModal(modalId)}
+            onKeyPress={() => closeModal(modalId)}
+          >
+            x
+          </div>
         </div>
       </div>
       <div className="body custom-scrollbar">
@@ -72,9 +100,15 @@ const ModalCard: React.FC<ModalProps> = ({
 
   // dragElement taken from https://www.w3schools.com/howto/howto_js_draggable.asp
   function dragElement(elmnt: HTMLDivElement) {
-    let styleTop: string, styleLeft: string // keep last used styles for maximization/minimization
+    // keep last used styles for maximization/minimization
+    let styleTop: string
+    let styleLeft: string
 
-    let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0
+    let pos1 = 0
+    let pos2 = 0
+    let pos3 = 0
+    let pos4 = 0
+
     const dragBar: HTMLElement = elmnt.querySelector('.top-panel')!
     dragBar.onmousedown = dragMouseDown
 
@@ -95,10 +129,15 @@ const ModalCard: React.FC<ModalProps> = ({
       pos2 = pos4 - e.clientY
       pos3 = e.clientX
       pos4 = e.clientY
+      // eslint-disable-next-line prefer-template
       styleTop = (elmnt.offsetTop - pos2) + "px"
+      // eslint-disable-next-line prefer-template
       styleLeft = (elmnt.offsetLeft - pos1) + "px"
+
       // set the element's new position:
+      // eslint-disable-next-line no-param-reassign
       elmnt.style.top = styleTop
+      // eslint-disable-next-line no-param-reassign
       elmnt.style.left = styleLeft
     }
 
@@ -107,9 +146,10 @@ const ModalCard: React.FC<ModalProps> = ({
       document.onmouseup = null
       document.onmousemove = null
 
+      // eslint-disable-next-line no-unused-expressions
       styleTop && setCoords({
         top: styleTop,
-        left: styleLeft
+        left: styleLeft,
       })
     }
   }

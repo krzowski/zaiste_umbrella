@@ -21,15 +21,15 @@ const EditTransactionItemsModal: React.FC<Props> = ({ modalId, transactionId, cl
   if (!transaction) return null
 
   const { userSettings } = React.useContext(UserSettingsContext)
-  const transaction_amount = calculateItemsAmount(transaction.transaction_items).toFixed(2)
+  const transactionAmount = calculateItemsAmount(transaction.transactionItems).toFixed(2)
 
   return (
     <ModalCard
       modalId={modalId}
-      modalTitle={transaction.date + ' - ' + transaction.name}
+      modalTitle={`${transaction.date} - ${transaction.name}`}
       closeModal={closeModal}
       modalWidth={window.innerWidth - 560}
-      modalHeight={150 + transaction.transaction_items.length * 22}
+      modalHeight={150 + transaction.transactionItems.length * 22}
       initialTopPosition={20}
       initialLeftPosition={530}
     >
@@ -40,21 +40,20 @@ const EditTransactionItemsModal: React.FC<Props> = ({ modalId, transactionId, cl
               {transaction.name}
             </div>
             <div className={`transaction-amount numeric-font ${transaction.income ? 'green' : 'red'}`}>
-              {!transaction.income && '-'}{transaction_amount} {userSettings.currency}
+              {!transaction.income && '-'}{transactionAmount} {userSettings.currency}
             </div>
-            <div className="transaction-items-toggle">
-            </div>
+            <div className="transaction-items-toggle" />
           </div>
 
           <div className="card-items">
-            {transaction.transaction_items.map(item =>
+            {transaction.transactionItems.map(item => (
               <TransactionItemEntry
                 key={item.id}
                 transaction={transaction}
                 transactionItem={item}
                 currency={userSettings.currency}
               />
-            )}
+            ))}
           </div>
         </div>
 

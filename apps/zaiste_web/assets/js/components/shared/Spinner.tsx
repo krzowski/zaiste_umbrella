@@ -14,9 +14,9 @@ const Spinner = () => {
   }, [isSpinning])
 
   if (isSpinning) {
-    return <div id="spinner"><div></div><div></div><div></div></div>
+    return <div id="spinner"><div /><div /><div /></div>
   } else {
-    return <div></div>
+    return <div />
   }
 }
 

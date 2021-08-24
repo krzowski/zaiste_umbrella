@@ -1,6 +1,9 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
+/* eslint-disable no-var */
+/* eslint-disable vars-on-top */
 import * as React from 'react'
 import ModalCard from '../../shared/ModalCard'
-import Project from './Project'
+import ProjectCard from './ProjectCard'
 
 
 interface Props {
@@ -9,21 +12,19 @@ interface Props {
 }
 
 
-const ProjectModalCard: React.FC<Props> = ({ modalId, closeModal }) => {
-  return (
-    <ModalCard
-      modalId={modalId}
-      modalTitle={project.name}
-      closeModal={closeModal}
-      modalWidth={window.innerWidth - 560}
-      modalHeight={window.innerHeight - 40}
-      initialTopPosition={20}
-      initialLeftPosition={530}
-    >
-      <Project project={project} />
-    </ModalCard>
-  )
-}
+const ProjectModalCard: React.FC<Props> = ({ modalId, closeModal }) => (
+  <ModalCard
+    modalId={modalId}
+    modalTitle={project.name}
+    closeModal={closeModal}
+    modalWidth={window.innerWidth - 560}
+    modalHeight={window.innerHeight - 40}
+    initialTopPosition={20}
+    initialLeftPosition={530}
+  >
+    <ProjectCard project={project} />
+  </ModalCard>
+)
 
 export default ProjectModalCard
 
@@ -33,13 +34,13 @@ var project = {
   name: 'Create app',
   description: 'Project used to test this web app',
   position: 2,
-  project_categories: [
+  projectCategories: [
     {
       id: 1,
       name: 'Projects functionality',
       position: 1,
-      last_action_at: '2021-03-31 03:00',
-      project_tasks: [
+      lastActionAt: '2021-03-31 03:00',
+      projectTasks: [
         {
           id: 1,
           title: 'Create new project',
@@ -47,7 +48,7 @@ var project = {
           done: true,
           position: 1,
           priority: 6,
-          updated_at: '2019-03-31 03:00'
+          updatedAt: '2019-03-31 03:00',
         },
         {
           id: 2,
@@ -56,7 +57,7 @@ var project = {
           done: false,
           position: 2,
           priority: 5,
-          updated_at: '2019-03-31 03:00'
+          updatedAt: '2019-03-31 03:00',
         },
         {
           id: 3,
@@ -65,7 +66,7 @@ var project = {
           done: false,
           position: 3,
           priority: 5,
-          updated_at: '2019-03-31 03:00'
+          updatedAt: '2019-03-31 03:00',
         },
         {
           id: 5,
@@ -74,16 +75,16 @@ var project = {
           done: false,
           position: 5,
           priority: 8,
-          updated_at: '2021-03-31 03:00'
-        }
-      ]
+          updatedAt: '2021-03-31 03:00',
+        },
+      ],
     },
     {
       id: 2,
       name: 'Contacts functionality',
       position: 2,
-      last_action_at: '2021-07-31 03:00',
-      project_tasks: [
+      lastActionAt: '2021-07-31 03:00',
+      projectTasks: [
         {
           id: 7,
           title: 'Add new contact',
@@ -91,9 +92,9 @@ var project = {
           done: false,
           position: 1,
           priority: 3,
-          updated_at: '2019-03-31 03:00'
-        }
-      ]
-    }
-  ]
+          updatedAt: '2019-03-31 03:00',
+        },
+      ],
+    },
+  ],
 }

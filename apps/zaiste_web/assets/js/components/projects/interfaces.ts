@@ -3,15 +3,15 @@ export interface Project {
   name: string
   position: number
   description: string
-  project_categories: ProjectCategory[]
+  projectCategories: ProjectCategory[]
 }
 
 export interface ProjectCategory {
   id: number
   name: string
   position: number
-  last_action_at: string
-  project_tasks: ProjectTask[]
+  lastActionAt: string
+  projectTasks: ProjectTask[]
 }
 
 export interface ProjectTask {
@@ -21,7 +21,7 @@ export interface ProjectTask {
   done: boolean
   position: number
   priority: number
-  updated_at: string
+  updatedAt: string
 }
 
 export interface ProjectFormFields {

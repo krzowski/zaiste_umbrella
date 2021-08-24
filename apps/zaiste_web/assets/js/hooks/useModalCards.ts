@@ -39,23 +39,22 @@ function useModalCards(idPrefix: string) {
   function openModal(props = {}) {
     const newModal = {
       modalId: idPrefix + +new Date(),
-      closeModal: closeModal,
-      additionalProps: props
+      additionalProps: props,
     }
     setOpenedModals([...openedModals, newModal])
   }
 
   function closeModal(modalId: string) {
-    const filteredModals = openedModals.filter(modal => {
-      return modal.modalId !== modalId
-    })
+    const filteredModals = openedModals.filter(modal => (
+      modal.modalId !== modalId
+    ))
     setOpenedModals(filteredModals)
   }
 
   return {
     openedModals,
     openModal,
-    closeModal
+    closeModal,
   }
 }
 

@@ -4,6 +4,7 @@ import { UserSettingsContext } from '../../contexts/UserSettingsContext'
 import { TransactionsContext } from '../../contexts/TransactionsContext'
 import { Transaction } from './interfaces'
 import { deleteTransaction } from '../../api_calls/wallet'
+import EntryActionIcons from '../shared/EntryActionIcons'
 
 
 interface Props {
@@ -13,10 +14,22 @@ interface Props {
 }
 
 
-const TransactionEntry: React.FC<Props> = ({ transaction, openEditTransactionModal, openEditTransactionItemsModal }) => {
+const TransactionEntry: React.FC<Props> = ({
+  transaction,
+  openEditTransactionModal,
+  openEditTransactionItemsModal,
+}) => {
   const { userSettings } = React.useContext(UserSettingsContext)
   const { removeTransaction } = React.useContext(TransactionsContext)
-  const transaction_amount = calculateItemsAmount(transaction.transaction_items).toFixed(2)
+  const transactionAmount = calculateItemsAmount(transaction.transactionItems).toFixed(2)
+
+  function handleShowClick() {
+    openEditTransactionItemsModal({ transactionId: transaction.id })
+  }
+
+  function handleEditClick() {
+    openEditTransactionModal({ transactionId: transaction.id })
+  }
 
   function handleDeleteClick() {
     deleteTransaction(transaction.id)
@@ -35,13 +48,16 @@ const TransactionEntry: React.FC<Props> = ({ transaction, openEditTransactionMod
           {transaction.name}
         </div>
         <div className={`transaction-amount mr20 numeric-font ${transaction.income ? 'green' : 'red'}`}>
-          {!transaction.income && '-'}{transaction_amount} {userSettings.currency}
+          {!transaction.income && '-'}{transactionAmount} {userSettings.currency}
         </div>
-        <div className="action-icons d-f">
-          <i className="fas fa-list" onClick={() => openEditTransactionItemsModal({ transactionId: transaction.id })}></i>
-          <i className="fas fa-edit" onClick={() => openEditTransactionModal({ transactionId: transaction.id })}></i>
-          <i className="fas fa-trash remove-icon" onClick={handleDeleteClick}></i>
-        </div>
+        <EntryActionIcons
+          showButtonName="Show transaction"
+          handleShowClick={handleShowClick}
+          editButtonName="Edit transaction"
+          handleEditClick={handleEditClick}
+          deleteButtonName="Delete transaction"
+          handleDeleteClick={handleDeleteClick}
+        />
       </div>
     </div>
   )

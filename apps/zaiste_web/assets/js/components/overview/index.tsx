@@ -4,7 +4,7 @@ import SideCalendarPanel from './SideCalendarPanel'
 
 
 function resolveMainComponent(pathname: String) {
-  if        (pathname === '/projects') {
+  if (pathname === '/projects') {
     return <div>Projects</div>
   } else if (pathname === '/patterns') {
     return <div>Patterns</div>
@@ -13,7 +13,7 @@ function resolveMainComponent(pathname: String) {
   }
 }
 
-const Overview: React.FC<RouteComponentProps> = ({location}) => {
+const Overview: React.FC<RouteComponentProps> = ({ location }) => {
   const [MainComponent, setMainComponent] = React.useState<JSX.Element | null>(null)
 
   React.useEffect(() => {

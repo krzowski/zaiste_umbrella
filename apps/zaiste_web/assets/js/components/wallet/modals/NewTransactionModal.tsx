@@ -14,7 +14,11 @@ interface Props {
 }
 
 
-const NewTransactionModal: React.FC<Props> = ({ modalId, closeModal, openEditTransactionItemsModal }) => {
+const NewTransactionModal: React.FC<Props> = ({
+  modalId,
+  closeModal,
+  openEditTransactionItemsModal,
+}) => {
   const { addTransaction } = React.useContext(TransactionsContext)
   const defaultFormValues: TransactionFormFields = {
     date: format(new Date(), "dd / MM / yyyy"),
@@ -26,16 +30,16 @@ const NewTransactionModal: React.FC<Props> = ({ modalId, closeModal, openEditTra
       .then(response => response.json())
       .then(response => {
         const transactionData = response.data
-        addTransaction({ ...transactionData, transaction_items: [] })
+        addTransaction({ ...transactionData, transactionItems: [] })
         openEditTransactionItemsModal({ transactionId: transactionData.id })
         closeModal(modalId)
       })
-      .catch(_error => { })
+      // .catch(_error => { })
   }
 
   React.useEffect(() => {
-    const name_input: HTMLElement = document.getElementById(modalId)!.querySelector('input#name')!
-    name_input.focus()
+    const nameInput: HTMLElement = document.getElementById(modalId)!.querySelector('input#name')!
+    nameInput.focus()
   }, [])
 
   return (
@@ -52,7 +56,7 @@ const NewTransactionModal: React.FC<Props> = ({ modalId, closeModal, openEditTra
         <TransactionModalForm
           onSubmit={onSubmit}
           defaultValues={defaultFormValues}
-          buttonName={"Add"}
+          buttonName="Add"
           modalId={modalId}
         />
       </div>

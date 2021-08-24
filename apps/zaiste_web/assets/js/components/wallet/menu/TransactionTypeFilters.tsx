@@ -8,14 +8,14 @@ const TransactionTypeFilters: React.FC = () => {
   function toggleIncomes() {
     setTransactionsFilters({
       ...transactionsFilters,
-      showIncomes: !transactionsFilters.showIncomes
+      showIncomes: !transactionsFilters.showIncomes,
     })
   }
 
   function toggleExpenses() {
     setTransactionsFilters({
       ...transactionsFilters,
-      showExpenses: !transactionsFilters.showExpenses
+      showExpenses: !transactionsFilters.showExpenses,
     })
   }
 

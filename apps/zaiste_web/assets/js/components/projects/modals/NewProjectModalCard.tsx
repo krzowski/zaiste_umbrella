@@ -19,19 +19,19 @@ const NewProjectModalCard: React.FC<Props> = ({ modalId, closeModal }) => {
   }
   const onSubmit = (data: ProjectFormFields): void => {
     // createProject(data)
-      // .then(response => response.json())
-      // .then(response => {
-      //   const transactionData = response.data
-      //   addTransaction({ ...transactionData, transaction_items: [] })
-      //   openEditTransactionItemsModal({ transactionId: transactionData.id })
-      //   closeModal(modalId)
-      // })
-      // .catch(_error => { })
+    //   .then(response => response.json())
+    //   .then(response => {
+    //     const transactionData = response.data
+    //     addTransaction({ ...transactionData, transactionItems: [] })
+    //     openEditTransactionItemsModal({ transactionId: transactionData.id })
+    //     closeModal(modalId)
+    //   })
+    //   .catch(_error => { })
   }
 
   React.useEffect(() => {
-    const name_input: HTMLElement = document.getElementById(modalId)!.querySelector('input#name')!
-    name_input.focus()
+    const nameInput: HTMLElement = document.getElementById(modalId)!.querySelector('input#name')!
+    nameInput.focus()
   }, [])
 
   return (
@@ -48,7 +48,7 @@ const NewProjectModalCard: React.FC<Props> = ({ modalId, closeModal }) => {
         <ProjectModalForm
           onSubmit={onSubmit}
           defaultValues={defaultFormValues}
-          buttonName={"Add"}
+          buttonName="Add"
           modalId={modalId}
         />
       </div>

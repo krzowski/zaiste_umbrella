@@ -29,10 +29,10 @@ const EditTransactionModal: React.FC<Props> = ({ modalId, transactionId, closeMo
       .then(response => response.json())
       .then(response => {
         const transactionData = response.data
-        editTransaction({ ...transactionData, transaction_items: transaction.transaction_items })
+        editTransaction({ ...transactionData, transactionItems: transaction.transactionItems })
         closeModal(modalId)
       })
-      .catch(_error => { })
+      // .catch(_error => { })
   }
 
   return (
@@ -49,7 +49,7 @@ const EditTransactionModal: React.FC<Props> = ({ modalId, transactionId, closeMo
         <TransactionModalForm
           onSubmit={onSubmit}
           defaultValues={defaultFormValues}
-          buttonName={"Save"}
+          buttonName="Save"
           modalId={modalId}
         />
       </div>

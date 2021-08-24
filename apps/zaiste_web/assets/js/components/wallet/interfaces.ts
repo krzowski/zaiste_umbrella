@@ -19,7 +19,7 @@ export interface Transaction {
   name: string
   date: string
   income: boolean
-  transaction_items: TransactionItem[]
+  transactionItems: TransactionItem[]
 }
 
 export interface TransactionFormFields {

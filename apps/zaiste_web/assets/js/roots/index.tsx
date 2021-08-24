@@ -1,7 +1,5 @@
 import * as React from 'react'
-
 import { AuthContext } from '../contexts/AuthContext'
-
 import AuthenticatedRoot from './AuthenticatedRoot'
 import UnauthenticatedRoot from './UnauthenticatedRoot'
 

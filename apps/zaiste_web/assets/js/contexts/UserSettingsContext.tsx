@@ -11,7 +11,7 @@ interface Props {
 
 // TODO : query settings from db
 const initialState = {
-  currency: 'PLN'
+  currency: 'PLN',
 }
 
 

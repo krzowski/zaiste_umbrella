@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { RouteComponentProps } from 'react-router-dom'
-import { logo } from '../../../layout/logo'
 import { useForm } from 'react-hook-form'
+import { logo } from '../../../layout/logo'
 import { AuthContext } from '../../../contexts/AuthContext'
 import { createSession } from '../../../api_calls/session'
 
@@ -32,21 +32,25 @@ const Login: React.FC<RouteComponentProps> = () => {
       <div className="login-form">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="row form-email mt10">
-            <input {...register('email')}
+            <input
+              // eslint-disable-next-line react/jsx-props-no-spreading
+              {...register('email')}
               type="text"
               placeholder="Email"
               required
-              className='in-box'
+              className="in-box"
               onClick={() => clearErrors('password')}
             />
           </div>
 
           <div className="row form-password mt10">
-            <input {...register('password')}
+            <input
+              // eslint-disable-next-line react/jsx-props-no-spreading
+              {...register('password')}
               type="password"
               placeholder="Password"
               required
-              className='in-box'
+              className="in-box"
               onClick={() => clearErrors('password')}
             />
           </div>

@@ -20,16 +20,16 @@ const DatesForm: React.FC<Props> = ({ datesRange, setDatesRange }) => {
   const {
     register,
     handleSubmit,
-    setError,
-    clearErrors,
+    // setError,
+    // clearErrors,
     reset,
-    formState: { errors, isSubmitting },
+    formState: { isSubmitting },
   } = useForm({ defaultValues })
   React.useEffect(() => reset(defaultValues), [datesRange])
   const onSubmit = (data: DateFields): void => {
     setDatesRange({
       startDate: parseDate(data.startDate, 'dd / MM / yyyy', new Date()),
-      endDate: parseDate(data.endDate, 'dd / MM / yyyy', new Date())
+      endDate: parseDate(data.endDate, 'dd / MM / yyyy', new Date()),
     })
   }
 
@@ -37,15 +37,23 @@ const DatesForm: React.FC<Props> = ({ datesRange, setDatesRange }) => {
     <form onSubmit={handleSubmit(onSubmit)} className="wallet-dates-form">
       <div className="row">
         <label htmlFor="startDate">Date from</label>
-        <input {...register('startDate')}
-          id="startDate" name="startDate" required
+        <input
+          // eslint-disable-next-line react/jsx-props-no-spreading
+          {...register('startDate')}
+          id="startDate"
+          name="startDate"
+          required
         />
       </div>
 
       <div className="row">
         <label htmlFor="endDate">Date to</label>
-        <input  {...register('endDate')}
-          id="endDate" name="endDate" required
+        <input
+          // eslint-disable-next-line react/jsx-props-no-spreading
+          {...register('endDate')}
+          id="endDate"
+          name="endDate"
+          required
         />
       </div>
 
