@@ -63,7 +63,7 @@ const TransactionItemForm: React.FC<Props> = ({ transaction }) => {
         />
       </div>
 
-      <div className="form-button mt23">
+      <div className="form-button">
         <button type="submit" disabled={isSubmitting}>Add</button>
       </div>
     </form>

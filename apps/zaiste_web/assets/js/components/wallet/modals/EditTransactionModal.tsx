@@ -43,7 +43,7 @@ const EditTransactionModal: React.FC<Props> = ({ modalId, transactionId, closeMo
       modalWidth={300}
       modalHeight={235}
       initialTopPosition={20}
-      initialLeftPosition={window.innerWidth - 330}
+      initialLeftPosition={window.innerWidth - 480}
     >
       <div className="card-form new-transaction p-r p15">
         <TransactionModalForm

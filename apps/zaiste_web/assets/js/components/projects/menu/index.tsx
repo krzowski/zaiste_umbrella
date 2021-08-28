@@ -5,6 +5,7 @@ interface Props {
   openNewProjectModal: React.MouseEventHandler<HTMLButtonElement>
 }
 
+
 // eslint-disable-next-line arrow-body-style
 const ProjectsMenu: React.FC<Props> = ({ openNewProjectModal }) => {
   return (
@@ -17,14 +18,9 @@ const ProjectsMenu: React.FC<Props> = ({ openNewProjectModal }) => {
         Add project
       </button>
 
-
       <div className="section-title mt30 pt5 mb8">Search</div>
 
-
       <div className="section-title mt30 pt5 mb8">High priority tasks</div>
-
-
-
 
       {/* <form onSubmit={handleSubmit(onSubmit)} className="pl10">
         <div className="row">

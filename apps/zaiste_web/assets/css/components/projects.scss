@@ -28,7 +28,7 @@
         flex-grow: 1;
         padding-left: 20px;
       }
-      .project-tasks {
+      .category-tasks-number {
         width: 100px;
         min-width: 100px;
         text-align: right;
@@ -43,7 +43,7 @@
       &:first-child {
         .category-indicator:before {
           height: 28px;
-          top: -8px;
+          top: -27px;
         }
       }
 
@@ -61,14 +61,14 @@
           height: 40px;
           position: absolute;
           left: 23px;
-          top: -20px;
+          top: -40px;
           content: '';
         }
 
         &:after {
           width: 25px;
           position: absolute;
-          top: 19px;
+          top: 0px;
           left: 23px;
           content: '';
         }
@@ -76,11 +76,11 @@
       .category-name {
         flex-grow: 1;
       }
-      .project-tasks {
+      .category-tasks-number {
         width: 85px;
         text-align: right;
       }
-      .project-last-action {
+      .category-last-action {
         width: 160px;
         text-align: right;
       }

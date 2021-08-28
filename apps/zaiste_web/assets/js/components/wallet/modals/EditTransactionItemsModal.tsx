@@ -17,7 +17,7 @@ interface Props {
 
 const EditTransactionItemsModal: React.FC<Props> = ({ modalId, transactionId, closeModal }) => {
   const { transactions } = React.useContext(TransactionsContext)
-  const transaction: Transaction = transactions.find(t => t.id === transactionId)
+  const transaction: Transaction | null = transactions.find(t => t.id === transactionId)
   if (!transaction) return null
 
   const { userSettings } = React.useContext(UserSettingsContext)
@@ -31,7 +31,7 @@ const EditTransactionItemsModal: React.FC<Props> = ({ modalId, transactionId, cl
       modalWidth={window.innerWidth - 560}
       modalHeight={150 + transaction.transactionItems.length * 22}
       initialTopPosition={20}
-      initialLeftPosition={530}
+      initialLeftPosition={280}
     >
       <div className="edit-transaction pt20 pr20 pb20">
         <div className="card no-background event-card mt2">

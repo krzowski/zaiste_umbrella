@@ -45,15 +45,15 @@ const Wallet: React.FC<RouteComponentProps> = () => {
       datesRange={datesRange}
     >
       <div className="wallet-container">
-        <TransactionsList
-          openEditTransactionModal={openEditTransactionModal}
-          openEditTransactionItemsModal={openEditTransactionItemsModal}
-        />
-
         <WalletMenu
           datesRange={datesRange}
           setDatesRange={setDatesRange}
           openNewTransactionModal={openNewTransactionModal}
+        />
+
+        <TransactionsList
+          openEditTransactionModal={openEditTransactionModal}
+          openEditTransactionItemsModal={openEditTransactionItemsModal}
         />
 
         {/* MODALS */}

@@ -2,8 +2,8 @@
   display: grid;
   width: 100%;
   height: 100%;
-  grid-template-areas: "wallet_menu transactions";
-  grid-template-columns: 250px auto;
+  grid-template-areas: "transactions wallet_menu";
+  grid-template-columns: auto 250px;
   grid-template-rows: 100%;
   overflow: hidden;
 
@@ -34,7 +34,7 @@
   .wallet-menu {
     grid-area: wallet_menu;
     padding-left: 25px;
-    padding-right: 35px;
+    padding-right: 25px;
 
     form.wallet-dates-form {
       .row {
@@ -71,7 +71,10 @@
     }
 
     .wallet-months {
+      margin-top: 3px;
+
       .wallet-month {
+        text-align: right;
         cursor: pointer;
         transition: .1s linear;
         font-family: $ubuntu-font;
@@ -216,6 +219,7 @@
       .form-button {
         width: 60px;
         padding-right: 10px;
+        margin-top: 22px;
       }
 
       input {

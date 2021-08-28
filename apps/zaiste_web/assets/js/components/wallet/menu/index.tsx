@@ -18,7 +18,6 @@ const WalletMenu: React.FC<Props> = ({ datesRange, setDatesRange, openNewTransac
     <div className="new-transaction mt40">
       <button
         type="button"
-        id="add_transaction_button"
         className="d-b m0a"
         onClick={openNewTransactionModal}
       >
@@ -26,15 +25,11 @@ const WalletMenu: React.FC<Props> = ({ datesRange, setDatesRange, openNewTransac
       </button>
     </div>
 
-
     <div className="mt40" />
     <TransactionsSummary />
 
-
     <div className="section-title mt30 pt5 mb13">Type</div>
     <TransactionTypeFilters />
-
-
 
     {/* TODO - labels for transactions */}
     {/* <div className="section-title mt20">Labels</div>
@@ -43,15 +38,13 @@ const WalletMenu: React.FC<Props> = ({ datesRange, setDatesRange, openNewTransac
         <div className="label">Leisure</div>
       </div> */}
 
-
-
-    <div className="section-title mt30 mb8">Date</div>
+    <div className="section-title mt40 mb8">Date</div>
     <DatesForm
       datesRange={datesRange}
       setDatesRange={setDatesRange}
     />
 
-
+    <div className="mt30" />
     <MonthsCalendar setDatesRange={setDatesRange} />
   </div>
 )

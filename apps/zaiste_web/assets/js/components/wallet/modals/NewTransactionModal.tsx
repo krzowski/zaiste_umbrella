@@ -50,7 +50,7 @@ const NewTransactionModal: React.FC<Props> = ({
       modalWidth={300}
       modalHeight={235}
       initialTopPosition={35}
-      initialLeftPosition={240}
+      initialLeftPosition={window.innerWidth - 330}
     >
       <div className="card-form new-transaction p-r p15">
         <TransactionModalForm

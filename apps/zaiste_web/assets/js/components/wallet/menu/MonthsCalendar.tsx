@@ -23,7 +23,7 @@ const MonthsCalendar: React.FC<Props> = ({ setDatesRange }) => {
     isCurrentYear = currentYearDate.getFullYear() === today.getFullYear()
   }, [currentYearDate])
 
-  function setDatesRangeForMonth(monthDate) {
+  function setDatesRangeForMonth(monthDate: Date) {
     setDatesRange({
       startDate: new Date(monthDate.getFullYear(), monthDate.getMonth(), 1),
       endDate: new Date(monthDate.getFullYear(), monthDate.getMonth() + 1, 0),
@@ -32,7 +32,7 @@ const MonthsCalendar: React.FC<Props> = ({ setDatesRange }) => {
 
   return (
     <>
-      <div className="section-title mt30 mb3 flex-row-justify">
+      <div className="section-title mb3 flex-row-justify">
         <div className="pt4">{currentYearDate.getFullYear()}</div>
         <div className="calendar-nav-arrows">
           <span
@@ -48,12 +48,12 @@ const MonthsCalendar: React.FC<Props> = ({ setDatesRange }) => {
           {
             isCurrentYear
               ? (
-                <span className="pl5 pr5 disabled">&#8250;</span>
+                <span className="pl5 disabled">&#8250;</span>
               ) : (
                 <span
                   role="button"
                   tabIndex={0}
-                  className="pl5 pr5"
+                  className="pl5"
                   onClick={() => setCurrentYearDate(addYears(currentYearDate, 1))}
                   onKeyPress={() => setCurrentYearDate(addYears(currentYearDate, 1))}
                 >
