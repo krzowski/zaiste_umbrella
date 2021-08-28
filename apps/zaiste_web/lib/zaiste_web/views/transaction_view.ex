@@ -27,7 +27,7 @@ defmodule ZaisteWeb.TransactionView do
       date: transaction.date,
       name: transaction.name,
       income: transaction.income,
-      transaction_items:
+      transactionItems:
         render_many(transaction.transaction_items, TransactionItemView, "transaction_item.json")
     }
   end
