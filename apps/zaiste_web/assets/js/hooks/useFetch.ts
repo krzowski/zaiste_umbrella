@@ -48,11 +48,8 @@ function useFetch(url: string, params: any = null): fetchData {
   const [state, dispatch] = React.useReducer(fetchReducer, initialState)
 
   function fetchUrl() {
-    if (params) {
-      return `${url}?${new URLSearchParams(params)}`
-    } else {
-      return url
-    }
+    if (params) return `${url}?${new URLSearchParams(params)}`
+    return url
   }
 
   function handleErrors(response: any) {
@@ -66,8 +63,8 @@ function useFetch(url: string, params: any = null): fetchData {
   }
 
   React.useEffect(() => {
-    // 401 code may break rendering because of change in authentication state.
-    // Run async functions only if component is still mounted.
+    // 401 code breaks rendering when authentication state changes, because component
+    // becomes unmounted. Ensure it's still mounted before dispatching actions.
     let isMounted = true
 
     dispatch({ type: "fetch" })
