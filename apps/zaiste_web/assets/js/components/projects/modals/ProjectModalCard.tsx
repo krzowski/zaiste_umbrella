@@ -3,7 +3,7 @@
 /* eslint-disable vars-on-top */
 import * as React from 'react'
 import ModalCard from '../../shared/ModalCard'
-import ProjectCard from './ProjectCard'
+import CategoryCard from './CategoryCard'
 
 
 interface Props {
@@ -15,14 +15,14 @@ interface Props {
 const ProjectModalCard: React.FC<Props> = ({ modalId, closeModal }) => (
   <ModalCard
     modalId={modalId}
-    modalTitle={project.name}
+    modalTitle={project.projectCategories[0].name}
     closeModal={closeModal}
-    modalWidth={window.innerWidth - 560}
-    modalHeight={window.innerHeight - 40}
-    initialTopPosition={20}
-    initialLeftPosition={530}
+    modalWidth={500}
+    modalHeight={window.innerHeight}
+    initialTopPosition={0}
+    initialLeftPosition={window.innerWidth - 500}
   >
-    <ProjectCard project={project} />
+    <CategoryCard category={project.projectCategories[0]} />
   </ModalCard>
 )
 
