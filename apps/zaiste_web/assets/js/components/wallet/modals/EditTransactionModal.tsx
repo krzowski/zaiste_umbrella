@@ -16,7 +16,7 @@ interface Props {
 
 const EditTransactionModal: React.FC<Props> = ({ modalId, transactionId, closeModal }) => {
   const { transactions, editTransaction } = React.useContext(TransactionsContext)
-  const transaction: Transaction = transactions.find(t => t.id === transactionId)
+  const transaction: Transaction | undefined = transactions.find(t => t.id === transactionId)
   if (!transaction) return null
 
   const defaultFormValues: TransactionFormFields = {

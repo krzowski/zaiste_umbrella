@@ -17,7 +17,7 @@ interface Props {
 
 const EditTransactionItemsModal: React.FC<Props> = ({ modalId, transactionId, closeModal }) => {
   const { transactions } = React.useContext(TransactionsContext)
-  const transaction: Transaction | null = transactions.find(t => t.id === transactionId)
+  const transaction: Transaction | undefined = transactions.find(t => t.id === transactionId)
   if (!transaction) return null
 
   const { userSettings } = React.useContext(UserSettingsContext)
