@@ -1,11 +1,7 @@
-import * as React from 'react'
+import * as React from "react"
 
-interface Props {
+interface Props {}
 
-}
-
-const NewEvent: React.FC<Props> = (props) => (
-  <div />
-)
+const NewEvent: React.FC<Props> = props => <div />
 
 export default NewEvent

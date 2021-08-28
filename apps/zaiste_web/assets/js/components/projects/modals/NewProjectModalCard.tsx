@@ -1,10 +1,9 @@
-import * as React from 'react'
-import { format } from 'date-fns'
-import ModalCard from '../../shared/ModalCard'
-import { ProjectFormFields } from '../interfaces'
-import { createProject } from '../../../api_calls/projects'
-import ProjectModalForm from './ProjectModalForm'
-
+import * as React from "react"
+import { format } from "date-fns"
+import ModalCard from "../../shared/ModalCard"
+import { ProjectFormFields } from "../interfaces"
+import { createProject } from "../../../api_calls/projects"
+import ProjectModalForm from "./ProjectModalForm"
 
 interface Props {
   modalId: string
@@ -14,8 +13,8 @@ interface Props {
 
 const NewProjectModalCard: React.FC<Props> = ({ modalId, closeModal }) => {
   const defaultFormValues: ProjectFormFields = {
-    name: '',
-    description: '',
+    name: "",
+    description: "",
   }
   const onSubmit = (data: ProjectFormFields): void => {
     // createProject(data)
@@ -30,7 +29,7 @@ const NewProjectModalCard: React.FC<Props> = ({ modalId, closeModal }) => {
   }
 
   React.useEffect(() => {
-    const nameInput: HTMLElement = document.getElementById(modalId)!.querySelector('input#name')!
+    const nameInput: HTMLElement = document.getElementById(modalId)!.querySelector("input#name")!
     nameInput.focus()
   }, [])
 

@@ -1,14 +1,12 @@
-import * as React from 'react'
-import { useForm } from 'react-hook-form'
-import { createTransactionItem } from '../../../api_calls/wallet'
-import { TransactionsContext } from '../../../contexts/TransactionsContext'
-import { Transaction } from '../interfaces'
-
+import * as React from "react"
+import { useForm } from "react-hook-form"
+import { createTransactionItem } from "../../../api_calls/wallet"
+import { TransactionsContext } from "../../../contexts/TransactionsContext"
+import { Transaction } from "../interfaces"
 
 interface Props {
   transaction: Transaction
 }
-
 
 const TransactionItemForm: React.FC<Props> = ({ transaction }) => {
   const { addTransactionItem } = React.useContext(TransactionsContext)
@@ -28,7 +26,7 @@ const TransactionItemForm: React.FC<Props> = ({ transaction }) => {
     reset,
     formState: { isSubmitting },
   } = useForm()
-  const onSubmit = (data: { name: string, amount: string }): void => {
+  const onSubmit = (data: { name: string; amount: string }): void => {
     createTransactionItem(transaction.id, data)
       .then(response => response.json())
       .then(response => {
@@ -36,7 +34,7 @@ const TransactionItemForm: React.FC<Props> = ({ transaction }) => {
         reset()
         focusNameInput()
       })
-      // .catch(_error => { })
+    // .catch(_error => { })
   }
 
   return (
@@ -45,7 +43,7 @@ const TransactionItemForm: React.FC<Props> = ({ transaction }) => {
         <label htmlFor="name">Name</label>
         <input
           // eslint-disable-next-line react/jsx-props-no-spreading
-          {...register('name')}
+          {...register("name")}
           id={nameInputId}
           required
           className="in-box p4"
@@ -56,7 +54,7 @@ const TransactionItemForm: React.FC<Props> = ({ transaction }) => {
         <label htmlFor="amount">Amount</label>
         <input
           // eslint-disable-next-line react/jsx-props-no-spreading
-          {...register('amount')}
+          {...register("amount")}
           id="amount"
           required
           className="in-box p4"
@@ -64,7 +62,9 @@ const TransactionItemForm: React.FC<Props> = ({ transaction }) => {
       </div>
 
       <div className="form-button">
-        <button type="submit" disabled={isSubmitting}>Add</button>
+        <button type="submit" disabled={isSubmitting}>
+          Add
+        </button>
       </div>
     </form>
   )

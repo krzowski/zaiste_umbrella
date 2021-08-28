@@ -2,14 +2,12 @@ import * as React from "react"
 import { useForm, SubmitHandler } from "react-hook-form"
 import { TransactionFormFields } from "../interfaces"
 
-
 interface Props {
   onSubmit: SubmitHandler<TransactionFormFields>
   defaultValues: TransactionFormFields
   buttonName: string
   modalId: string
 }
-
 
 const TransactionModalForm: React.FC<Props> = ({
   modalId,
@@ -77,7 +75,9 @@ const TransactionModalForm: React.FC<Props> = ({
       </div>
 
       <div className="form-button">
-        <button type="submit" disabled={isSubmitting}>{buttonName}</button>
+        <button type="submit" disabled={isSubmitting}>
+          {buttonName}
+        </button>
       </div>
     </form>
   )

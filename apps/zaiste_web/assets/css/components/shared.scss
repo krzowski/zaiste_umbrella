@@ -1,4 +1,4 @@
-$ubuntu-font: "Ubuntu", 'Trebuchet MS', Arial, sans-serif;
+$ubuntu-font: "Ubuntu", "Trebuchet MS", Arial, sans-serif;
 $lato-font: "Lato", "Trebuchet MS", Arial, helvetica, sans-serif;
 
 .section-title {
@@ -14,7 +14,7 @@ $lato-font: "Lato", "Trebuchet MS", Arial, helvetica, sans-serif;
   display: grid;
   width: 100%;
   height: 100%;
-  grid-template-areas: 'page page_menu';
+  grid-template-areas: "page page_menu";
   grid-template-columns: auto 250px;
   grid-template-rows: 100%;
   overflow: hidden;
@@ -55,7 +55,7 @@ $lato-font: "Lato", "Trebuchet MS", Arial, helvetica, sans-serif;
       height: 45px;
       line-height: 45px;
       text-align: center;
-      transition: .1s linear;
+      transition: 0.1s linear;
 
       &:hover {
         cursor: pointer;
@@ -87,7 +87,6 @@ $lato-font: "Lato", "Trebuchet MS", Arial, helvetica, sans-serif;
     font-size: 11px;
     font-family: $ubuntu-font;
 
-
     .maximize-modalcard,
     .close-modalcard {
       font-size: 13px;
@@ -96,7 +95,7 @@ $lato-font: "Lato", "Trebuchet MS", Arial, helvetica, sans-serif;
       text-align: center;
       background-color: #0004;
       cursor: pointer;
-      transition: .2 linear;
+      transition: 0.2 linear;
     }
   }
 
@@ -141,7 +140,8 @@ $lato-font: "Lato", "Trebuchet MS", Arial, helvetica, sans-serif;
     top: 8px;
     height: 64px;
   }
-  50%, 100% {
+  50%,
+  100% {
     top: 24px;
     height: 32px;
   }

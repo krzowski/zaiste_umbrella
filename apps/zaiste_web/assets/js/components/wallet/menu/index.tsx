@@ -1,10 +1,9 @@
-import * as React from 'react'
-import { DatesRange } from '../interfaces'
-import MonthsCalendar from './MonthsCalendar'
-import TransactionTypeFilters from './TransactionTypeFilters'
-import DatesForm from './DatesForm'
-import TransactionsSummary from './TransactionsSummary'
-
+import * as React from "react"
+import { DatesRange } from "../interfaces"
+import MonthsCalendar from "./MonthsCalendar"
+import TransactionTypeFilters from "./TransactionTypeFilters"
+import DatesForm from "./DatesForm"
+import TransactionsSummary from "./TransactionsSummary"
 
 interface Props {
   datesRange: DatesRange
@@ -12,15 +11,10 @@ interface Props {
   openNewTransactionModal: React.MouseEventHandler<HTMLButtonElement>
 }
 
-
 const WalletMenu: React.FC<Props> = ({ datesRange, setDatesRange, openNewTransactionModal }) => (
   <div className="wallet-menu">
     <div className="new-transaction mt40">
-      <button
-        type="button"
-        className="d-b m0a"
-        onClick={openNewTransactionModal}
-      >
+      <button type="button" className="d-b m0a" onClick={openNewTransactionModal}>
         Add transaction
       </button>
     </div>
@@ -39,10 +33,7 @@ const WalletMenu: React.FC<Props> = ({ datesRange, setDatesRange, openNewTransac
       </div> */}
 
     <div className="section-title mt40 mb8">Date</div>
-    <DatesForm
-      datesRange={datesRange}
-      setDatesRange={setDatesRange}
-    />
+    <DatesForm datesRange={datesRange} setDatesRange={setDatesRange} />
 
     <div className="mt30" />
     <MonthsCalendar setDatesRange={setDatesRange} />

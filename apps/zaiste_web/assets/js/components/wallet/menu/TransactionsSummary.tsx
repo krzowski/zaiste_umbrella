@@ -1,8 +1,7 @@
-import * as React from 'react'
-import { UserSettingsContext } from '../../../contexts/UserSettingsContext'
-import { TransactionsContext } from '../../../contexts/TransactionsContext'
-import { balanceColorClass, calculateTransactionsAmount } from '../helper_functions'
-
+import * as React from "react"
+import { UserSettingsContext } from "../../../contexts/UserSettingsContext"
+import { TransactionsContext } from "../../../contexts/TransactionsContext"
+import { balanceColorClass, calculateTransactionsAmount } from "../helper_functions"
 
 const TransactionsSummary: React.FC = () => {
   const { filteredTransactions } = React.useContext(TransactionsContext)

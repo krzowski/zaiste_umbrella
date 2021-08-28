@@ -1,5 +1,4 @@
-import * as React from 'react'
-
+import * as React from "react"
 
 interface Props {
   showButtonName: string
@@ -9,7 +8,6 @@ interface Props {
   deleteButtonName: string
   handleDeleteClick: any
 }
-
 
 const EntryActionIcons: React.FC<Props> = ({
   showButtonName,
@@ -21,7 +19,7 @@ const EntryActionIcons: React.FC<Props> = ({
 }) => {
   function confirmHandleDeleteClick() {
     const deleteAccepted = window.confirm("This action cannot be reverted. Are you sure?")
-    if (deleteAccepted) { handleDeleteClick() }
+    if (deleteAccepted) handleDeleteClick()
   }
 
   return (

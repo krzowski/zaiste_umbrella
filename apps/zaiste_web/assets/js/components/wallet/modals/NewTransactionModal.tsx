@@ -1,18 +1,16 @@
-import * as React from 'react'
-import { format } from 'date-fns'
-import ModalCard from '../../shared/ModalCard'
-import { TransactionsContext } from '../../../contexts/TransactionsContext'
-import { createTransaction } from '../../../api_calls/wallet'
-import { TransactionFormFields } from '../interfaces'
-import TransactionModalForm from './TransactionModalForm'
-
+import * as React from "react"
+import { format } from "date-fns"
+import ModalCard from "../../shared/ModalCard"
+import { TransactionsContext } from "../../../contexts/TransactionsContext"
+import { createTransaction } from "../../../api_calls/wallet"
+import { TransactionFormFields } from "../interfaces"
+import TransactionModalForm from "./TransactionModalForm"
 
 interface Props {
   modalId: string
   closeModal: Function
   openEditTransactionItemsModal: Function
 }
-
 
 const NewTransactionModal: React.FC<Props> = ({
   modalId,
@@ -22,8 +20,8 @@ const NewTransactionModal: React.FC<Props> = ({
   const { addTransaction } = React.useContext(TransactionsContext)
   const defaultFormValues: TransactionFormFields = {
     date: format(new Date(), "dd / MM / yyyy"),
-    name: '',
-    income: 'false',
+    name: "",
+    income: "false",
   }
   const onSubmit = (data: TransactionFormFields): void => {
     createTransaction(data)
@@ -34,11 +32,11 @@ const NewTransactionModal: React.FC<Props> = ({
         openEditTransactionItemsModal({ transactionId: transactionData.id })
         closeModal(modalId)
       })
-      // .catch(_error => { })
+    // .catch(_error => { })
   }
 
   React.useEffect(() => {
-    const nameInput: HTMLElement = document.getElementById(modalId)!.querySelector('input#name')!
+    const nameInput: HTMLElement = document.getElementById(modalId)!.querySelector("input#name")!
     nameInput.focus()
   }, [])
 
@@ -65,4 +63,3 @@ const NewTransactionModal: React.FC<Props> = ({
 }
 
 export default NewTransactionModal
-

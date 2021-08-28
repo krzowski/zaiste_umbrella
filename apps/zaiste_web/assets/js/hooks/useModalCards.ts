@@ -1,11 +1,9 @@
-import * as React from 'react'
-
+import * as React from "react"
 
 export interface Modal {
   modalId: string
   additionalProps: any
 }
-
 
 // Usage:
 // const { openedModals, openModal, closeModal } = useModalCards(idPrefix)
@@ -45,9 +43,7 @@ function useModalCards(idPrefix: string) {
   }
 
   function closeModal(modalId: string) {
-    const filteredModals = openedModals.filter(modal => (
-      modal.modalId !== modalId
-    ))
+    const filteredModals = openedModals.filter(modal => modal.modalId !== modalId)
     setOpenedModals(filteredModals)
   }
 

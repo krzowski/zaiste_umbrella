@@ -1,13 +1,11 @@
-import * as React from 'react'
-import { parse, formatDistanceToNow } from 'date-fns'
-import EntryActionIcons from '../../shared/EntryActionIcons'
-import { ProjectCategory } from '../interfaces'
-
+import * as React from "react"
+import { parse, formatDistanceToNow } from "date-fns"
+import EntryActionIcons from "../../shared/EntryActionIcons"
+import { ProjectCategory } from "../interfaces"
 
 interface Props {
   category: ProjectCategory
 }
-
 
 // eslint-disable-next-line arrow-body-style
 const CategoryCard: React.FC<Props> = ({ category }) => {
@@ -16,11 +14,11 @@ const CategoryCard: React.FC<Props> = ({ category }) => {
       <div className="card flex-row-justify">
         <EntryActionIcons
           showButtonName="Show project"
-          handleShowClick={() => { }}
+          handleShowClick={() => {}}
           editButtonName="Edit project"
-          handleEditClick={() => { }}
+          handleEditClick={() => {}}
           deleteButtonName="Delete project"
-          handleDeleteClick={() => { }}
+          handleDeleteClick={() => {}}
         />
       </div>
     </div>

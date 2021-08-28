@@ -1,19 +1,10 @@
-import * as React from 'react'
-import {
-  format,
-  eachMonthOfInterval,
-  addYears,
-  subYears,
-  startOfYear,
-  endOfYear,
-} from 'date-fns'
-import { DatesRange } from '../interfaces'
-
+import * as React from "react"
+import { format, eachMonthOfInterval, addYears, subYears, startOfYear, endOfYear } from "date-fns"
+import { DatesRange } from "../interfaces"
 
 interface Props {
   setDatesRange: React.Dispatch<React.SetStateAction<DatesRange>>
 }
-
 
 const MonthsCalendar: React.FC<Props> = ({ setDatesRange }) => {
   const today = new Date()
@@ -45,22 +36,19 @@ const MonthsCalendar: React.FC<Props> = ({ setDatesRange }) => {
             &#8249;
           </span>
 
-          {
-            isCurrentYear
-              ? (
-                <span className="pl5 disabled">&#8250;</span>
-              ) : (
-                <span
-                  role="button"
-                  tabIndex={0}
-                  className="pl5"
-                  onClick={() => setCurrentYearDate(addYears(currentYearDate, 1))}
-                  onKeyPress={() => setCurrentYearDate(addYears(currentYearDate, 1))}
-                >
-                  &#8250;
-                </span>
-              )
-          }
+          {isCurrentYear ? (
+            <span className="pl5 disabled">&#8250;</span>
+          ) : (
+            <span
+              role="button"
+              tabIndex={0}
+              className="pl5"
+              onClick={() => setCurrentYearDate(addYears(currentYearDate, 1))}
+              onKeyPress={() => setCurrentYearDate(addYears(currentYearDate, 1))}
+            >
+              &#8250;
+            </span>
+          )}
         </div>
       </div>
 

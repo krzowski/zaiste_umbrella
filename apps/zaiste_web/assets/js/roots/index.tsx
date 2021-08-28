@@ -1,18 +1,19 @@
-import * as React from 'react'
-import { AuthContext } from '../contexts/AuthContext'
-import AuthenticatedRoot from './AuthenticatedRoot'
-import UnauthenticatedRoot from './UnauthenticatedRoot'
-
+import * as React from "react"
+import { AuthContext } from "../contexts/AuthContext"
+import AuthenticatedRoot from "./AuthenticatedRoot"
+import UnauthenticatedRoot from "./UnauthenticatedRoot"
 
 const Root: React.FC = () => {
-  const [authenticated, setAuthenticated] = React.useState<boolean>(!!localStorage.getItem('authenticated'))
+  const [authenticated, setAuthenticated] = React.useState<boolean>(
+    !!localStorage.getItem("authenticated")
+  )
 
   const setAuthenticatedSession = (isSignedIn: boolean) => {
     if (isSignedIn) {
-      localStorage.setItem('authenticated', 'true')
+      localStorage.setItem("authenticated", "true")
       setAuthenticated(true)
     } else {
-      localStorage.removeItem('authenticated')
+      localStorage.removeItem("authenticated")
       setAuthenticated(false)
     }
   }

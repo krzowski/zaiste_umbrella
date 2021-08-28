@@ -15,9 +15,8 @@ import "../css/app.scss"
 //
 import "phoenix_html"
 
-
 import React from "react"
 import ReactDOM from "react-dom"
-import Root from './roots'
+import Root from "./roots"
 
-ReactDOM.render(<Root />, document.getElementById('react'))
+ReactDOM.render(<Root />, document.getElementById("react"))

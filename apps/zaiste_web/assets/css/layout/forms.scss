@@ -1,4 +1,4 @@
-$ubuntu-font: "Ubuntu", 'Trebuchet MS', Arial, sans-serif;
+$ubuntu-font: "Ubuntu", "Trebuchet MS", Arial, sans-serif;
 
 input {
   font-size: 11px;
@@ -9,11 +9,11 @@ button {
   font-size: 10px;
   padding: 5px 20px;
   cursor: pointer;
-  transition: .1s linear;
+  transition: 0.1s linear;
 }
 
 label {
-  font-family: $ubuntu-font;;
+  font-family: $ubuntu-font;
 }
 
 .radios-row {
@@ -49,14 +49,14 @@ input[type="checkbox"]:checked + label {
 /* checkbox aspect */
 input[type="checkbox"]:not(:checked) + label:before,
 input[type="checkbox"]:checked + label:before {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   top: 0;
   width: 17px;
   height: 17px;
   border-radius: 2px;
-  transition: all .275s;
+  transition: all 0.275s;
 }
 /* checked mark aspect */
 input[type="checkbox"]:not(:checked) + label:after,
@@ -67,16 +67,16 @@ input[type="checkbox"]:checked + label:after {
   left: 3px;
   font-size: 14px;
   line-height: 0;
-  transition: all .1s;
+  transition: all 0.1s;
 }
 /* checked mark aspect changes */
 input[type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   -webkit-transform: scale(0) rotate(45deg);
-      transform: scale(0) rotate(45deg);
+  transform: scale(0) rotate(45deg);
 }
 input[type="checkbox"]:checked + label:after {
   opacity: 1;
   -webkit-transform: scale(1) rotate(0);
-      transform: scale(1) rotate(0);
+  transform: scale(1) rotate(0);
 }

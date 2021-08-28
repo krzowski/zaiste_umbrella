@@ -3,25 +3,25 @@ input {
   box-shadow: none;
   border: none;
   outline: none;
-  color: #EEE;
+  color: #eee;
 
   &.in-box {
     background-color: #aaaaaa09;
-    border-right: 2px solid #6769EA55;
+    border-right: 2px solid #6769ea55;
     transition: 0.2s linear;
 
     &:focus {
-      border-right: 2px solid #6672C5;
+      border-right: 2px solid #6672c5;
     }
   }
 
   &.in-box-left {
     background-color: #aaaaaa09;
-    border-left: 2px solid #6769EA55;
+    border-left: 2px solid #6769ea55;
     transition: 0.2s linear;
 
     &:focus {
-      border-left: 2px solid #6672C5;
+      border-left: 2px solid #6672c5;
     }
   }
 
@@ -32,24 +32,28 @@ input {
 }
 
 button {
-  background-color: #6769EA33;
+  background-color: #6769ea33;
   box-shadow: none;
   border: none;
   outline: none;
-  color: #EEE;
+  color: #eee;
 
-  &:hover { background-color: #6769EA55; }
-  &:active { background-color: #6769EA77; }
+  &:hover {
+    background-color: #6769ea55;
+  }
+  &:active {
+    background-color: #6769ea77;
+  }
 
   &.warning-btn {
-    &:hover { color: $main-red; }
+    &:hover {
+      color: $main-red;
+    }
   }
 }
 
-
-
 .radios-row {
-  background-color: #25262E;
+  background-color: #25262e;
 
   input[type="radio"] + label {
     background-color: #aaaaaa09;
@@ -58,7 +62,7 @@ button {
   }
   input[type="radio"]:checked + label {
     background-color: $primary-background;
-    border-left: 2px solid #6769EA55;
+    border-left: 2px solid #6769ea55;
   }
   input[type="radio"]:not(:checked) + label {
     background: transparent;
@@ -67,15 +71,15 @@ button {
 }
 
 [type="checkbox"]:not(:checked) + label:before {
-  background-color:#adb0b9;
+  background-color: #adb0b9;
 }
 [type="checkbox"]:checked + label:before {
-  background-color: #6769EA55;
+  background-color: #6769ea55;
 }
 /* checked mark aspect */
 [type="checkbox"]:not(:checked) + label:after,
 [type="checkbox"]:checked + label:after {
-  color: #EEE;
+  color: #eee;
 }
 /* Disabled checkbox */
 [type="checkbox"]:disabled:not(:checked) + label:before,

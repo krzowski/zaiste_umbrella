@@ -1,13 +1,17 @@
-import * as React from 'react'
-import { Transaction, TransactionItem, DatesRange, TransactionsFilters } from '../components/wallet/interfaces'
-import { compareAsc, parseISO, isWithinInterval } from 'date-fns'
+import * as React from "react"
+import {
+  Transaction,
+  TransactionItem,
+  DatesRange,
+  TransactionsFilters,
+} from "../components/wallet/interfaces"
+import { compareAsc, parseISO, isWithinInterval } from "date-fns"
 
 interface Props {
   fetchedTransactions: Transaction[]
   datesRange: DatesRange
   children: JSX.Element
 }
-
 
 export const TransactionsContext = React.createContext<{
   transactions: Transaction[]
@@ -24,39 +28,41 @@ export const TransactionsContext = React.createContext<{
 
 const initialTransactionFilters = {
   showIncomes: true,
-  showExpenses: true
+  showExpenses: true,
 }
 
-
-export const TransactionsProvider: React.FC<Props> = ({ fetchedTransactions, datesRange, children }) => {
+export const TransactionsProvider: React.FC<Props> = ({
+  fetchedTransactions,
+  datesRange,
+  children,
+}) => {
   const [transactions, setTransactions] = React.useState<Transaction[]>(fetchedTransactions)
-  const [transactionsFilters, setTransactionsFilters] = React.useState<TransactionsFilters>(initialTransactionFilters)
+  const [transactionsFilters, setTransactionsFilters] =
+    React.useState<TransactionsFilters>(initialTransactionFilters)
 
   // transactions must include all previously fetched data because opened modals may
   // still be using them.
   React.useEffect(() => {
-    const unfetchedTransactions = transactions.filter(t => (
-      !fetchedTransactions.find(ft => ft.id === t.id)
-    ))
+    const unfetchedTransactions = transactions.filter(
+      t => !fetchedTransactions.find(ft => ft.id === t.id)
+    )
     setTransactions([...unfetchedTransactions, ...fetchedTransactions])
   }, [fetchedTransactions])
 
-
   function sortedFilteredData(transactionsData: Transaction[]): Transaction[] {
-    const filteredData = transactionsData.filter(transaction => {
-      // income / expense filter
-      if (transactionsFilters.showIncomes && transaction.income) return true
-      if (transactionsFilters.showExpenses && !transaction.income) return true
-    }).filter(transaction => {
-      // dates filter
-      return isWithinInterval(
-        parseISO(transaction.date),
-        {
+    const filteredData = transactionsData
+      .filter(transaction => {
+        // income / expense filter
+        if (transactionsFilters.showIncomes && transaction.income) return true
+        if (transactionsFilters.showExpenses && !transaction.income) return true
+      })
+      .filter(transaction => {
+        // dates filter
+        return isWithinInterval(parseISO(transaction.date), {
           start: datesRange.startDate,
-          end: datesRange.endDate
-        }
-      )
-    })
+          end: datesRange.endDate,
+        })
+      })
 
     return sortTransactions(filteredData)
   }
@@ -85,7 +91,9 @@ export const TransactionsProvider: React.FC<Props> = ({ fetchedTransactions, dat
   }
 
   function removeTransactionItem(transaction: Transaction, transactionItemId: number) {
-    transaction.transactionItems = transaction.transactionItems.filter(item => item.id !== transactionItemId)
+    transaction.transactionItems = transaction.transactionItems.filter(
+      item => item.id !== transactionItemId
+    )
     editTransaction(transaction)
   }
 
@@ -101,7 +109,7 @@ export const TransactionsProvider: React.FC<Props> = ({ fetchedTransactions, dat
         removeTransaction,
         removeTransactionItem,
         transactionsFilters,
-        setTransactionsFilters
+        setTransactionsFilters,
       }}
     >
       {children}

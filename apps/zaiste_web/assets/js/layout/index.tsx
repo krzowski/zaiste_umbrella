@@ -1,9 +1,8 @@
-import * as React from 'react'
-import { Link, NavLink } from 'react-router-dom'
-import { logo } from './logo'
-import { AuthContext } from '../contexts/AuthContext'
-import { deleteSession } from '../api_calls/session'
-
+import * as React from "react"
+import { Link, NavLink } from "react-router-dom"
+import { logo } from "./logo"
+import { AuthContext } from "../contexts/AuthContext"
+import { deleteSession } from "../api_calls/session"
 
 const Layout: React.FC = ({ children }) => {
   const { setAuthenticatedSession } = React.useContext(AuthContext)
@@ -19,9 +18,7 @@ const Layout: React.FC = ({ children }) => {
       <div className="navigation-menu">
         <div className="nav">
           <div className="logo">
-            <Link to="/overview">
-              {logo}
-            </Link>
+            <Link to="/overview">{logo}</Link>
           </div>
 
           <NavLink to="/overview">
@@ -59,8 +56,6 @@ const Layout: React.FC = ({ children }) => {
             <i className="fas fa-wallet" />
             <span className="nav-link-text">Wallet</span>
           </NavLink>
-
-
         </div>
 
         <div className="operations">
@@ -82,9 +77,7 @@ const Layout: React.FC = ({ children }) => {
         </div>
       </div>
 
-      <div className="container">
-        {children}
-      </div>
+      <div className="container">{children}</div>
     </>
   )
 }

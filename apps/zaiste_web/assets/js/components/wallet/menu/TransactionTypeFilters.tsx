@@ -1,6 +1,5 @@
-import * as React from 'react'
-import { TransactionsContext } from '../../../contexts/TransactionsContext'
-
+import * as React from "react"
+import { TransactionsContext } from "../../../contexts/TransactionsContext"
 
 const TransactionTypeFilters: React.FC = () => {
   const { transactionsFilters, setTransactionsFilters } = React.useContext(TransactionsContext)

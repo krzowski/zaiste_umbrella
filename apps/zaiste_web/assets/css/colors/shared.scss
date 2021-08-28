@@ -20,7 +20,7 @@ a {
 }
 
 #logo {
-  fill: #D6D6D6;
+  fill: #d6d6d6;
 }
 
 #spinner div {
@@ -29,18 +29,24 @@ a {
 
 .card {
   border: 2px solid #282932;
-  background-color: #25262E;
-  color: #EEE;
+  background-color: #25262e;
+  color: #eee;
 
-  .secondary-text { color: #94969D; }
+  .secondary-text {
+    color: #94969d;
+  }
 
   .card-summary {
     .action-icons {
       i {
         color: #999;
 
-        &:hover { color: #EEE; }
-        &.remove-icon:hover { color: $main-red; }
+        &:hover {
+          color: #eee;
+        }
+        &.remove-icon:hover {
+          color: $main-red;
+        }
       }
     }
   }
@@ -48,7 +54,7 @@ a {
 
 .modalcard {
   border: 1px solid #000;
-  background-color: #20212A;
+  background-color: #20212a;
   box-shadow: 2px 2px #1114;
 
   .top-panel {
@@ -56,11 +62,15 @@ a {
 
     .maximize-modalcard {
       background-color: #0004;
-      &:hover { color: $main-yellow; }
+      &:hover {
+        color: $main-yellow;
+      }
     }
     .close-modalcard {
       background-color: #0004;
-      &:hover { color: $main-red; }
+      &:hover {
+        color: $main-red;
+      }
     }
   }
 }
@@ -74,24 +84,56 @@ a {
 .custom-scrollbar {
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: #6672C5 transparent;
+  scrollbar-color: #6672c5 transparent;
 }
 .custom-scrollbar::-webkit-scrollbar-track {
-	background-color: transparent;
+  background-color: transparent;
 }
 .custom-scrollbar::-webkit-scrollbar {
-	width: 5px;
-	background-color: transparent;
+  width: 5px;
+  background-color: transparent;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb {
-	background-color: #6672C5;;
+  background-color: #6672c5;
 }
 
-.green, .green path   { color: $main-green !important; fill: $main-green !important; }
-.red, .red path       { color: $main-red !important; fill: $main-red !important; }
-.orange, .orange path { color: $main-orange !important; fill: $main-orange !important; }
-.yellow, .yellow path { color: $main-yellow !important; fill: $main-yellow !important; }
-.grey, .grey path     { color: $main-grey !important; fill: $main-grey !important; }
-.blue, .blue path     { color: $main-blue !important; fill: $main-blue !important; }
-.navy, .navy path     { color: $main-navy !important; fill: $main-navy !important; }
-.olive, .olive path   { color: $main-olive !important; fill: $main-olive !important; }
+.green,
+.green path {
+  color: $main-green !important;
+  fill: $main-green !important;
+}
+.red,
+.red path {
+  color: $main-red !important;
+  fill: $main-red !important;
+}
+.orange,
+.orange path {
+  color: $main-orange !important;
+  fill: $main-orange !important;
+}
+.yellow,
+.yellow path {
+  color: $main-yellow !important;
+  fill: $main-yellow !important;
+}
+.grey,
+.grey path {
+  color: $main-grey !important;
+  fill: $main-grey !important;
+}
+.blue,
+.blue path {
+  color: $main-blue !important;
+  fill: $main-blue !important;
+}
+.navy,
+.navy path {
+  color: $main-navy !important;
+  fill: $main-navy !important;
+}
+.olive,
+.olive path {
+  color: $main-olive !important;
+  fill: $main-olive !important;
+}

@@ -1,4 +1,4 @@
-import * as React from 'react'
+import * as React from "react"
 
 const Spinner = () => {
   const [isSpinning, setIsSpinning] = React.useState(false)
@@ -14,7 +14,13 @@ const Spinner = () => {
   }, [isSpinning])
 
   if (isSpinning) {
-    return <div id="spinner"><div /><div /><div /></div>
+    return (
+      <div id="spinner">
+        <div />
+        <div />
+        <div />
+      </div>
+    )
   } else {
     return <div />
   }

@@ -1,14 +1,15 @@
-import * as React from 'react'
-import { format, startOfMonth } from 'date-fns'
-import ErrorMessage from '../shared/ErrorMessage'
-import EventsCalendar from './EventsCalendar'
-import CalendarEvent from './CalendarEvent'
-import { fetchCalendarEvents } from '../../api_calls/overview'
-
+import * as React from "react"
+import { format, startOfMonth } from "date-fns"
+import ErrorMessage from "../shared/ErrorMessage"
+import EventsCalendar from "./EventsCalendar"
+import CalendarEvent from "./CalendarEvent"
+import { fetchCalendarEvents } from "../../api_calls/overview"
 
 const Calendar: React.FC = () => {
   const [calendarDate, setCalendarDate] = React.useState<Date>(new Date())
-  const { data, errorMessage } = fetchCalendarEvents(format(startOfMonth(calendarDate), 'yyyy-MM-dd'))
+  const { data, errorMessage } = fetchCalendarEvents(
+    format(startOfMonth(calendarDate), "yyyy-MM-dd")
+  )
 
   if (errorMessage) return <ErrorMessage message={errorMessage} />
 
@@ -25,9 +26,7 @@ const Calendar: React.FC = () => {
       </div>
 
       <div className="events-container custom-scrollbar">
-        <CalendarEvent
-          eventsData={data}
-        />
+        <CalendarEvent eventsData={data} />
       </div>
     </>
   )

@@ -21,7 +21,7 @@
 
       &:after {
         display: block;
-        content: '';
+        content: "";
         position: absolute;
         width: 3px;
         height: 25px;
@@ -37,7 +37,7 @@
       font-size: 18px;
       width: 30px;
       margin-right: 10px;
-     }
+    }
 
     svg {
       display: block;
@@ -79,5 +79,4 @@
       transition: 0.2s;
     }
   }
-
 }

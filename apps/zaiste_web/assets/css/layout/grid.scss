@@ -1,8 +1,7 @@
 #react {
   display: grid;
   grid-template-columns: 250px auto;
-  grid-template-areas:
-    "nav container";
+  grid-template-areas: "nav container";
   overflow: hidden;
   min-height: 600px;
 }
@@ -19,6 +18,5 @@
 .overview-container {
   display: grid;
   grid-template-columns: auto 250px;
-  grid-template-areas:
-    "overview calendar";
+  grid-template-areas: "overview calendar";
 }

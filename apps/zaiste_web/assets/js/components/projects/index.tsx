@@ -1,11 +1,10 @@
-import * as React from 'react'
-import { RouteComponentProps } from 'react-router-dom'
-import useModalCards from '../../hooks/useModalCards'
-import ProjectsList from './ProjectsList'
-import ProjectsMenu from './menu'
-import ProjectModalCard from './modals/ProjectModalCard'
-import NewProjectModalCard from './modals/NewProjectModalCard'
-
+import * as React from "react"
+import { RouteComponentProps } from "react-router-dom"
+import useModalCards from "../../hooks/useModalCards"
+import ProjectsList from "./ProjectsList"
+import ProjectsMenu from "./menu"
+import ProjectModalCard from "./modals/ProjectModalCard"
+import NewProjectModalCard from "./modals/NewProjectModalCard"
 
 const Projects: React.FC<RouteComponentProps> = () => {
   const {
@@ -21,14 +20,9 @@ const Projects: React.FC<RouteComponentProps> = () => {
 
   return (
     <div className="page-container projects-container">
+      <ProjectsList openProjectModal={openProjectModal} />
 
-      <ProjectsList
-        openProjectModal={openProjectModal}
-      />
-
-      <ProjectsMenu
-        openNewProjectModal={openNewProjectModal}
-      />
+      <ProjectsMenu openNewProjectModal={openNewProjectModal} />
 
       {/* MODALS */}
 
@@ -53,7 +47,6 @@ const Projects: React.FC<RouteComponentProps> = () => {
           closeModal={closeProjectModal}
         />
       ))}
-
     </div>
   )
 }

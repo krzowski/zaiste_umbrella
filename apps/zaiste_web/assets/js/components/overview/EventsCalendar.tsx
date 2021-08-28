@@ -1,4 +1,4 @@
-import * as React from 'react'
+import * as React from "react"
 import {
   format,
   startOfMonth,
@@ -10,14 +10,13 @@ import {
   eachDayOfInterval,
   isWithinInterval,
   isToday,
-} from 'date-fns'
-import { DayEvents } from './interfaces'
-
+} from "date-fns"
+import { DayEvents } from "./interfaces"
 
 interface Props {
   calendarDate: Date
   setCalendarDate: React.Dispatch<React.SetStateAction<Date>>
-  eventsData: Array<DayEvents>,
+  eventsData: Array<DayEvents>
 }
 
 const EventsCalendar: React.FC<Props> = ({ calendarDate, setCalendarDate, eventsData }) => {
@@ -29,12 +28,12 @@ const EventsCalendar: React.FC<Props> = ({ calendarDate, setCalendarDate, events
   const dayCells = eachDayOfInterval(displayedDays).map(date => {
     const isMonthDat = isWithinInterval(date, monthDays)
 
-    const class1 = isMonthDat ? 'month-day' : 'non-month-day'
-    const class2 = isToday(date) ? 'today-day' : ''
+    const class1 = isMonthDat ? "month-day" : "non-month-day"
+    const class2 = isToday(date) ? "today-day" : ""
 
     return (
       <div className={`calendar-day-container ${class1} ${class2}`} key={+date}>
-        <div className="calendar-day">{isMonthDat ? date.getDate() : ''}</div>
+        <div className="calendar-day">{isMonthDat ? date.getDate() : ""}</div>
         {/* <div className="calendar-activities">
           TODO: count events in eventsData for the day and show a dot when there are
         </div> */}
@@ -77,9 +76,7 @@ const EventsCalendar: React.FC<Props> = ({ calendarDate, setCalendarDate, events
         <span>Sun</span>
       </div>
 
-      <div className="calendar-days">
-        {dayCells}
-      </div>
+      <div className="calendar-days">{dayCells}</div>
     </div>
   )
 }

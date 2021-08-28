@@ -1,7 +1,6 @@
-import * as React from 'react'
-import { useForm, SubmitHandler } from 'react-hook-form'
-import { ProjectFormFields } from '../interfaces'
-
+import * as React from "react"
+import { useForm, SubmitHandler } from "react-hook-form"
+import { ProjectFormFields } from "../interfaces"
 
 interface Props {
   onSubmit: SubmitHandler<ProjectFormFields>
@@ -10,13 +9,7 @@ interface Props {
   modalId: string
 }
 
-
-const ProjectModalForm: React.FC<Props> = ({
-  modalId,
-  onSubmit,
-  defaultValues,
-  buttonName,
-}) => {
+const ProjectModalForm: React.FC<Props> = ({ modalId, onSubmit, defaultValues, buttonName }) => {
   const {
     register,
     handleSubmit,
@@ -31,14 +24,16 @@ const ProjectModalForm: React.FC<Props> = ({
         <label htmlFor="name">Name</label>
         <input
           // eslint-disable-next-line react/jsx-props-no-spreading
-          {...register('name')}
+          {...register("name")}
           id="name"
           required
           className="in-box mt5"
         />
       </div>
       <div className="form-button">
-        <button type="submit" disabled={isSubmitting}>{buttonName}</button>
+        <button type="submit" disabled={isSubmitting}>
+          {buttonName}
+        </button>
       </div>
     </form>
   )

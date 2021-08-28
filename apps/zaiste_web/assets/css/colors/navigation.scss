@@ -1,22 +1,38 @@
 .navigation-menu {
   background-color: $primary-background;
-  color: #FFF;
+  color: #fff;
   border-right: 1px solid #3339;
-  .nav { border-top: 15px solid $container-background-color; }
-  .operations { border-bottom: 15px solid $container-background-color }
-  .menu-divider { border-bottom: 15px solid $container-background-color; }
-  a.logout:hover { color: $main-red !important; }
+  .nav {
+    border-top: 15px solid $container-background-color;
+  }
+  .operations {
+    border-bottom: 15px solid $container-background-color;
+  }
+  .menu-divider {
+    border-bottom: 15px solid $container-background-color;
+  }
+  a.logout:hover {
+    color: $main-red !important;
+  }
 
   a {
-    color: #79787D;
+    color: #79787d;
 
-    i { color: #79787D; }
-    svg path { color: rgba($color: #FFF, $alpha: 0.4); }
+    i {
+      color: #79787d;
+    }
+    svg path {
+      color: rgba($color: #fff, $alpha: 0.4);
+    }
 
     &.active {
-      color: #CACCD0;
-      i { color: #afb1b6; }
-      &:after { background-color: #6672C5; }
+      color: #caccd0;
+      i {
+        color: #afb1b6;
+      }
+      &:after {
+        background-color: #6672c5;
+      }
     }
 
     &:hover {
@@ -24,8 +40,9 @@
       color: $main-font-color !important;
 
       i,
-      svg path { color: #CACCD0; }
+      svg path {
+        color: #caccd0;
+      }
     }
   }
 }
-

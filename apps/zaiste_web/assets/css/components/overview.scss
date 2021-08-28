@@ -71,7 +71,6 @@ $calendar-height: 350px;
   }
 }
 
-
 .events-container {
   height: calc(100vh - #{$calendar-height} - 17px);
   margin-left: 15px;
@@ -105,12 +104,16 @@ $calendar-height: 350px;
     top: calc(50% - 20px);
     padding: 10px;
 
-    i { font-size: 20px; }
+    i {
+      font-size: 20px;
+    }
 
     &.done {
       right: 2px;
       top: calc(50% - 19px);
-      i { font-size: 14px; }
+      i {
+        font-size: 14px;
+      }
     }
   }
 }

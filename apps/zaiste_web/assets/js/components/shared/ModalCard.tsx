@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
-import * as React from 'react'
-
+import * as React from "react"
 
 interface ModalProps {
   modalWidth: number
@@ -12,7 +11,6 @@ interface ModalProps {
   closeModal: Function
   children: JSX.Element
 }
-
 
 const ModalCard: React.FC<ModalProps> = ({
   modalWidth,
@@ -47,9 +45,15 @@ const ModalCard: React.FC<ModalProps> = ({
   } else {
     // Cap modal size at window size.
     // eslint-disable-next-line max-len
-    const width = modalWidth < window.innerWidth - initialLeftPosition ? modalWidth : window.innerWidth - initialLeftPosition
+    const width =
+      modalWidth < window.innerWidth - initialLeftPosition
+        ? modalWidth
+        : window.innerWidth - initialLeftPosition
     // eslint-disable-next-line max-len
-    const height = modalHeight < window.innerHeight - initialTopPosition ? modalHeight : window.innerHeight - initialTopPosition
+    const height =
+      modalHeight < window.innerHeight - initialTopPosition
+        ? modalHeight
+        : window.innerHeight - initialTopPosition
 
     modalStyle = {
       width: `${width}px`,
@@ -92,9 +96,7 @@ const ModalCard: React.FC<ModalProps> = ({
           </div>
         </div>
       </div>
-      <div className="body custom-scrollbar">
-        {children}
-      </div>
+      <div className="body custom-scrollbar">{children}</div>
     </div>
   )
 
@@ -109,7 +111,7 @@ const ModalCard: React.FC<ModalProps> = ({
     let pos3 = 0
     let pos4 = 0
 
-    const dragBar: HTMLElement = elmnt.querySelector('.top-panel')!
+    const dragBar: HTMLElement = elmnt.querySelector(".top-panel")!
     dragBar.onmousedown = dragMouseDown
 
     function dragMouseDown(e: MouseEvent) {
@@ -130,9 +132,9 @@ const ModalCard: React.FC<ModalProps> = ({
       pos3 = e.clientX
       pos4 = e.clientY
       // eslint-disable-next-line prefer-template
-      styleTop = (elmnt.offsetTop - pos2) + "px"
+      styleTop = elmnt.offsetTop - pos2 + "px"
       // eslint-disable-next-line prefer-template
-      styleLeft = (elmnt.offsetLeft - pos1) + "px"
+      styleLeft = elmnt.offsetLeft - pos1 + "px"
 
       // set the element's new position:
       // eslint-disable-next-line no-param-reassign
@@ -147,21 +149,24 @@ const ModalCard: React.FC<ModalProps> = ({
       document.onmousemove = null
 
       // eslint-disable-next-line no-unused-expressions
-      styleTop && setCoords({
-        top: styleTop,
-        left: styleLeft,
-      })
+      styleTop &&
+        setCoords({
+          top: styleTop,
+          left: styleLeft,
+        })
     }
   }
 }
 
 function elevateModal(modalId: string) {
-  const INITIAL_Z_INDEX = '1001'
-  const currentTopZIndex: number = parseInt(localStorage.getItem('currentTopZIndex') || INITIAL_Z_INDEX)
+  const INITIAL_Z_INDEX = "1001"
+  const currentTopZIndex: number = parseInt(
+    localStorage.getItem("currentTopZIndex") || INITIAL_Z_INDEX
+  )
   const newTopZIndex = (currentTopZIndex + 1).toString()
 
   document.getElementById(modalId)!.style.zIndex = newTopZIndex
-  localStorage.setItem('currentTopZIndex', newTopZIndex)
+  localStorage.setItem("currentTopZIndex", newTopZIndex)
 }
 
 export default ModalCard

@@ -76,7 +76,7 @@
       .wallet-month {
         text-align: right;
         cursor: pointer;
-        transition: .1s linear;
+        transition: 0.1s linear;
         font-family: $ubuntu-font;
       }
     }
@@ -118,7 +118,9 @@
   $transaction-actions-width: 30px;
   $transaction-actions-dimension: 45px;
 
-  label { font-size: 11px; }
+  label {
+    font-size: 11px;
+  }
 
   .card-summary {
     .transaction-date {
@@ -158,7 +160,7 @@
       top: -14px;
       line-height: $transaction-actions-dimension;
       text-align: center;
-      transition: .1s linear;
+      transition: 0.1s linear;
     }
   }
 
@@ -171,7 +173,7 @@
       display: flex;
       flex-direction: row;
       margin-top: 4px;
-      transition: .1s linear;
+      transition: 0.1s linear;
 
       .card-item-name {
         padding-left: 20px;

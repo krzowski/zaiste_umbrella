@@ -1,8 +1,8 @@
-@import 'reset-css';
+@import "reset-css";
 
-@import './layout/index.scss';
-@import './components/index.scss';
-@import './colors/index.scss';
+@import "./layout/index.scss";
+@import "./components/index.scss";
+@import "./colors/index.scss";
 
 // General site-wide
 
@@ -10,7 +10,8 @@
   box-sizing: border-box;
 }
 
-body, #react {
+body,
+#react {
   font-family: "Lato", "Trebuchet MS", Arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
@@ -23,7 +24,10 @@ a {
   text-decoration: none;
 }
 
-p, ol, ul, td {
+p,
+ol,
+ul,
+td {
   font-size: 13px;
   line-height: 18px;
 }

@@ -1,8 +1,7 @@
-import * as React from 'react'
-import { parse, formatDistanceToNow } from 'date-fns'
-import { Project, ProjectCategory } from './interfaces'
-import EntryActionIcons from '../shared/EntryActionIcons'
-
+import * as React from "react"
+import { parse, formatDistanceToNow } from "date-fns"
+import { Project, ProjectCategory } from "./interfaces"
+import EntryActionIcons from "../shared/EntryActionIcons"
 
 interface Props {
   project: Project
@@ -11,7 +10,7 @@ interface Props {
 
 const ProjectEntry: React.FC<Props> = ({ project, openProjectModal }) => {
   function lastActionInWords(category: ProjectCategory) {
-    const lastActionDate = parse(category.lastActionAt, 'yyyy-MM-dd HH:mm', new Date())
+    const lastActionDate = parse(category.lastActionAt, "yyyy-MM-dd HH:mm", new Date())
     return formatDistanceToNow(lastActionDate, { addSuffix: true })
   }
 
@@ -21,17 +20,15 @@ const ProjectEntry: React.FC<Props> = ({ project, openProjectModal }) => {
         <div className="project-drag">
           <i className="fas fa-grip-lines" />
         </div>
-        <div className="project-name">
-          {project.name}
-        </div>
+        <div className="project-name">{project.name}</div>
 
         <EntryActionIcons
           showButtonName="Show project"
           handleShowClick={() => openProjectModal({ projectId: project.id })}
           editButtonName="Edit project"
-          handleEditClick={() => { }}
+          handleEditClick={() => {}}
           deleteButtonName="Delete project"
-          handleDeleteClick={() => { }}
+          handleDeleteClick={() => {}}
         />
       </div>
 

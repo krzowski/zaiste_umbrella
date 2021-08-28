@@ -1,5 +1,4 @@
-import * as React from 'react'
-
+import * as React from "react"
 
 interface UserSettings {
   currency: string
@@ -11,15 +10,13 @@ interface Props {
 
 // TODO : query settings from db
 const initialState = {
-  currency: 'PLN',
+  currency: "PLN",
 }
-
 
 export const UserSettingsContext = React.createContext<{
   userSettings: UserSettings
   setUserSettings: React.Dispatch<React.SetStateAction<UserSettings>>
 }>({} as any)
-
 
 export const UserSettingsProvider: React.FC<Props> = ({ children }) => {
   const [userSettings, setUserSettings] = React.useState<UserSettings>(initialState)

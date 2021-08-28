@@ -1,5 +1,5 @@
-import { format } from 'date-fns'
-import { DatesRange, Transaction, TransactionItem } from './interfaces'
+import { format } from "date-fns"
+import { DatesRange, Transaction, TransactionItem } from "./interfaces"
 
 export function formatDatesRange(datesRange: DatesRange) {
   return {
@@ -9,17 +9,13 @@ export function formatDatesRange(datesRange: DatesRange) {
 }
 
 export function calculateItemsAmount(items: TransactionItem[]) {
-  return items.reduce((sum, item) => (
-    sum + parseFloat(item.amount)
-  ), 0)
+  return items.reduce((sum, item) => sum + parseFloat(item.amount), 0)
 }
 
 export function calculateTransactionsAmount(transactions: Transaction[], income: boolean) {
-  const items = transactions.filter(transaction => (
-    transaction.income === income
-  )).flatMap(transaction => (
-    transaction.transactionItems
-  ))
+  const items = transactions
+    .filter(transaction => transaction.income === income)
+    .flatMap(transaction => transaction.transactionItems)
 
   return calculateItemsAmount(items)
 }

@@ -1,18 +1,16 @@
-import * as React from 'react'
-import { format, parseISO } from 'date-fns'
-import ModalCard from '../../shared/ModalCard'
-import { TransactionsContext } from '../../../contexts/TransactionsContext'
-import { updateTransaction } from '../../../api_calls/wallet'
-import { Transaction, TransactionFormFields } from '../interfaces'
-import TransactionModalForm from './TransactionModalForm'
-
+import * as React from "react"
+import { format, parseISO } from "date-fns"
+import ModalCard from "../../shared/ModalCard"
+import { TransactionsContext } from "../../../contexts/TransactionsContext"
+import { updateTransaction } from "../../../api_calls/wallet"
+import { Transaction, TransactionFormFields } from "../interfaces"
+import TransactionModalForm from "./TransactionModalForm"
 
 interface Props {
   modalId: string
   transactionId: number
   closeModal: Function
 }
-
 
 const EditTransactionModal: React.FC<Props> = ({ modalId, transactionId, closeModal }) => {
   const { transactions, editTransaction } = React.useContext(TransactionsContext)
@@ -32,7 +30,7 @@ const EditTransactionModal: React.FC<Props> = ({ modalId, transactionId, closeMo
         editTransaction({ ...transactionData, transactionItems: transaction.transactionItems })
         closeModal(modalId)
       })
-      // .catch(_error => { })
+    // .catch(_error => { })
   }
 
   return (
@@ -58,4 +56,3 @@ const EditTransactionModal: React.FC<Props> = ({ modalId, transactionId, closeMo
 }
 
 export default EditTransactionModal
-
