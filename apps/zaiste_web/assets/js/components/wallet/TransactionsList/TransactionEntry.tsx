@@ -1,10 +1,10 @@
 import * as React from "react"
-import { calculateItemsAmount } from "./helper_functions"
-import { UserSettingsContext } from "../../contexts/UserSettingsContext"
-import { TransactionsContext } from "../../contexts/TransactionsContext"
-import { Transaction } from "./interfaces"
-import { deleteTransaction } from "../../api_calls/wallet"
-import EntryActionIcons from "../shared/EntryActionIcons"
+import { calculateItemsAmount } from "../helper_functions"
+import { UserSettingsContext } from "../../../contexts/UserSettingsContext"
+import { TransactionsContext } from "../../../contexts/TransactionsContext"
+import { Transaction } from "../interfaces"
+import { deleteTransaction } from "../../../api_calls/wallet"
+import EntryActionIcons from "../../shared/EntryActionIcons"
 
 interface Props {
   transaction: Transaction

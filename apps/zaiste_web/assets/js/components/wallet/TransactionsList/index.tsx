@@ -1,5 +1,5 @@
 import * as React from "react"
-import { TransactionsContext } from "../../contexts/TransactionsContext"
+import { TransactionsContext } from "../../../contexts/TransactionsContext"
 import TransactionEntry from "./TransactionEntry"
 
 interface Props {

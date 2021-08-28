@@ -1,11 +1,12 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import * as React from "react"
+import { compareAsc, parseISO, isWithinInterval } from "date-fns"
 import {
   Transaction,
   TransactionItem,
   DatesRange,
   TransactionsFilters,
 } from "../components/wallet/interfaces"
-import { compareAsc, parseISO, isWithinInterval } from "date-fns"
 
 interface Props {
   fetchedTransactions: Transaction[]
@@ -55,14 +56,15 @@ export const TransactionsProvider: React.FC<Props> = ({
         // income / expense filter
         if (transactionsFilters.showIncomes && transaction.income) return true
         if (transactionsFilters.showExpenses && !transaction.income) return true
+        return false
       })
-      .filter(transaction => {
+      .filter(transaction => (
         // dates filter
-        return isWithinInterval(parseISO(transaction.date), {
+        isWithinInterval(parseISO(transaction.date), {
           start: datesRange.startDate,
           end: datesRange.endDate,
         })
-      })
+      ))
 
     return sortTransactions(filteredData)
   }
@@ -76,8 +78,9 @@ export const TransactionsProvider: React.FC<Props> = ({
   }
 
   function addTransactionItem(transaction: Transaction, transactionItem: TransactionItem) {
-    transaction.transactionItems = [...transaction.transactionItems, transactionItem]
-    editTransaction(transaction)
+    const changedTransaction = { ...transaction }
+    changedTransaction.transactionItems = [...transaction.transactionItems, transactionItem]
+    editTransaction(changedTransaction)
   }
 
   function editTransaction(editedTransaction: Transaction) {
@@ -91,16 +94,17 @@ export const TransactionsProvider: React.FC<Props> = ({
   }
 
   function removeTransactionItem(transaction: Transaction, transactionItemId: number) {
-    transaction.transactionItems = transaction.transactionItems.filter(
+    const changedTransaction = { ...transaction }
+    changedTransaction.transactionItems = transaction.transactionItems.filter(
       item => item.id !== transactionItemId
     )
-    editTransaction(transaction)
+    editTransaction(changedTransaction)
   }
 
   return (
     <TransactionsContext.Provider
       value={{
-        transactions: transactions,
+        transactions,
         filteredTransactions: sortedFilteredData(transactions),
         setTransactions,
         addTransaction,
