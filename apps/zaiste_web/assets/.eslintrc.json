@@ -50,7 +50,7 @@
     "nonblock-statement-body-position": "off",
     "operator-linebreak": "off",
     "object-curly-newline": "off",
-    "arrow-body-style": ["error", "as-needed"]
+    "arrow-body-style": "off"
   },
   "overrides": [
     {

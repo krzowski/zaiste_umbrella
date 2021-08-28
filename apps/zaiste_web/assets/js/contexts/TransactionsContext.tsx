@@ -58,13 +58,13 @@ export const TransactionsProvider: React.FC<Props> = ({
         if (transactionsFilters.showExpenses && !transaction.income) return true
         return false
       })
-      .filter(transaction => (
+      .filter(transaction => {
         // dates filter
-        isWithinInterval(parseISO(transaction.date), {
+        return isWithinInterval(parseISO(transaction.date), {
           start: datesRange.startDate,
           end: datesRange.endDate,
         })
-      ))
+      })
 
     return sortTransactions(filteredData)
   }
