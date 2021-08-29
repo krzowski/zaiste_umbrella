@@ -9,7 +9,8 @@
   },
   "env": {
     "browser": true,
-    "es2021": true
+    "es2021": true,
+    "jest": true
   },
   "extends": ["plugin:react/recommended", "airbnb"],
   "parser": "@typescript-eslint/parser",
@@ -26,7 +27,7 @@
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [".tsx", ".ts"]
+        "extensions": [".jsx", ".js", ".tsx", ".ts"]
       }
     ],
     "react/prop-types": 0,
