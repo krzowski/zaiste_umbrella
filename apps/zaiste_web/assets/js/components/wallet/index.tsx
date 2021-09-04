@@ -2,7 +2,7 @@ import * as React from "react"
 import { RouteComponentProps } from "react-router-dom"
 import { TransactionsProvider } from "../../contexts/TransactionsContext"
 import { DatesRange } from "./interfaces"
-import { fetchTransactions } from "../../api_calls/wallet"
+import { requestFetchTransactions } from "../../api_calls/wallet"
 import { formatDatesRange } from "./helper_functions"
 import useModalCards from "../../hooks/useModalCards"
 import TransactionsList from "./TransactionsList"
@@ -17,7 +17,7 @@ const initialDates = {
 
 const Wallet: React.FC<RouteComponentProps> = () => {
   const [datesRange, setDatesRange] = React.useState<DatesRange>(initialDates)
-  const { data } = fetchTransactions(formatDatesRange(datesRange))
+  const { data } = requestFetchTransactions(formatDatesRange(datesRange))
 
   const {
     openedModals: openedNewTransactionModals,

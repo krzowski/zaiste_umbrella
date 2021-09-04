@@ -1,4 +1,4 @@
-export function createSession(credentials: object) {
+export function requestCreateSession(credentials: object) {
   return fetch("/api/sign_in", {
     headers: {
       Accept: "application/json",
@@ -9,7 +9,7 @@ export function createSession(credentials: object) {
   })
 }
 
-export function deleteSession() {
+export function requestDeleteSession() {
   return fetch("/api/sign_out", {
     method: "delete",
   })

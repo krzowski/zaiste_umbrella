@@ -3,7 +3,7 @@ import { RouteComponentProps } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import { logo } from "../../../layout/logo"
 import { AuthContext } from "../../../contexts/AuthContext"
-import { createSession } from "../../../api_calls/session"
+import { requestCreateSession } from "../../../api_calls/session"
 
 const Login: React.FC<RouteComponentProps> = () => {
   const { setAuthenticatedSession } = React.useContext(AuthContext)
@@ -16,7 +16,7 @@ const Login: React.FC<RouteComponentProps> = () => {
   } = useForm()
 
   const onSubmit = (data: { email: string; password: string }) => {
-    createSession(data).then(response => {
+    requestCreateSession(data).then(response => {
       if (response.status === 204) setAuthenticatedSession(true)
       if (response.status === 401)
         setError("password", { type: "manual", message: "Email or password is invalid" })

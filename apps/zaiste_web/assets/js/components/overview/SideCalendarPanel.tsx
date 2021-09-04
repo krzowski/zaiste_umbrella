@@ -3,11 +3,11 @@ import { format, startOfMonth } from "date-fns"
 import ErrorMessage from "../shared/ErrorMessage"
 import EventsCalendar from "./EventsCalendar"
 import CalendarEvent from "./CalendarEvent"
-import { fetchCalendarEvents } from "../../api_calls/overview"
+import { requestFetchCalendarEvents } from "../../api_calls/overview"
 
 const Calendar: React.FC = () => {
   const [calendarDate, setCalendarDate] = React.useState<Date>(new Date())
-  const { data, errorMessage } = fetchCalendarEvents(
+  const { data, errorMessage } = requestFetchCalendarEvents(
     format(startOfMonth(calendarDate), "yyyy-MM-dd")
   )
 

@@ -2,13 +2,13 @@ import * as React from "react"
 import { Link, NavLink } from "react-router-dom"
 import { logo } from "./logo"
 import { AuthContext } from "../contexts/AuthContext"
-import { deleteSession } from "../api_calls/session"
+import { requestDeleteSession } from "../api_calls/session"
 
 const Layout: React.FC = ({ children }) => {
   const { setAuthenticatedSession } = React.useContext(AuthContext)
 
   function handleSignOut() {
-    deleteSession().then(() => {
+    requestDeleteSession().then(() => {
       setAuthenticatedSession(false) // Sign out regardless of server response.
     })
   }

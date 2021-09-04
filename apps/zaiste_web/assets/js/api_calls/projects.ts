@@ -20,26 +20,26 @@ export function deteleProject(projectId: number) {
   // return useFetch(path)
 }
 
-export function createCategory(categoryData: object) {
+export function requestCreateCategory(categoryData: object) {
   // return useFetch(path)
 }
 
-export function updateCategory(categoryId: number, categoryData: object) {
+export function requestUpdateCategory(categoryId: number, categoryData: object) {
   // return useFetch(path)
 }
 
-export function deteleCategory(categoryId: number) {
+export function requestDeteleCategory(categoryId: number) {
   // return useFetch(path)
 }
 
-export function createTask(taskData: object) {
+export function requestCreateTask(taskData: object) {
   // return useFetch(path)
 }
 
-export function updateTask(taskId: number, taskData: object) {
+export function requestUpdateTask(taskId: number, taskData: object) {
   // return useFetch(path)
 }
 
-export function deteleTask(taskId: number) {
+export function requestDeteleTask(taskId: number) {
   // return useFetch(path)
 }
