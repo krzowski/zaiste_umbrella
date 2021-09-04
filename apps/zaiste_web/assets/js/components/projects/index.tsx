@@ -3,8 +3,7 @@ import { RouteComponentProps } from "react-router-dom"
 import useModalCards from "../../hooks/useModalCards"
 import ProjectsList from "./ProjectsList"
 import ProjectsMenu from "./menu"
-import ProjectModalCard from "./modals/ProjectModalCard/ProjectModalCard"
-import NewProjectModalCard from "./modals/NewProjectModalCard/NewProjectModalCard"
+import ProjectModals from "./modals"
 
 const Projects: React.FC<RouteComponentProps> = () => {
   const {
@@ -24,29 +23,12 @@ const Projects: React.FC<RouteComponentProps> = () => {
 
       <ProjectsMenu openNewProjectModal={openNewProjectModal} />
 
-      {/* MODALS */}
-
-      {openedNewProjectModals.map(modal => (
-        <NewProjectModalCard
-          key={modal.modalId}
-          modalId={modal.modalId}
-          closeModal={closeNewProjectModal}
-        />
-      ))}
-
-      {/* <ProjectModalCard
-        key={321313}
-        modalId="321321321"
-        closeModal={() => { }}
-      /> */}
-
-      {openedProjectModals.map(modal => (
-        <ProjectModalCard
-          key={modal.modalId}
-          modalId={modal.modalId}
-          closeModal={closeProjectModal}
-        />
-      ))}
+      <ProjectModals
+        openedNewProjectModals={openedNewProjectModals}
+        closeNewProjectModal={closeNewProjectModal}
+        openedProjectModals={openedProjectModals}
+        closeProjectModal={closeProjectModal}
+      />
     </div>
   )
 }
