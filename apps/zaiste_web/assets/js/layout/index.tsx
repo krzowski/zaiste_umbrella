@@ -39,7 +39,7 @@ const Layout: React.FC = ({ children }) => {
 
           <NavLink to="/nothing">
             <i className="fas fa-list-alt" />
-            <span className="nav-link-text">Topic cards</span>
+            <span className="nav-link-text">Notes</span>
           </NavLink>
           {/* <NavLink to="/nothing">
             <i className="fas fa-book"></i>
@@ -64,13 +64,7 @@ const Layout: React.FC = ({ children }) => {
             <i className="fas fa-cog"></i>
           </NavLink>
           <span className="nav-link-text">Settings</span> */}
-          <a
-            className="logout"
-            role="button"
-            tabIndex={0}
-            onClick={handleSignOut}
-            onKeyPress={handleSignOut}
-          >
+          <a className="logout" role="button" onClick={handleSignOut}>
             <i className="fas fa-power-off" />
             <span className="nav-link-text">Sign out</span>
           </a>

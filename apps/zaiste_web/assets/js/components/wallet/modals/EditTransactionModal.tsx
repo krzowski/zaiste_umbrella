@@ -1,29 +1,30 @@
 import * as React from "react"
 import { format, parseISO } from "date-fns"
 import ModalCard from "../../shared/ModalCard"
-import { TransactionsContext } from "../../../contexts/TransactionsContext"
-import { updateTransaction } from "../../../api_calls/wallet"
+import { requestUpdateTransaction } from "../../../api_calls/wallet"
 import { Transaction, TransactionFormFields } from "../interfaces"
 import TransactionModalForm from "./TransactionModalForm"
 
 interface Props {
   modalId: string
-  transactionId: number
+  transaction: Transaction
   closeModal: Function
+  editTransaction: Function
 }
 
-const EditTransactionModal: React.FC<Props> = ({ modalId, transactionId, closeModal }) => {
-  const { transactions, editTransaction } = React.useContext(TransactionsContext)
-  const transaction: Transaction | undefined = transactions.find(t => t.id === transactionId)
-  if (!transaction) return null
-
+const EditTransactionModal: React.FC<Props> = ({
+  modalId,
+  transaction,
+  closeModal,
+  editTransaction,
+}) => {
   const defaultFormValues: TransactionFormFields = {
     date: format(parseISO(transaction.date), "dd / MM / yyyy"),
     name: transaction.name,
     income: String(transaction.income),
   }
   const onSubmit = (data: TransactionFormFields): void => {
-    updateTransaction(transaction.id, data)
+    requestUpdateTransaction(transaction.id, data)
       .then(response => response.json())
       .then(response => {
         const transactionData = response.data

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import * as React from "react"
 import { useForm, SubmitHandler } from "react-hook-form"
 import { TransactionFormFields } from "../interfaces"
@@ -18,59 +19,44 @@ const TransactionModalForm: React.FC<Props> = ({
   const {
     register,
     handleSubmit,
-    // setError,
-    // clearErrors,
     formState: { isSubmitting },
   } = useForm({ defaultValues })
+
+  const expenseRadioId = `${modalId}expense_radio`
+  const incomeRadioId = `${modalId}income_radio`
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="row">
         <label htmlFor="date">Date</label>
-        <input
-          // eslint-disable-next-line react/jsx-props-no-spreading
-          {...register("date")}
-          required
-          className="in-box mt5"
-        />
+        <input {...register("date")} required className="in-box mt5" />
       </div>
 
       <div className="row mt10">
         <label htmlFor="name">Name</label>
-        <input
-          // eslint-disable-next-line react/jsx-props-no-spreading
-          {...register("name")}
-          id="name"
-          required
-          className="in-box mt5"
-        />
+        <input {...register("name")} id="name" required className="in-box mt5" />
       </div>
 
       <div className="row mt10">
         <label>Type</label>
         <div className="radios-row mt5">
           <input
-            // eslint-disable-next-line react/jsx-props-no-spreading
             {...register("income")}
             type="radio"
             name="income"
-            id={`${modalId}expense_radio`}
+            id={expenseRadioId}
             value="false"
           />
-          <label htmlFor={`${modalId}expense_radio`}>
-            <span>Expense</span>
-          </label>
+          <label htmlFor={expenseRadioId}>Expense</label>
+
           <input
-            // eslint-disable-next-line react/jsx-props-no-spreading
             {...register("income")}
             type="radio"
             name="income"
-            id={`${modalId}income_radio`}
+            id={incomeRadioId}
             value="true"
           />
-          <label htmlFor={`${modalId}income_radio`}>
-            <span>Income</span>
-          </label>
+          <label htmlFor={incomeRadioId}>Income</label>
         </div>
       </div>
 

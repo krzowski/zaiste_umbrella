@@ -4,7 +4,7 @@ export function fetchTransactions(formattedDatesRange: object) {
   return useFetch("/api/wallet/transactions", formattedDatesRange)
 }
 
-export function createTransaction(transactionData: object) {
+export function requestCreateTransaction(transactionData: object) {
   return fetch("/api/transactions/", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -12,7 +12,7 @@ export function createTransaction(transactionData: object) {
   })
 }
 
-export function updateTransaction(transactionId: number, transactionData: object) {
+export function requestUpdateTransaction(transactionId: number, transactionData: object) {
   return fetch(`/api/transactions/${transactionId}`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
@@ -20,13 +20,13 @@ export function updateTransaction(transactionId: number, transactionData: object
   })
 }
 
-export function deleteTransaction(transactionId: number) {
+export function requestDeleteTransaction(transactionId: number) {
   return fetch(`/api/transactions/${transactionId}`, {
     method: "DELETE",
   })
 }
 
-export function createTransactionItem(transactionId: number, transactionItemData: object) {
+export function requestCreateTransactionItem(transactionId: number, transactionItemData: object) {
   return fetch(`/api/transactions/${transactionId}/transaction_items`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -34,7 +34,7 @@ export function createTransactionItem(transactionId: number, transactionItemData
   })
 }
 
-export function deleteTransactionItem(transactionId: number, transactionItemId: number) {
+export function requestDeleteTransactionItem(transactionId: number, transactionItemId: number) {
   return fetch(`/api/transactions/${transactionId}/transaction_items/${transactionItemId}`, {
     method: "DELETE",
   })

@@ -24,7 +24,8 @@ export const TransactionsContext = React.createContext<{
   removeTransaction: Function
   removeTransactionItem: Function
   transactionsFilters: TransactionsFilters
-  setTransactionsFilters: React.Dispatch<React.SetStateAction<TransactionsFilters>>
+  toggleShowIncomes: Function
+  toggleShowExpenses: Function
 }>({} as any)
 
 const initialTransactionFilters = {
@@ -69,6 +70,20 @@ export const TransactionsProvider: React.FC<Props> = ({
     return sortTransactions(filteredData)
   }
 
+  function toggleShowIncomes() {
+    setTransactionsFilters({
+      ...transactionsFilters,
+      showIncomes: !transactionsFilters.showIncomes,
+    })
+  }
+
+  function toggleShowExpenses() {
+    setTransactionsFilters({
+      ...transactionsFilters,
+      showExpenses: !transactionsFilters.showExpenses,
+    })
+  }
+
   function sortTransactions(transactionsData: Transaction[]): Transaction[] {
     return transactionsData.sort((t1, t2) => compareAsc(parseISO(t1.date), parseISO(t2.date)))
   }
@@ -106,14 +121,15 @@ export const TransactionsProvider: React.FC<Props> = ({
       value={{
         transactions,
         filteredTransactions: sortedFilteredData(transactions),
+        transactionsFilters,
+        toggleShowIncomes,
+        toggleShowExpenses,
         setTransactions,
         addTransaction,
         addTransactionItem,
         editTransaction,
         removeTransaction,
         removeTransactionItem,
-        transactionsFilters,
-        setTransactionsFilters,
       }}
     >
       {children}

@@ -12,7 +12,7 @@ export function calculateItemsAmount(items: TransactionItem[]) {
   return items.reduce((sum, item) => sum + parseFloat(item.amount), 0)
 }
 
-export function calculateTransactionsAmount(transactions: Transaction[], income: boolean) {
+function calculateTransactionsTypeAmount(transactions: Transaction[], income: boolean) {
   const items = transactions
     .filter(transaction => transaction.income === income)
     .flatMap(transaction => transaction.transactionItems)
@@ -20,12 +20,16 @@ export function calculateTransactionsAmount(transactions: Transaction[], income:
   return calculateItemsAmount(items)
 }
 
+export function calculateIncomesAmount(transactions: Transaction[]) {
+  return calculateTransactionsTypeAmount(transactions, true)
+}
+
+export function calculateExpensesAmount(transactions: Transaction[]) {
+  return calculateTransactionsTypeAmount(transactions, false)
+}
+
 export function balanceColorClass(balanceAmount: number) {
-  if (balanceAmount > 0) {
-    return "green"
-  } else if (balanceAmount < 0) {
-    return "red"
-  } else {
-    return ""
-  }
+  if (balanceAmount > 0) return "green"
+  if (balanceAmount < 0) return "red"
+  return ""
 }

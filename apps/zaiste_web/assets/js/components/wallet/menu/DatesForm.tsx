@@ -25,7 +25,8 @@ const DatesForm: React.FC<Props> = ({ datesRange, setDatesRange }) => {
     formState: { isSubmitting },
   } = useForm({ defaultValues })
   React.useEffect(() => reset(defaultValues), [datesRange])
-  const onSubmit = (data: DateFields): void => {
+
+  function onSubmit(data: DateFields) {
     setDatesRange({
       startDate: parseDate(data.startDate, "dd / MM / yyyy", new Date()),
       endDate: parseDate(data.endDate, "dd / MM / yyyy", new Date()),

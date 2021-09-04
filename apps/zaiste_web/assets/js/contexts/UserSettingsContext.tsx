@@ -11,6 +11,7 @@ interface Props {
 // TODO : query settings from db
 const initialState = {
   currency: "PLN",
+  taskTimer: 5,
 }
 
 export const UserSettingsContext = React.createContext<{

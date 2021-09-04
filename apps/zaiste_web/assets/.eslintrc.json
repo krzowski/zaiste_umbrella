@@ -51,7 +51,10 @@
     "nonblock-statement-body-position": "off",
     "operator-linebreak": "off",
     "object-curly-newline": "off",
-    "arrow-body-style": "off"
+    "arrow-body-style": "off",
+    "jsx-a11y/interactive-supports-focus": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/control-has-associated-label": "off"
   },
   "overrides": [
     {

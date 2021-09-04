@@ -4,12 +4,10 @@ import { TransactionsProvider } from "../../contexts/TransactionsContext"
 import { DatesRange } from "./interfaces"
 import { fetchTransactions } from "../../api_calls/wallet"
 import { formatDatesRange } from "./helper_functions"
+import useModalCards from "../../hooks/useModalCards"
 import TransactionsList from "./TransactionsList"
 import WalletMenu from "./menu"
-import useModalCards from "../../hooks/useModalCards"
-import NewTransactionModal from "./modals/NewTransactionModal"
-import EditTransactionModal from "./modals/EditTransactionModal"
-import EditTransactionItemsModal from "./modals/EditTransactionItemsModal"
+import WalletModals from "./modals"
 
 const today = new Date()
 const initialDates = {
@@ -51,34 +49,15 @@ const Wallet: React.FC<RouteComponentProps> = () => {
           openEditTransactionItemsModal={openEditTransactionItemsModal}
         />
 
-        {/* MODALS */}
-
-        {openedNewTransactionModals.map(modal => (
-          <NewTransactionModal
-            key={modal.modalId}
-            modalId={modal.modalId}
-            closeModal={closeNewTransactionModal}
-            openEditTransactionItemsModal={openEditTransactionItemsModal}
-          />
-        ))}
-
-        {openedEditTransactionModals.map(modal => (
-          <EditTransactionModal
-            key={modal.modalId}
-            modalId={modal.modalId}
-            transactionId={modal.additionalProps.transactionId}
-            closeModal={closeEditTransactionModal}
-          />
-        ))}
-
-        {openedEditTransactionItemsModals.map(modal => (
-          <EditTransactionItemsModal
-            key={modal.modalId}
-            modalId={modal.modalId}
-            transactionId={modal.additionalProps.transactionId}
-            closeModal={closeEditTransactionItemsModal}
-          />
-        ))}
+        <WalletModals
+          openedNewTransactionModals={openedNewTransactionModals}
+          closeNewTransactionModal={closeNewTransactionModal}
+          openedEditTransactionModals={openedEditTransactionModals}
+          closeEditTransactionModal={closeEditTransactionModal}
+          openedEditTransactionItemsModals={openedEditTransactionItemsModals}
+          openEditTransactionItemsModal={openEditTransactionItemsModal}
+          closeEditTransactionItemsModal={closeEditTransactionItemsModal}
+        />
       </div>
     </TransactionsProvider>
   )

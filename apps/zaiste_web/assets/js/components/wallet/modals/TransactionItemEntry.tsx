@@ -1,38 +1,31 @@
 import * as React from "react"
-import { deleteTransactionItem } from "../../../api_calls/wallet"
-import { TransactionsContext } from "../../../contexts/TransactionsContext"
-import { Transaction, TransactionItem } from "../interfaces"
+import { TransactionItem } from "../interfaces"
 
 interface Props {
-  transaction: Transaction
   transactionItem: TransactionItem
   currency: string
+  handleRemoveItemClick: React.MouseEventHandler<HTMLDivElement>
 }
 
-const TransactionItemEntry: React.FC<Props> = ({ transaction, transactionItem, currency }) => {
+const TransactionItemEntry: React.FC<Props> = ({
+  transactionItem,
+  currency,
+  handleRemoveItemClick,
+}) => {
   const [removeHovered, setRemoveHovered] = React.useState<boolean>(false)
-  const { removeTransactionItem } = React.useContext(TransactionsContext)
   const { id, name, amount } = transactionItem
-
-  function handleRemoveClick() {
-    deleteTransactionItem(transaction.id, id).then(response => {
-      if (response.status === 204) removeTransactionItem(transaction, id)
-    })
-  }
+  const formattedAmount = parseFloat(amount).toFixed(2)
 
   return (
     <div className={`card-item ${removeHovered && "red"}`} key={id}>
       <div className="card-item-name">{name}</div>
       <div className="card-item-amount numeric-font">
-        {parseFloat(amount).toFixed(2)} {currency}
+        {formattedAmount} {currency}
       </div>
       <div
         className="card-item-actions"
         role="button"
-        aria-label="Remove"
-        tabIndex={0}
-        onClick={handleRemoveClick}
-        onKeyPress={handleRemoveClick}
+        onClick={handleRemoveItemClick}
         onMouseEnter={() => setRemoveHovered(true)}
         onMouseLeave={() => setRemoveHovered(false)}
       >

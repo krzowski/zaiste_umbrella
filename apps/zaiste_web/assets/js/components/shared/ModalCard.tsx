@@ -77,21 +77,13 @@ const ModalCard: React.FC<ModalProps> = ({
         <div className="modal-actions flex-row-justify">
           <div
             role="button"
-            tabIndex={0}
             className="maximize-modalcard"
             onClick={() => setMaximized(!maximized)}
-            onKeyPress={() => setMaximized(!maximized)}
           >
             &#9645;
           </div>
 
-          <div
-            role="button"
-            tabIndex={0}
-            className="close-modalcard"
-            onClick={() => closeModal(modalId)}
-            onKeyPress={() => closeModal(modalId)}
-          >
+          <div role="button" className="close-modalcard" onClick={() => closeModal(modalId)}>
             x
           </div>
         </div>

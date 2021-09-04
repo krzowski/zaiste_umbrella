@@ -1,16 +1,14 @@
 import * as React from "react"
 import { useForm } from "react-hook-form"
-import { createTransactionItem } from "../../../api_calls/wallet"
-import { TransactionsContext } from "../../../contexts/TransactionsContext"
+import { requestCreateTransactionItem } from "../../../api_calls/wallet"
 import { Transaction } from "../interfaces"
 
 interface Props {
   transaction: Transaction
+  addTransactionItem: Function
 }
 
-const TransactionItemForm: React.FC<Props> = ({ transaction }) => {
-  const { addTransactionItem } = React.useContext(TransactionsContext)
-
+const TransactionItemForm: React.FC<Props> = ({ transaction, addTransactionItem }) => {
   const nameInputId = `name${transaction.id}`
   function focusNameInput() {
     const nameInput: HTMLElement = document.getElementById(nameInputId)!
@@ -27,7 +25,7 @@ const TransactionItemForm: React.FC<Props> = ({ transaction }) => {
     formState: { isSubmitting },
   } = useForm()
   const onSubmit = (data: { name: string; amount: string }): void => {
-    createTransactionItem(transaction.id, data)
+    requestCreateTransactionItem(transaction.id, data)
       .then(response => response.json())
       .then(response => {
         addTransactionItem(transaction, response.data)

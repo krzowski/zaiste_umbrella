@@ -23,11 +23,8 @@ const ProjectEntry: React.FC<Props> = ({ project, openProjectModal }) => {
         <div className="project-name">{project.name}</div>
 
         <EntryActionIcons
-          showButtonName="Show project"
           handleShowClick={() => openProjectModal({ projectId: project.id })}
-          editButtonName="Edit project"
           handleEditClick={() => {}}
-          deleteButtonName="Delete project"
           handleDeleteClick={() => {}}
         />
       </div>

@@ -46,21 +46,11 @@ const EventsCalendar: React.FC<Props> = ({ calendarDate, setCalendarDate, events
       <div className="calendar-heading">
         <span className="section-title pl8 pt2">{format(calendarDate, "MMMM yyyy")}</span>
         <div className="calendar-nav-arrows">
-          <span
-            role="button"
-            tabIndex={0}
-            onClick={() => setCalendarDate(subMonths(calendarDate, 1))}
-            onKeyPress={() => setCalendarDate(subMonths(calendarDate, 1))}
-          >
+          <span role="button" onClick={() => setCalendarDate(subMonths(calendarDate, 1))}>
             &#8249;
           </span>
 
-          <span
-            role="button"
-            tabIndex={0}
-            onClick={() => setCalendarDate(addMonths(calendarDate, 1))}
-            onKeyPress={() => setCalendarDate(addMonths(calendarDate, 1))}
-          >
+          <span role="button" onClick={() => setCalendarDate(addMonths(calendarDate, 1))}>
             &#8250;
           </span>
         </div>

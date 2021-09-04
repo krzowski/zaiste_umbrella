@@ -1,6 +1,8 @@
 import * as React from "react"
+import { UserSettingsContext } from "../../../contexts/UserSettingsContext"
 import { TransactionsContext } from "../../../contexts/TransactionsContext"
 import TransactionEntry from "./TransactionEntry"
+import { requestDeleteTransaction } from "../../../api_calls/wallet"
 
 interface Props {
   openEditTransactionModal: Function
@@ -11,7 +13,22 @@ const TransactionsList: React.FC<Props> = ({
   openEditTransactionModal,
   openEditTransactionItemsModal,
 }) => {
-  const { filteredTransactions } = React.useContext(TransactionsContext)
+  const { userSettings } = React.useContext(UserSettingsContext)
+  const { filteredTransactions, removeTransaction } = React.useContext(TransactionsContext)
+
+  function handleShowClick(transactionId) {
+    openEditTransactionItemsModal({ transactionId })
+  }
+
+  function handleEditClick(transactionId) {
+    openEditTransactionModal({ transactionId })
+  }
+
+  function handleDeleteClick(transactionId) {
+    requestDeleteTransaction(transactionId).then(response => {
+      if (response.status === 204) removeTransaction(transactionId)
+    })
+  }
 
   return (
     <div className="transactions-container">
@@ -21,8 +38,10 @@ const TransactionsList: React.FC<Props> = ({
             <TransactionEntry
               key={transaction.id}
               transaction={transaction}
-              openEditTransactionModal={openEditTransactionModal}
-              openEditTransactionItemsModal={openEditTransactionItemsModal}
+              currency={userSettings.currency}
+              handleShowClick={() => handleShowClick(transaction.id)}
+              handleEditClick={() => handleEditClick(transaction.id)}
+              handleDeleteClick={() => handleDeleteClick(transaction.id)}
             />
           ))
         ) : (

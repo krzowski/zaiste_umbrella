@@ -1,26 +1,36 @@
 import * as React from "react"
-import { calculateItemsAmount } from "../helper_functions"
-import TransactionItemEntry from "./TransactionItemEntry"
-import { TransactionsContext } from "../../../contexts/TransactionsContext"
-import { UserSettingsContext } from "../../../contexts/UserSettingsContext"
-import ModalCard from "../../shared/ModalCard"
 import { Transaction } from "../interfaces"
+import { calculateItemsAmount } from "../helper_functions"
+import ModalCard from "../../shared/ModalCard"
+import TransactionItemEntry from "./TransactionItemEntry"
 import TransactionItemForm from "./TransactionItemForm"
+import { requestDeleteTransactionItem } from "../../../api_calls/wallet"
 
 interface Props {
   modalId: string
-  transactionId: number
+  transaction: Transaction
+  currency: string
   closeModal: Function
+  addTransactionItem: Function
+  removeTransactionItem: Function
 }
 
-const EditTransactionItemsModal: React.FC<Props> = ({ modalId, transactionId, closeModal }) => {
-  const { transactions } = React.useContext(TransactionsContext)
-  const transaction: Transaction | undefined = transactions.find(t => t.id === transactionId)
-  if (!transaction) return null
-
+const EditTransactionItemsModal: React.FC<Props> = ({
+  modalId,
+  transaction,
+  currency,
+  closeModal,
+  addTransactionItem,
+  removeTransactionItem,
+}) => {
   const { date, name, income, transactionItems } = transaction
-  const { userSettings } = React.useContext(UserSettingsContext)
   const transactionAmount = calculateItemsAmount(transaction.transactionItems).toFixed(2)
+
+  function handleRemoveItemClick(transactionItemId: number) {
+    requestDeleteTransactionItem(transaction.id, transactionItemId).then(response => {
+      if (response.status === 204) removeTransactionItem(transaction, transactionItemId)
+    })
+  }
 
   return (
     <ModalCard
@@ -38,7 +48,7 @@ const EditTransactionItemsModal: React.FC<Props> = ({ modalId, transactionId, cl
             <div className="transaction-name">{name}</div>
             <div className={`transaction-amount numeric-font ${income ? "green" : "red"}`}>
               {!income && "-"}
-              {transactionAmount} {userSettings.currency}
+              {transactionAmount} {currency}
             </div>
             <div className="transaction-items-toggle" />
           </div>
@@ -47,16 +57,16 @@ const EditTransactionItemsModal: React.FC<Props> = ({ modalId, transactionId, cl
             {transactionItems.map(item => (
               <TransactionItemEntry
                 key={item.id}
-                transaction={transaction}
                 transactionItem={item}
-                currency={userSettings.currency}
+                handleRemoveItemClick={() => handleRemoveItemClick(item.id)}
+                currency={currency}
               />
             ))}
           </div>
         </div>
 
         <div className="card-form">
-          <TransactionItemForm transaction={transaction} />
+          <TransactionItemForm transaction={transaction} addTransactionItem={addTransactionItem} />
         </div>
       </div>
     </ModalCard>

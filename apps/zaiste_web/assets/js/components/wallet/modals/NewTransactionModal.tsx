@@ -1,8 +1,7 @@
 import * as React from "react"
 import { format } from "date-fns"
 import ModalCard from "../../shared/ModalCard"
-import { TransactionsContext } from "../../../contexts/TransactionsContext"
-import { createTransaction } from "../../../api_calls/wallet"
+import { requestCreateTransaction } from "../../../api_calls/wallet"
 import { TransactionFormFields } from "../interfaces"
 import TransactionModalForm from "./TransactionModalForm"
 
@@ -10,21 +9,22 @@ interface Props {
   modalId: string
   closeModal: Function
   openEditTransactionItemsModal: Function
+  addTransaction: Function
 }
 
 const NewTransactionModal: React.FC<Props> = ({
   modalId,
   closeModal,
   openEditTransactionItemsModal,
+  addTransaction,
 }) => {
-  const { addTransaction } = React.useContext(TransactionsContext)
   const defaultFormValues: TransactionFormFields = {
     date: format(new Date(), "dd / MM / yyyy"),
     name: "",
     income: "false",
   }
   const onSubmit = (data: TransactionFormFields): void => {
-    createTransaction(data)
+    requestCreateTransaction(data)
       .then(response => response.json())
       .then(response => {
         const transactionData = response.data

@@ -13,11 +13,8 @@ const CategoryCard: React.FC<Props> = ({ category }) => {
     <div className="project-modal p15">
       <div className="card flex-row-justify">
         <EntryActionIcons
-          showButtonName="Show project"
           handleShowClick={() => {}}
-          editButtonName="Edit project"
           handleEditClick={() => {}}
-          deleteButtonName="Delete project"
           handleDeleteClick={() => {}}
         />
       </div>

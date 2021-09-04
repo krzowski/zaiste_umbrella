@@ -9,10 +9,10 @@ interface Props {
 const MonthsCalendar: React.FC<Props> = ({ setDatesRange }) => {
   const today = new Date()
   const [currentYearDate, setCurrentYearDate] = React.useState<Date>(today)
-  let isCurrentYear = currentYearDate.getFullYear() === today.getFullYear()
-  React.useEffect(() => {
-    isCurrentYear = currentYearDate.getFullYear() === today.getFullYear()
-  }, [currentYearDate])
+
+  function isCurrentYearSet(): boolean {
+    return currentYearDate.getFullYear() === today.getFullYear()
+  }
 
   function setDatesRangeForMonth(monthDate: Date) {
     setDatesRange({
@@ -21,31 +21,27 @@ const MonthsCalendar: React.FC<Props> = ({ setDatesRange }) => {
     })
   }
 
+  function setPrevYear() {
+    setCurrentYearDate(subYears(currentYearDate, 1))
+  }
+
+  function setNextYear() {
+    setCurrentYearDate(addYears(currentYearDate, 1))
+  }
+
   return (
     <>
       <div className="section-title mb3 flex-row-justify">
         <div className="pt4">{currentYearDate.getFullYear()}</div>
         <div className="calendar-nav-arrows">
-          <span
-            role="button"
-            tabIndex={0}
-            className="pl5 pr5"
-            onClick={() => setCurrentYearDate(subYears(currentYearDate, 1))}
-            onKeyPress={() => setCurrentYearDate(subYears(currentYearDate, 1))}
-          >
+          <span role="button" className="pl5 pr5" onClick={setPrevYear}>
             &#8249;
           </span>
 
-          {isCurrentYear ? (
+          {isCurrentYearSet() ? (
             <span className="pl5 disabled">&#8250;</span>
           ) : (
-            <span
-              role="button"
-              tabIndex={0}
-              className="pl5"
-              onClick={() => setCurrentYearDate(addYears(currentYearDate, 1))}
-              onKeyPress={() => setCurrentYearDate(addYears(currentYearDate, 1))}
-            >
+            <span role="button" className="pl5" onClick={setNextYear}>
               &#8250;
             </span>
           )}
@@ -55,15 +51,13 @@ const MonthsCalendar: React.FC<Props> = ({ setDatesRange }) => {
       <div className="wallet-months custom-scrollbar">
         {eachMonthOfInterval({
           start: startOfYear(currentYearDate),
-          end: isCurrentYear ? today : endOfYear(currentYearDate),
+          end: isCurrentYearSet() ? today : endOfYear(currentYearDate),
         }).map(monthDate => (
           <div
             role="button"
-            tabIndex={0}
             className="wallet-month"
-            key={`stamp_${+monthDate}`}
+            key={`timestamp_${+monthDate}`}
             onClick={() => setDatesRangeForMonth(monthDate)}
-            onKeyPress={() => setDatesRangeForMonth(monthDate)}
           >
             {format(monthDate, "MMMM")}
           </div>
