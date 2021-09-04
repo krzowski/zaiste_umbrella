@@ -1,6 +1,6 @@
 import * as React from "react"
 import { RouteComponentProps } from "react-router-dom"
-import SideCalendarPanel from "./SideCalendarPanel"
+import OverviewMenu from "./menu"
 
 function resolveMainComponent(pathname: String) {
   if (pathname === "/projects") {
@@ -23,7 +23,7 @@ const Overview: React.FC<RouteComponentProps> = ({ location }) => {
     <div className="overview-container">
       <div className="overview-component">{MainComponent}</div>
       <div className="events-calendar-container">
-        <SideCalendarPanel />
+        <OverviewMenu />
       </div>
     </div>
   )

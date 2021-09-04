@@ -11,7 +11,7 @@ import {
   isWithinInterval,
   isToday,
 } from "date-fns"
-import { DayEvents } from "./interfaces"
+import { DayEvents } from "../../interfaces"
 
 interface Props {
   calendarDate: Date

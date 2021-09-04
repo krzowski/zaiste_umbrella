@@ -1,12 +1,12 @@
 import * as React from "react"
-import { DayEvents } from "./interfaces"
+import { DayEvents } from "../../interfaces"
 
 interface Props {
   eventsData: Array<DayEvents>
 }
 
 // eslint-disable-next-line arrow-body-style
-const CalendarEvent: React.FC<Props> = ({ eventsData }) => {
+const DayEventsList: React.FC<Props> = ({ eventsData }) => {
   return (
     <>
       <div className="social-events">
@@ -88,4 +88,4 @@ const CalendarEvent: React.FC<Props> = ({ eventsData }) => {
   )
 }
 
-export default CalendarEvent
+export default DayEventsList
