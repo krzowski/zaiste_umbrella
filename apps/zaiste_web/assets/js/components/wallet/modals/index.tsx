@@ -3,9 +3,9 @@ import { UserSettingsContext } from "../../../contexts/UserSettingsContext"
 import { TransactionsContext } from "../../../contexts/TransactionsContext"
 import { Modal } from "../../../hooks/useModalCards"
 import { Transaction } from "../interfaces"
-import NewTransactionModal from "./NewTransactionModal"
-import EditTransactionModal from "./EditTransactionModal"
-import EditTransactionItemsModal from "./EditTransactionItemsModal"
+import NewTransactionModal from "./NewTransactionModal/NewTransactionModal"
+import EditTransactionModal from "./EditTransactionModal/EditTransactionModal"
+import EditTransactionItemsModal from "./EditTransactionItemsModal/EditTransactionItemsModal"
 
 interface Props {
   openedNewTransactionModals: Modal[]

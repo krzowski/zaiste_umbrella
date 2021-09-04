@@ -1,6 +1,6 @@
 import * as React from "react"
 import { useForm, SubmitHandler } from "react-hook-form"
-import { ProjectFormFields } from "../interfaces"
+import { ProjectFormFields } from "../../interfaces"
 
 interface Props {
   onSubmit: SubmitHandler<ProjectFormFields>

@@ -1,9 +1,9 @@
 import * as React from "react"
 import { format } from "date-fns"
-import ModalCard from "../../shared/ModalCard"
-import { ProjectFormFields } from "../interfaces"
-import { createProject } from "../../../api_calls/projects"
-import ProjectModalForm from "./ProjectModalForm"
+import ModalCard from "../../../shared/ModalCard/ModalCard"
+import { ProjectFormFields } from "../../interfaces"
+import { createProject } from "../../../../api_calls/projects"
+import ProjectModalForm from "../ProjectModalForm/ProjectModalForm"
 
 interface Props {
   modalId: string

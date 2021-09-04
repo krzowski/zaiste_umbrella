@@ -1,7 +1,7 @@
 import * as React from "react"
 import { useForm } from "react-hook-form"
-import { requestCreateTransactionItem } from "../../../api_calls/wallet"
-import { Transaction } from "../interfaces"
+import { requestCreateTransactionItem } from "../../../../api_calls/wallet"
+import { Transaction } from "../../interfaces"
 
 interface Props {
   transaction: Transaction

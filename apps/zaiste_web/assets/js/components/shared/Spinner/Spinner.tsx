@@ -21,9 +21,9 @@ const Spinner = () => {
         <div />
       </div>
     )
-  } else {
-    return <div />
   }
+
+  return null
 }
 
 export default Spinner

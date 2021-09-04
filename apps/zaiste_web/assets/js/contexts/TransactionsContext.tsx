@@ -24,8 +24,8 @@ export const TransactionsContext = React.createContext<{
   removeTransaction: Function
   removeTransactionItem: Function
   transactionsFilters: TransactionsFilters
-  toggleShowIncomes: Function
-  toggleShowExpenses: Function
+  toggleShowIncomes: React.ChangeEventHandler<HTMLInputElement>
+  toggleShowExpenses: React.ChangeEventHandler<HTMLInputElement>
 }>({} as any)
 
 const initialTransactionFilters = {

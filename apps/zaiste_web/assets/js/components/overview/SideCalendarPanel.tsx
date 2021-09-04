@@ -1,6 +1,6 @@
 import * as React from "react"
 import { format, startOfMonth } from "date-fns"
-import ErrorMessage from "../shared/ErrorMessage"
+import ErrorMessage from "../shared/ErrorMessage/ErrorMessage"
 import EventsCalendar from "./EventsCalendar"
 import CalendarEvent from "./CalendarEvent"
 import { requestFetchCalendarEvents } from "../../api_calls/overview"

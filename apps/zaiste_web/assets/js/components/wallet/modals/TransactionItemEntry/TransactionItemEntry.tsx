@@ -1,5 +1,5 @@
 import * as React from "react"
-import { TransactionItem } from "../interfaces"
+import { TransactionItem } from "../../interfaces"
 
 interface Props {
   transactionItem: TransactionItem

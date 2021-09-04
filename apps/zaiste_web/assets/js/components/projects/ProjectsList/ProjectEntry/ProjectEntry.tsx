@@ -1,7 +1,7 @@
 import * as React from "react"
 import { parse, formatDistanceToNow } from "date-fns"
-import { Project, ProjectCategory } from "../interfaces"
-import EntryActionIcons from "../../shared/EntryActionIcons"
+import { Project, ProjectCategory } from "../../interfaces"
+import EntryActionIcons from "../../../shared/EntryActionIcons/EntryActionIcons"
 
 interface Props {
   project: Project

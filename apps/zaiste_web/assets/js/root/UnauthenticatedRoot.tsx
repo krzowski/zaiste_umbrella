@@ -1,7 +1,7 @@
 import * as React from "react"
 import { BrowserRouter, Route, Switch } from "react-router-dom"
 
-import Login from "../components/unauthenticated/login"
+import Login from "../components/unauthenticated/Login"
 
 import { UserSettingsProvider } from "../contexts/UserSettingsContext"
 

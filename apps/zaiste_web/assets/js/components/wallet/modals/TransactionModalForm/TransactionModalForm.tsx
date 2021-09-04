@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import * as React from "react"
 import { useForm, SubmitHandler } from "react-hook-form"
-import { TransactionFormFields } from "../interfaces"
+import { TransactionFormFields } from "../../interfaces"
 
 interface Props {
   onSubmit: SubmitHandler<TransactionFormFields>

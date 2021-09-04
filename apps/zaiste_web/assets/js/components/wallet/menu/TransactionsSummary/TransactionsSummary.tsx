@@ -3,8 +3,8 @@ import {
   balanceColorClass,
   calculateIncomesAmount,
   calculateExpensesAmount,
-} from "../helper_functions"
-import { Transaction } from "../interfaces"
+} from "../../helper_functions"
+import { Transaction } from "../../interfaces"
 
 interface Props {
   transactions: Transaction[]

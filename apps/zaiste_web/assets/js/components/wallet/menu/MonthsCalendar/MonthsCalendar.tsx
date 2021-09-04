@@ -1,6 +1,6 @@
 import * as React from "react"
 import { format, eachMonthOfInterval, addYears, subYears, startOfYear, endOfYear } from "date-fns"
-import { DatesRange } from "../interfaces"
+import { DatesRange } from "../../interfaces"
 
 interface Props {
   setDatesRange: React.Dispatch<React.SetStateAction<DatesRange>>

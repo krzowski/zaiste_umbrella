@@ -2,8 +2,8 @@
 /* eslint-disable no-var */
 /* eslint-disable vars-on-top */
 import * as React from "react"
-import ModalCard from "../../shared/ModalCard"
-import CategoryCard from "./CategoryCard"
+import ModalCard from "../../../shared/ModalCard/ModalCard"
+import CategoryCard from "../CategoryCard/CategoryCard"
 
 interface Props {
   modalId: string

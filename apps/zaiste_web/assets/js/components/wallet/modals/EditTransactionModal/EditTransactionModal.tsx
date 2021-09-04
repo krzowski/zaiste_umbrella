@@ -1,9 +1,9 @@
 import * as React from "react"
 import { format, parseISO } from "date-fns"
-import ModalCard from "../../shared/ModalCard"
-import { requestUpdateTransaction } from "../../../api_calls/wallet"
-import { Transaction, TransactionFormFields } from "../interfaces"
-import TransactionModalForm from "./TransactionModalForm"
+import ModalCard from "../../../shared/ModalCard/ModalCard"
+import { requestUpdateTransaction } from "../../../../api_calls/wallet"
+import { Transaction, TransactionFormFields } from "../../interfaces"
+import TransactionModalForm from "../TransactionModalForm/TransactionModalForm"
 
 interface Props {
   modalId: string

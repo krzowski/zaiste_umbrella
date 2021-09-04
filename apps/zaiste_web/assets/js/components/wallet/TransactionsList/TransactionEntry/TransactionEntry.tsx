@@ -1,7 +1,7 @@
 import * as React from "react"
-import { calculateItemsAmount } from "../helper_functions"
-import { Transaction } from "../interfaces"
-import EntryActionIcons from "../../shared/EntryActionIcons"
+import { calculateItemsAmount } from "../../helper_functions"
+import { Transaction } from "../../interfaces"
+import EntryActionIcons from "../../../shared/EntryActionIcons/EntryActionIcons"
 
 interface Props {
   transaction: Transaction

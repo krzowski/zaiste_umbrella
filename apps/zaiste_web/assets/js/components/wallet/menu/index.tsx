@@ -1,11 +1,11 @@
 import * as React from "react"
 import { DatesRange } from "../interfaces"
-import MonthsCalendar from "./MonthsCalendar"
-import TransactionTypeFilters from "./TransactionTypeFilters"
-import DatesForm from "./DatesForm"
-import TransactionsSummary from "./TransactionsSummary"
 import { UserSettingsContext } from "../../../contexts/UserSettingsContext"
 import { TransactionsContext } from "../../../contexts/TransactionsContext"
+import MonthsCalendar from "./MonthsCalendar/MonthsCalendar"
+import TransactionTypeFilters from "./TransactionTypeFilters/TransactionTypeFilters"
+import DatesForm from "./DatesForm/DatesForm"
+import TransactionsSummary from "./TransactionsSummary/TransactionsSummary"
 
 interface Props {
   datesRange: DatesRange

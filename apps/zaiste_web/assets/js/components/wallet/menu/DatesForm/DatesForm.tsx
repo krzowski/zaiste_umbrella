@@ -1,8 +1,8 @@
 import * as React from "react"
 import { useForm } from "react-hook-form"
 import { parse as parseDate } from "date-fns"
-import { DatesRange } from "../interfaces"
-import { formatDatesRange } from "../helper_functions"
+import { DatesRange } from "../../interfaces"
+import { formatDatesRange } from "../../helper_functions"
 
 interface DateFields {
   startDate: string

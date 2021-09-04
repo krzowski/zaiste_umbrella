@@ -1,5 +1,5 @@
 import * as React from "react"
-import { TransactionsFilters } from "../interfaces"
+import { TransactionsFilters } from "../../interfaces"
 
 interface Props {
   transactionsFilters: TransactionsFilters

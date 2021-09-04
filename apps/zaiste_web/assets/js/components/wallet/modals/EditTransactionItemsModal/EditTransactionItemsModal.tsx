@@ -1,10 +1,10 @@
 import * as React from "react"
-import { Transaction } from "../interfaces"
-import { calculateItemsAmount } from "../helper_functions"
-import ModalCard from "../../shared/ModalCard"
-import TransactionItemEntry from "./TransactionItemEntry"
-import TransactionItemForm from "./TransactionItemForm"
-import { requestDeleteTransactionItem } from "../../../api_calls/wallet"
+import { Transaction } from "../../interfaces"
+import { calculateItemsAmount } from "../../helper_functions"
+import ModalCard from "../../../shared/ModalCard/ModalCard"
+import TransactionItemEntry from "../TransactionItemEntry/TransactionItemEntry"
+import TransactionItemForm from "../TransactionItemForm/TransactionItemForm"
+import { requestDeleteTransactionItem } from "../../../../api_calls/wallet"
 
 interface Props {
   modalId: string

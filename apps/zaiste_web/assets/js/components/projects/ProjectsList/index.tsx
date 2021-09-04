@@ -2,7 +2,7 @@
 /* eslint-disable vars-on-top */
 /* eslint-disable no-var */
 import * as React from "react"
-import ProjectEntry from "./ProjectEntry"
+import ProjectEntry from "./ProjectEntry/ProjectEntry"
 
 interface Props {
   openProjectModal: Function

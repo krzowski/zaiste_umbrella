@@ -3,8 +3,8 @@ import { RouteComponentProps } from "react-router-dom"
 import useModalCards from "../../hooks/useModalCards"
 import ProjectsList from "./ProjectsList"
 import ProjectsMenu from "./menu"
-import ProjectModalCard from "./modals/ProjectModalCard"
-import NewProjectModalCard from "./modals/NewProjectModalCard"
+import ProjectModalCard from "./modals/ProjectModalCard/ProjectModalCard"
+import NewProjectModalCard from "./modals/NewProjectModalCard/NewProjectModalCard"
 
 const Projects: React.FC<RouteComponentProps> = () => {
   const {
