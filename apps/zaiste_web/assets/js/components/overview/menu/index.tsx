@@ -14,21 +14,15 @@ const OverviewMenu: React.FC = () => {
   if (errorMessage) return <ErrorMessage message={errorMessage} />
 
   return (
-    <>
-      <div className="calendar-container">
-        <div className="calendar">
-          <EventsCalendar
-            calendarDate={calendarDate}
-            eventsData={data}
-            setCalendarDate={setCalendarDate}
-          />
-        </div>
-      </div>
+    <div className="events-calendar-container">
+      <EventsCalendar
+        calendarDate={calendarDate}
+        eventsData={data}
+        setCalendarDate={setCalendarDate}
+      />
 
-      <div className="events-container custom-scrollbar">
-        <DayEventsList eventsData={data} />
-      </div>
-    </>
+      <DayEventsList eventsData={data} />
+    </div>
   )
 }
 

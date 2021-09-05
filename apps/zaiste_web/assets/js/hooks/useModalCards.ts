@@ -41,7 +41,7 @@ function useModalCards(idPrefix: string) {
     const newModal = {
       modalId: idPrefix + +new Date(),
       additionalProps,
-      close: undefined
+      close: undefined,
     }
     updateOpenedModals([...openedModals, newModal])
   }
@@ -57,7 +57,7 @@ function useModalCards(idPrefix: string) {
       modals.map(modal => {
         return {
           ...modal,
-          close: () => closeModal(modals, modal.modalId)
+          close: () => closeModal(modals, modal.modalId),
         }
       })
     )
@@ -65,7 +65,7 @@ function useModalCards(idPrefix: string) {
 
   return {
     openedModals,
-    openModal
+    openModal,
   }
 }
 

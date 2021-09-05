@@ -19,14 +19,10 @@ const Wallet: React.FC<RouteComponentProps> = () => {
   const [datesRange, setDatesRange] = React.useState<DatesRange>(initialDates)
   const { data } = requestFetchTransactions(formatDatesRange(datesRange))
 
-  const {
-    openedModals: openedNewTransactionModals,
-    openModal: openNewTransactionModal,
-  } = useModalCards("new_transaction")
-  const {
-    openedModals: openedEditTransactionModals,
-    openModal: openEditTransactionModal,
-  } = useModalCards("edit_transaction")
+  const { openedModals: openedNewTransactionModals, openModal: openNewTransactionModal } =
+    useModalCards("new_transaction")
+  const { openedModals: openedEditTransactionModals, openModal: openEditTransactionModal } =
+    useModalCards("edit_transaction")
   const {
     openedModals: openedEditTransactionItemsModals,
     openModal: openEditTransactionItemsModal,

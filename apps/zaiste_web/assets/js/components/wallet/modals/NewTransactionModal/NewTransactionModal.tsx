@@ -35,7 +35,9 @@ const NewTransactionModal: React.FC<Props> = ({
   }
 
   React.useEffect(() => {
-    const nameInput: HTMLElement = document.getElementById(modal.modalId)!.querySelector("input#name")!
+    const nameInput: HTMLElement = document
+      .getElementById(modal.modalId)!
+      .querySelector("input#name")!
     nameInput.focus()
   }, [])
 

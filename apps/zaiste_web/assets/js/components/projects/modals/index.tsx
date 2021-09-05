@@ -8,23 +8,14 @@ interface Props {
   openedProjectModals: Modal[]
 }
 
-const ProjectModals: React.FC<Props> = ({
-  openedNewProjectModals,
-  openedProjectModals,
-}) => (
+const ProjectModals: React.FC<Props> = ({ openedNewProjectModals, openedProjectModals }) => (
   <>
     {openedNewProjectModals.map(modal => (
-      <NewProjectModalCard
-        key={modal.modalId}
-        modal={modal}
-      />
+      <NewProjectModalCard key={modal.modalId} modal={modal} />
     ))}
 
     {openedProjectModals.map(modal => (
-      <ProjectModalCard
-        key={modal.modalId}
-        modal={modal}
-      />
+      <ProjectModalCard key={modal.modalId} modal={modal} />
     ))}
 
     {/* <ProjectModalCard

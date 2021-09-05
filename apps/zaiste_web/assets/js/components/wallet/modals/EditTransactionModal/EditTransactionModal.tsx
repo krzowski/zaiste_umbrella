@@ -12,11 +12,7 @@ interface Props {
   editTransaction: Function
 }
 
-const EditTransactionModal: React.FC<Props> = ({
-  modal,
-  transaction,
-  editTransaction,
-}) => {
+const EditTransactionModal: React.FC<Props> = ({ modal, transaction, editTransaction }) => {
   const defaultFormValues: TransactionFormFields = {
     date: format(parseISO(transaction.date), "dd / MM / yyyy"),
     name: transaction.name,

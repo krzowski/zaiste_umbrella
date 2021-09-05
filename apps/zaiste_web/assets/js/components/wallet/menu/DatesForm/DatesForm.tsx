@@ -34,35 +34,39 @@ const DatesForm: React.FC<Props> = ({ datesRange, setDatesRange }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="wallet-dates-form">
-      <div className="row">
-        <label htmlFor="startDate">Date from</label>
-        <input
-          // eslint-disable-next-line react/jsx-props-no-spreading
-          {...register("startDate")}
-          id="startDate"
-          name="startDate"
-          required
-        />
-      </div>
+    <>
+      <div className="section-title mt40 mb8">Date</div>
 
-      <div className="row">
-        <label htmlFor="endDate">Date to</label>
-        <input
-          // eslint-disable-next-line react/jsx-props-no-spreading
-          {...register("endDate")}
-          id="endDate"
-          name="endDate"
-          required
-        />
-      </div>
+      <form onSubmit={handleSubmit(onSubmit)} className="wallet-dates-form">
+        <div className="row">
+          <label htmlFor="startDate">Date from</label>
+          <input
+            // eslint-disable-next-line react/jsx-props-no-spreading
+            {...register("startDate")}
+            id="startDate"
+            name="startDate"
+            required
+          />
+        </div>
 
-      <div className="form-button">
-        <button type="submit" disabled={isSubmitting}>
-          Filter
-        </button>
-      </div>
-    </form>
+        <div className="row">
+          <label htmlFor="endDate">Date to</label>
+          <input
+            // eslint-disable-next-line react/jsx-props-no-spreading
+            {...register("endDate")}
+            id="endDate"
+            name="endDate"
+            required
+          />
+        </div>
+
+        <div className="form-button">
+          <button type="submit" disabled={isSubmitting}>
+            Filter
+          </button>
+        </div>
+      </form>
+    </>
   )
 }
 

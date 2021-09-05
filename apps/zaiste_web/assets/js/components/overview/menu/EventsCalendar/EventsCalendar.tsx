@@ -35,38 +35,40 @@ const EventsCalendar: React.FC<Props> = ({ calendarDate, setCalendarDate, events
       <div className={`calendar-day-container ${class1} ${class2}`} key={+date}>
         <div className="calendar-day">{isMonthDat ? date.getDate() : ""}</div>
         {/* <div className="calendar-activities">
-          TODO: count events in eventsData for the day and show a dot when there are
+          TODO: count events in eventsData for the day and show a dot if there are
         </div> */}
       </div>
     )
   })
 
   return (
-    <div className="simple-calendar">
-      <div className="calendar-heading">
-        <span className="section-title pl8 pt2">{format(calendarDate, "MMMM yyyy")}</span>
-        <div className="calendar-nav-arrows">
-          <span role="button" onClick={() => setCalendarDate(subMonths(calendarDate, 1))}>
-            &#8249;
-          </span>
+    <div className="calendar-container">
+      <div className="calendar">
+        <div className="calendar-heading">
+          <span className="section-title pl8 pt2">{format(calendarDate, "MMMM yyyy")}</span>
+          <div className="calendar-nav-arrows">
+            <span role="button" onClick={() => setCalendarDate(subMonths(calendarDate, 1))}>
+              &#8249;
+            </span>
 
-          <span role="button" onClick={() => setCalendarDate(addMonths(calendarDate, 1))}>
-            &#8250;
-          </span>
+            <span role="button" onClick={() => setCalendarDate(addMonths(calendarDate, 1))}>
+              &#8250;
+            </span>
+          </div>
         </div>
-      </div>
 
-      <div className="calendar-day-names">
-        <span>Mon</span>
-        <span>Tue</span>
-        <span>Wed</span>
-        <span>Thu</span>
-        <span>Fri</span>
-        <span>Sat</span>
-        <span>Sun</span>
-      </div>
+        <div className="calendar-day-names">
+          <span>Mon</span>
+          <span>Tue</span>
+          <span>Wed</span>
+          <span>Thu</span>
+          <span>Fri</span>
+          <span>Sat</span>
+          <span>Sun</span>
+        </div>
 
-      <div className="calendar-days">{dayCells}</div>
+        <div className="calendar-days">{dayCells}</div>
+      </div>
     </div>
   )
 }

@@ -8,7 +8,7 @@ interface Props {
 // eslint-disable-next-line arrow-body-style
 const DayEventsList: React.FC<Props> = ({ eventsData }) => {
   return (
-    <>
+    <div className="events-container custom-scrollbar">
       <div className="social-events">
         <div className="section-title pl8 pb8">Social events</div>
         {/* <div className="section-no-events pl10 pt20">No events today</div> */}
@@ -84,7 +84,7 @@ const DayEventsList: React.FC<Props> = ({ eventsData }) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

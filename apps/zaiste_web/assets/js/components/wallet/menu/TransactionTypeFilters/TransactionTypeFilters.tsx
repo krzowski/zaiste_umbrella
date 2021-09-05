@@ -12,29 +12,33 @@ const TransactionTypeFilters: React.FC<Props> = ({
   toggleShowIncomes,
   toggleShowExpenses,
 }) => (
-  <div className="flex-row-justify pr20">
-    <div>
-      <input
-        type="checkbox"
-        name="type_income"
-        id="type_income"
-        checked={transactionsFilters.showIncomes}
-        onChange={toggleShowIncomes}
-      />
-      <label htmlFor="type_income">Incomes</label>
-    </div>
+  <>
+    <div className="section-title mt30 pt5 mb13">Type</div>
 
-    <div>
-      <input
-        type="checkbox"
-        name="type_expense"
-        id="type_expense"
-        checked={transactionsFilters.showExpenses}
-        onChange={toggleShowExpenses}
-      />
-      <label htmlFor="type_expense">Expenses</label>
+    <div className="flex-row-justify pr20">
+      <div>
+        <input
+          type="checkbox"
+          name="type_income"
+          id="type_income"
+          checked={transactionsFilters.showIncomes}
+          onChange={toggleShowIncomes}
+        />
+        <label htmlFor="type_income">Incomes</label>
+      </div>
+
+      <div>
+        <input
+          type="checkbox"
+          name="type_expense"
+          id="type_expense"
+          checked={transactionsFilters.showExpenses}
+          onChange={toggleShowExpenses}
+        />
+        <label htmlFor="type_expense">Expenses</label>
+      </div>
     </div>
-  </div>
+  </>
 )
 
 export default TransactionTypeFilters

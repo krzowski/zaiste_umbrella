@@ -6,14 +6,10 @@ import ProjectsMenu from "./menu"
 import ProjectModals from "./modals"
 
 const Projects: React.FC<RouteComponentProps> = () => {
-  const {
-    openedModals: openedNewProjectModals,
-    openModal: openNewProjectModal,
-  } = useModalCards("new_project")
-  const {
-    openedModals: openedProjectModals,
-    openModal: openProjectModal,
-  } = useModalCards("project")
+  const { openedModals: openedNewProjectModals, openModal: openNewProjectModal } =
+    useModalCards("new_project")
+  const { openedModals: openedProjectModals, openModal: openProjectModal } =
+    useModalCards("project")
 
   return (
     <div className="page-container projects-container">

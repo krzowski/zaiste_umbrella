@@ -31,7 +31,7 @@ const MonthsCalendar: React.FC<Props> = ({ setDatesRange }) => {
 
   return (
     <>
-      <div className="section-title mb3 flex-row-justify">
+      <div className="section-title mb3 mt30 flex-row-justify">
         <div className="pt4">{currentYearDate.getFullYear()}</div>
         <div className="calendar-nav-arrows">
           <span role="button" className="pl5 pr5" onClick={setPrevYear}>

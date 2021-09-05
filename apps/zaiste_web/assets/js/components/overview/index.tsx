@@ -22,9 +22,8 @@ const Overview: React.FC<RouteComponentProps> = ({ location }) => {
   return (
     <div className="overview-container">
       <div className="overview-component">{MainComponent}</div>
-      <div className="events-calendar-container">
-        <OverviewMenu />
-      </div>
+
+      <OverviewMenu />
     </div>
   )
 }

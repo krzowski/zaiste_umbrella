@@ -29,6 +29,7 @@ const WalletModals: React.FC<Props> = ({
     removeTransactionItem,
   } = React.useContext(TransactionsContext)
 
+  // Removed transactions may still have an opened card, skip them while rendering.
   function findTransactionByID(transactionId: number): Transaction | undefined {
     return transactions.find(t => t.id === transactionId)
   }

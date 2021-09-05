@@ -17,7 +17,7 @@ const TransactionsSummary: React.FC<Props> = ({ transactions, currency }) => {
   const balanceAmount = incomesAmount - expensesAmount
 
   return (
-    <div className="transactions-summary numeric-font">
+    <div className="transactions-summary numeric-font mt40">
       <div className="summary-section flex-row-justify">
         <div className="title">Incomes:</div>
         <div className="green">
