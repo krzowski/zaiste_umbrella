@@ -5,39 +5,32 @@ import NewProjectModalCard from "./NewProjectModalCard/NewProjectModalCard"
 
 interface Props {
   openedNewProjectModals: Modal[]
-  closeNewProjectModal: Function
   openedProjectModals: Modal[]
-  closeProjectModal: Function
 }
 
 const ProjectModals: React.FC<Props> = ({
   openedNewProjectModals,
-  closeNewProjectModal,
   openedProjectModals,
-  closeProjectModal,
 }) => (
   <>
     {openedNewProjectModals.map(modal => (
       <NewProjectModalCard
         key={modal.modalId}
-        modalId={modal.modalId}
-        closeModal={closeNewProjectModal}
+        modal={modal}
+      />
+    ))}
+
+    {openedProjectModals.map(modal => (
+      <ProjectModalCard
+        key={modal.modalId}
+        modal={modal}
       />
     ))}
 
     {/* <ProjectModalCard
         key={321313}
-        modalId="321321321"
-        closeModal={() => { }}
+        modal={"321321321"}
       /> */}
-
-    {openedProjectModals.map(modal => (
-      <ProjectModalCard
-        key={modal.modalId}
-        modalId={modal.modalId}
-        closeModal={closeProjectModal}
-      />
-    ))}
   </>
 )
 

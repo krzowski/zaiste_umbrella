@@ -4,18 +4,17 @@ import ModalCard from "../../../shared/ModalCard/ModalCard"
 import { requestUpdateTransaction } from "../../../../api_calls/wallet"
 import { Transaction, TransactionFormFields } from "../../interfaces"
 import TransactionModalForm from "../TransactionModalForm/TransactionModalForm"
+import { Modal } from "../../../../hooks/useModalCards"
 
 interface Props {
-  modalId: string
+  modal: Modal
   transaction: Transaction
-  closeModal: Function
   editTransaction: Function
 }
 
 const EditTransactionModal: React.FC<Props> = ({
-  modalId,
+  modal,
   transaction,
-  closeModal,
   editTransaction,
 }) => {
   const defaultFormValues: TransactionFormFields = {
@@ -29,16 +28,16 @@ const EditTransactionModal: React.FC<Props> = ({
       .then(response => {
         const transactionData = response.data
         editTransaction({ ...transactionData, transactionItems: transaction.transactionItems })
-        closeModal(modalId)
+        modal.close()
       })
     // .catch(_error => { })
   }
 
   return (
     <ModalCard
-      modalId={modalId}
+      modalId={modal.modalId}
       modalTitle="Edit transaction"
-      closeModal={closeModal}
+      closeModal={modal.close}
       modalWidth={300}
       modalHeight={235}
       initialTopPosition={20}
@@ -49,7 +48,7 @@ const EditTransactionModal: React.FC<Props> = ({
           onSubmit={onSubmit}
           defaultValues={defaultFormValues}
           buttonName="Save"
-          modalId={modalId}
+          modalId={modal.modalId}
         />
       </div>
     </ModalCard>

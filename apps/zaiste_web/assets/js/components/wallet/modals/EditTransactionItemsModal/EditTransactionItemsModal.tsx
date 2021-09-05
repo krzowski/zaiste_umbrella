@@ -5,21 +5,20 @@ import ModalCard from "../../../shared/ModalCard/ModalCard"
 import TransactionItemEntry from "../TransactionItemEntry/TransactionItemEntry"
 import TransactionItemForm from "../TransactionItemForm/TransactionItemForm"
 import { requestDeleteTransactionItem } from "../../../../api_calls/wallet"
+import { Modal } from "../../../../hooks/useModalCards"
 
 interface Props {
-  modalId: string
+  modal: Modal
   transaction: Transaction
   currency: string
-  closeModal: Function
   addTransactionItem: Function
   removeTransactionItem: Function
 }
 
 const EditTransactionItemsModal: React.FC<Props> = ({
-  modalId,
+  modal,
   transaction,
   currency,
-  closeModal,
   addTransactionItem,
   removeTransactionItem,
 }) => {
@@ -34,9 +33,9 @@ const EditTransactionItemsModal: React.FC<Props> = ({
 
   return (
     <ModalCard
-      modalId={modalId}
+      modalId={modal.modalId}
       modalTitle={`${date} - ${name}`}
-      closeModal={closeModal}
+      closeModal={modal.close}
       modalWidth={window.innerWidth - 560}
       modalHeight={150 + transactionItems.length * 22}
       initialTopPosition={20}

@@ -9,22 +9,16 @@ import EditTransactionItemsModal from "./EditTransactionItemsModal/EditTransacti
 
 interface Props {
   openedNewTransactionModals: Modal[]
-  closeNewTransactionModal: Function
   openedEditTransactionModals: Modal[]
-  closeEditTransactionModal: Function
   openedEditTransactionItemsModals: Modal[]
   openEditTransactionItemsModal: React.MouseEventHandler<HTMLButtonElement>
-  closeEditTransactionItemsModal: Function
 }
 
 const WalletModals: React.FC<Props> = ({
   openedNewTransactionModals,
-  closeNewTransactionModal,
   openedEditTransactionModals,
-  closeEditTransactionModal,
   openedEditTransactionItemsModals,
   openEditTransactionItemsModal,
-  closeEditTransactionItemsModal,
 }) => {
   const { userSettings } = React.useContext(UserSettingsContext)
   const {
@@ -44,8 +38,7 @@ const WalletModals: React.FC<Props> = ({
       {openedNewTransactionModals.map(modal => (
         <NewTransactionModal
           key={modal.modalId}
-          modalId={modal.modalId}
-          closeModal={closeNewTransactionModal}
+          modal={modal}
           addTransaction={addTransaction}
           openEditTransactionItemsModal={openEditTransactionItemsModal}
         />
@@ -58,10 +51,9 @@ const WalletModals: React.FC<Props> = ({
         return (
           <EditTransactionModal
             key={modal.modalId}
-            modalId={modal.modalId}
+            modal={modal}
             transaction={transaction}
             editTransaction={editTransaction}
-            closeModal={closeEditTransactionModal}
           />
         )
       })}
@@ -73,10 +65,9 @@ const WalletModals: React.FC<Props> = ({
         return (
           <EditTransactionItemsModal
             key={modal.modalId}
-            modalId={modal.modalId}
+            modal={modal}
             transaction={transaction}
             currency={userSettings.currency}
-            closeModal={closeEditTransactionItemsModal}
             addTransactionItem={addTransactionItem}
             removeTransactionItem={removeTransactionItem}
           />

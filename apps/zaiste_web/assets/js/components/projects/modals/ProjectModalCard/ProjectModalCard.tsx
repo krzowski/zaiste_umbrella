@@ -2,19 +2,19 @@
 /* eslint-disable no-var */
 /* eslint-disable vars-on-top */
 import * as React from "react"
+import { Modal } from "../../../../hooks/useModalCards"
 import ModalCard from "../../../shared/ModalCard/ModalCard"
 import CategoryCard from "../CategoryCard/CategoryCard"
 
 interface Props {
-  modalId: string
-  closeModal: Function
+  modal: Modal
 }
 
-const ProjectModalCard: React.FC<Props> = ({ modalId, closeModal }) => (
+const ProjectModalCard: React.FC<Props> = ({ modal }) => (
   <ModalCard
-    modalId={modalId}
+    modalId={modal.modalId}
     modalTitle={project.projectCategories[0].name}
-    closeModal={closeModal}
+    closeModal={modal.close}
     modalWidth={500}
     modalHeight={window.innerHeight}
     initialTopPosition={0}

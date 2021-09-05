@@ -3,18 +3,17 @@ import { format } from "date-fns"
 import ModalCard from "../../../shared/ModalCard/ModalCard"
 import { requestCreateTransaction } from "../../../../api_calls/wallet"
 import { TransactionFormFields } from "../../interfaces"
+import { Modal } from "../../../../hooks/useModalCards"
 import TransactionModalForm from "../TransactionModalForm/TransactionModalForm"
 
 interface Props {
-  modalId: string
-  closeModal: Function
+  modal: Modal
   openEditTransactionItemsModal: Function
   addTransaction: Function
 }
 
 const NewTransactionModal: React.FC<Props> = ({
-  modalId,
-  closeModal,
+  modal,
   openEditTransactionItemsModal,
   addTransaction,
 }) => {
@@ -30,21 +29,21 @@ const NewTransactionModal: React.FC<Props> = ({
         const transactionData = response.data
         addTransaction({ ...transactionData, transactionItems: [] })
         openEditTransactionItemsModal({ transactionId: transactionData.id })
-        closeModal(modalId)
+        modal.close()
       })
     // .catch(_error => { })
   }
 
   React.useEffect(() => {
-    const nameInput: HTMLElement = document.getElementById(modalId)!.querySelector("input#name")!
+    const nameInput: HTMLElement = document.getElementById(modal.modalId)!.querySelector("input#name")!
     nameInput.focus()
   }, [])
 
   return (
     <ModalCard
-      modalId={modalId}
+      modalId={modal.modalId}
       modalTitle="New transaction"
-      closeModal={closeModal}
+      closeModal={modal.close}
       modalWidth={300}
       modalHeight={235}
       initialTopPosition={35}
@@ -55,7 +54,7 @@ const NewTransactionModal: React.FC<Props> = ({
           onSubmit={onSubmit}
           defaultValues={defaultFormValues}
           buttonName="Add"
-          modalId={modalId}
+          modalId={modal.modalId}
         />
       </div>
     </ModalCard>

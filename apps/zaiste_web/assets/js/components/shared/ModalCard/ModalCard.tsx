@@ -83,7 +83,7 @@ const ModalCard: React.FC<ModalProps> = ({
             &#9645;
           </div>
 
-          <div role="button" className="close-modalcard" onClick={() => closeModal(modalId)}>
+          <div role="button" className="close-modalcard" onClick={() => closeModal()}>
             x
           </div>
         </div>

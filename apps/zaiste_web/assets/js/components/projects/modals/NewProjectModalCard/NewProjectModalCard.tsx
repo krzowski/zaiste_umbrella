@@ -1,43 +1,31 @@
 import * as React from "react"
-import { format } from "date-fns"
 import ModalCard from "../../../shared/ModalCard/ModalCard"
 import { ProjectFormFields } from "../../interfaces"
-import { createProject } from "../../../../api_calls/projects"
+import { Modal } from "../../../../hooks/useModalCards"
 import ProjectModalForm from "../ProjectModalForm/ProjectModalForm"
 
 interface Props {
-  modalId: string
-  closeModal: Function
+  modal: Modal
   // openProjectModal: Function
 }
 
-const NewProjectModalCard: React.FC<Props> = ({ modalId, closeModal }) => {
+const NewProjectModalCard: React.FC<Props> = ({ modal }) => {
   const defaultFormValues: ProjectFormFields = {
     name: "",
     description: "",
   }
-  const onSubmit = (data: ProjectFormFields): void => {
-    // createProject(data)
-    //   .then(response => response.json())
-    //   .then(response => {
-    //     const transactionData = response.data
-    //     addTransaction({ ...transactionData, transactionItems: [] })
-    //     openEditTransactionItemsModal({ transactionId: transactionData.id })
-    //     closeModal(modalId)
-    //   })
-    //   .catch(_error => { })
-  }
+  const onSubmit = (data: ProjectFormFields): void => {}
 
   React.useEffect(() => {
-    const nameInput: HTMLElement = document.getElementById(modalId)!.querySelector("input#name")!
+    const nameInput: HTMLElement = document.getElementById(modal.modalId)!.querySelector("input#name")!
     nameInput.focus()
   }, [])
 
   return (
     <ModalCard
-      modalId={modalId}
+      modalId={modal.modalId}
       modalTitle="New project"
-      closeModal={closeModal}
+      closeModal={modal.close}
       modalWidth={300}
       modalHeight={135}
       initialTopPosition={20}
@@ -48,7 +36,7 @@ const NewProjectModalCard: React.FC<Props> = ({ modalId, closeModal }) => {
           onSubmit={onSubmit}
           defaultValues={defaultFormValues}
           buttonName="Add"
-          modalId={modalId}
+          modalId={modal.modalId}
         />
       </div>
     </ModalCard>
