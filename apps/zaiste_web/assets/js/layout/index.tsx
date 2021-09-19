@@ -48,7 +48,7 @@ const Layout: React.FC = ({ children }) => {
 
           <div className="menu-divider" />
 
-          <NavLink to="/nothing">
+          <NavLink to="/contacts">
             <i className="fas fa-address-book" />
             <span className="nav-link-text">Contacts</span>
           </NavLink>
