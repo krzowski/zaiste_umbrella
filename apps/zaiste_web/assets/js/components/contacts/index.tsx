@@ -22,7 +22,7 @@ export default Contacts
 // eslint-disable-next-line no-var
 var contact = {
   id: 2,
-  name: "Agnieszka Bochyńska",
+  name: "Partyk Patrykowski",
   dateOfBirth: "1990-08-08",
   notes: "textcome",
 }

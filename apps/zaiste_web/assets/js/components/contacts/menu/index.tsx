@@ -1,14 +1,13 @@
 import * as React from "react"
 import AddButton from "../../shared/AddButton/AddButton"
 
-interface Props {
-}
+interface Props {}
 
 // eslint-disable-next-line arrow-body-style
 const ContactsMenu: React.FC<Props> = () => {
   return (
     <div className="page-menu">
-      <AddButton buttonText="Add contact" handleOnClick={() => { }} />
+      <AddButton buttonText="Add contact" handleOnClick={() => {}} />
 
       <div className="contacts-list mt40">
         <div className="contact-entry">

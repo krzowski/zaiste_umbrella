@@ -3,7 +3,7 @@
 /* eslint-disable no-var */
 import * as React from "react"
 import { Contact } from "../interfaces"
-import ActiveContact from './ActiveContact/ActiveContact'
+import ActiveContact from "./ActiveContact/ActiveContact"
 
 interface Props {
   activeContact: Contact | null
@@ -11,15 +11,13 @@ interface Props {
 
 const ContactSection: React.FC<Props> = ({ activeContact }) => (
   <div className="page-main">
-    {
-      activeContact ?
-        <ActiveContact activeContact={activeContact} />
-        : (
-          <div id="background-icon">
-            <i className="fas fa-address-book" />
-          </div>
-        )
-    }
+    {activeContact ? (
+      <ActiveContact activeContact={activeContact} />
+    ) : (
+      <div id="background-icon">
+        <i className="fas fa-address-book" />
+      </div>
+    )}
   </div>
 )
 

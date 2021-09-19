@@ -30,7 +30,7 @@ const Wallet: React.FC<RouteComponentProps> = () => {
 
   return (
     <TransactionsProvider fetchedTransactions={data || []} datesRange={datesRange}>
-      <div className="wallet-container">
+      <div className="page-container wallet-container">
         <WalletMenu
           datesRange={datesRange}
           setDatesRange={setDatesRange}

@@ -23,61 +23,61 @@ const DayEventsList: React.FC<Props> = ({ eventsData }) => {
         {/* <div className="section-no-events p20">No tasks today</div> */}
         <div className="section-events">
           <div className="card event-card p10 mt2">
-            <div className="event-title">Take trash out Take trash out Take trash out</div>
+            <div className="event-title">Generic task description</div>
             <div className="event-done-button">
               <i className="fas fa-check-square" />
             </div>
           </div>
 
           <div className="card event-card p10 mt2">
-            <div className="event-title">Take trash out</div>
+            <div className="event-title">Generic task description</div>
             <div className="event-done-button done">
               <i className="fas fa-check green" />
             </div>
           </div>
 
           <div className="card event-card p10 mt2">
-            <div className="event-title">Take trash out</div>
+            <div className="event-title">Generic task description</div>
             <div className="event-done-button done">
               <i className="fas fa-check green" />
             </div>
           </div>
 
           <div className="card event-card p10 mt2">
-            <div className="event-title">Take trash out</div>
+            <div className="event-title">Generic task description</div>
             <div className="event-done-button done">
               <i className="fas fa-check green" />
             </div>
           </div>
 
           <div className="card event-card p10 mt2">
-            <div className="event-title">Take trash out</div>
+            <div className="event-title">Generic task description</div>
             <div className="event-done-button done">
               <i className="fas fa-check green" />
             </div>
           </div>
 
           <div className="card event-card p10 mt2">
-            <div className="event-title">Take trash out</div>
+            <div className="event-title">Generic task description</div>
             <div className="event-done-button done">
               <i className="fas fa-check green" />
             </div>
           </div>
 
           <div className="card event-card p10 mt2">
-            <div className="event-title">Take trash out</div>
+            <div className="event-title">Generic task description</div>
             <div className="event-done-button done">
               <i className="fas fa-check green" />
             </div>
           </div>
           <div className="card event-card p10 mt2">
-            <div className="event-title">Take trash out</div>
+            <div className="event-title">Generic task description</div>
             <div className="event-done-button done">
               <i className="fas fa-check green" />
             </div>
           </div>
           <div className="card event-card p10 mt2">
-            <div className="event-title">Take trash out</div>
+            <div className="event-title">Generic task description</div>
             <div className="event-done-button done">
               <i className="fas fa-check green" />
             </div>

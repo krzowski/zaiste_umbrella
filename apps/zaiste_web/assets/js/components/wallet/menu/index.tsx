@@ -6,7 +6,7 @@ import MonthsCalendar from "./MonthsCalendar/MonthsCalendar"
 import TransactionTypeFilters from "./TransactionTypeFilters/TransactionTypeFilters"
 import DatesForm from "./DatesForm/DatesForm"
 import TransactionsSummary from "./TransactionsSummary/TransactionsSummary"
-import NewTransactionButton from "./NewTransactionButton/NewTransactionButton"
+import AddButton from "../../shared/AddButton/AddButton"
 
 interface Props {
   datesRange: DatesRange
@@ -20,8 +20,8 @@ const WalletMenu: React.FC<Props> = ({ datesRange, setDatesRange, openNewTransac
     React.useContext(TransactionsContext)
 
   return (
-    <div className="wallet-menu">
-      <NewTransactionButton openNewTransactionModal={openNewTransactionModal} />
+    <div className="page-menu wallet-menu">
+      <AddButton buttonText="Add transaction" handleOnClick={openNewTransactionModal} />
       <TransactionsSummary transactions={filteredTransactions} currency={userSettings.currency} />
       <TransactionTypeFilters
         transactionsFilters={transactionsFilters}

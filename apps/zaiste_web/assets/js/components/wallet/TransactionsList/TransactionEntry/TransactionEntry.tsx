@@ -13,10 +13,10 @@ interface Props {
 
 const TransactionEntry: React.FC<Props> = ({
   transaction,
+  currency,
   handleShowClick,
   handleEditClick,
   handleDeleteClick,
-  currency,
 }) => {
   const transactionAmount = calculateItemsAmount(transaction.transactionItems).toFixed(2)
 

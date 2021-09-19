@@ -17,7 +17,7 @@ const ActiveContact: React.FC<Props> = ({ activeContact }) => {
   return (
     <div className="contact-container">
       <h3>{name}</h3>
-      <form onSubmit={() => { }}>
+      <form onSubmit={() => {}}>
         <div className="row">
           <label htmlFor="name">Name</label>
           <input

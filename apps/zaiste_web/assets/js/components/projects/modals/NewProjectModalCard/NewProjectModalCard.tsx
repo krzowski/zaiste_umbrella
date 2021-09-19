@@ -34,12 +34,7 @@ const NewProjectModalCard: React.FC<Props> = ({ modal }) => {
       initialLeftPosition={window.innerWidth - 500}
     >
       <div className="card-form new-project p-r p15">
-        <ProjectModalForm
-          onSubmit={onSubmit}
-          defaultValues={defaultFormValues}
-          buttonName="Add"
-          modalId={modal.modalId}
-        />
+        <ProjectModalForm onSubmit={onSubmit} defaultValues={defaultFormValues} buttonName="Add" />
       </div>
     </ModalCard>
   )

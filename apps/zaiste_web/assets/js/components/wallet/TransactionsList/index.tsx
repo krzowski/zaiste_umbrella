@@ -31,7 +31,7 @@ const TransactionsList: React.FC<Props> = ({
   }
 
   return (
-    <div className="transactions-container">
+    <div className="page-main transactions-container">
       <div className="transactions-cards custom-scrollbar pr15 pl15 mt20">
         {filteredTransactions.length ? (
           filteredTransactions.map(transaction => (

@@ -6,10 +6,9 @@ interface Props {
   onSubmit: SubmitHandler<ProjectFormFields>
   defaultValues: ProjectFormFields
   buttonName: string
-  modalId: string
 }
 
-const ProjectModalForm: React.FC<Props> = ({ modalId, onSubmit, defaultValues, buttonName }) => {
+const ProjectModalForm: React.FC<Props> = ({ onSubmit, defaultValues, buttonName }) => {
   const {
     register,
     handleSubmit,
