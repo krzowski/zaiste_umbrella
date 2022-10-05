@@ -42,7 +42,8 @@ defmodule Zaiste.MixProject do
       {:jason, "~> 1.0"},
       {:bcrypt_elixir, "~> 2.0"},
       {:ex_machina, "~> 2.7.0", only: :test},
-      {:timex, "~> 3.0"}
+      {:timex, "~> 3.0"},
+      {:csv, "~> 2.5"}
     ]
   end
 

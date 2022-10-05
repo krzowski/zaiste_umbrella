@@ -74,6 +74,12 @@ $lato-font: "Lato", "Trebuchet MS", Arial, helvetica, sans-serif;
       padding-left: 2px;
     }
   }
+
+  &.event-card {
+    &:first-child {
+      margin-top: 0 !important;
+    }
+  }
 }
 
 .modalcard {

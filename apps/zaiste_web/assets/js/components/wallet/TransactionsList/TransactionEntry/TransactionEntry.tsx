@@ -21,7 +21,7 @@ const TransactionEntry: React.FC<Props> = ({
   const transactionAmount = calculateItemsAmount(transaction.transactionItems).toFixed(2)
 
   return (
-    <div className="card event-card mt2">
+    <div className="card event-card mt4">
       <div className="card-summary">
         <div className="transaction-date numeric-font secondary-text">{transaction.date}</div>
         <div className="transaction-name">{transaction.name}</div>

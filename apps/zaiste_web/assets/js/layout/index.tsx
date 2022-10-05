@@ -25,9 +25,14 @@ const Layout: React.FC = ({ children }) => {
             <i className="far fa-calendar" />
             <span className="nav-link-text">Overview</span>
           </NavLink>
-          <NavLink to="/projects">
+          {/* <NavLink to="/projects">
             <i className="far fa-folder" />
             <span className="nav-link-text">Projects</span>
+          </NavLink> */}
+
+          <NavLink to="/nothing">
+            <i className="fas fa-list-alt" />
+            <span className="nav-link-text">Notes</span>
           </NavLink>
 
           <NavLink to="/patterns">
@@ -37,16 +42,11 @@ const Layout: React.FC = ({ children }) => {
 
           {/* <div className="menu-divider"></div> */}
 
-          <NavLink to="/nothing">
-            <i className="fas fa-list-alt" />
-            <span className="nav-link-text">Notes</span>
-          </NavLink>
           {/* <NavLink to="/nothing">
             <i className="fas fa-book"></i>
             <span className="nav-link-text">Thoughts</span>
           </NavLink> */}
 
-          <div className="menu-divider" />
 
           <NavLink to="/contacts">
             <i className="fas fa-address-book" />

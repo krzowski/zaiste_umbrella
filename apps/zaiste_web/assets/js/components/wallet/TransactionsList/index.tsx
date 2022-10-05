@@ -45,7 +45,7 @@ const TransactionsList: React.FC<Props> = ({
             />
           ))
         ) : (
-          <div className="card event mt2 p10">
+          <div className="card event-card mt2 p10">
             <div className="card-summary transaction-name">There are no transactions.</div>
           </div>
         )}

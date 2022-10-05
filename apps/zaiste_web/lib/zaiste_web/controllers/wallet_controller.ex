@@ -10,10 +10,7 @@ defmodule ZaisteWeb.WalletController do
 
   def transactions(conn, %{"startDate" => date_from, "endDate" => date_to}, current_user) do
     with date_from <-
-           date_from
-           |> String.replace(" ", "")
-           |> Timex.parse!("{D}/{M}/{YYYY}")
-           |> Timex.to_date(),
+           date_from |> String.replace(" ", "") |> Timex.parse!("{D}/{M}/{YYYY}") |> Timex.to_date(),
          date_to <-
            date_to |> String.replace(" ", "") |> Timex.parse!("{D}/{M}/{YYYY}") |> Timex.to_date() do
       transactions =
