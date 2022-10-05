@@ -22,7 +22,7 @@ config :zaiste_web, ZaisteWeb.Endpoint,
       request_timeout: 100_000_000,
       shutdown_timeout: 100_000_000,
       idle_timeout: 100_000_000,
-      linger_timeout: 100_000_000,
+      linger_timeout: 100_000_000
     ]
   ],
   debug_errors: true,

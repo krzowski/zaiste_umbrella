@@ -30,17 +30,15 @@ const ProjectEntry: React.FC<Props> = ({ project, openProjectModal }) => {
       </div>
 
       <div className="project-categories">
-        {project.projectCategories.map((category) => (
+        {project.projectCategories.map(category => (
           <div className="project-category flex-row-justify secondary-text">
             <div className="category-indicator" />
             <div className="category-name">{category.name}</div>
 
-            <div className="project-last-action">
-              {lastActionInWords(category)}
-            </div>
+            <div className="project-last-action">{lastActionInWords(category)}</div>
             <div className="category-tasks-number numeric-font pr20">
               {category.projectTasks.filter(task => task.done).length}
-              {' / '}
+              {" / "}
               {category.projectTasks.length}
             </div>
           </div>

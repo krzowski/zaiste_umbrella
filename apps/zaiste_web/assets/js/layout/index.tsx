@@ -47,7 +47,6 @@ const Layout: React.FC = ({ children }) => {
             <span className="nav-link-text">Thoughts</span>
           </NavLink> */}
 
-
           <NavLink to="/contacts">
             <i className="fas fa-address-book" />
             <span className="nav-link-text">Contacts</span>
