@@ -6,8 +6,8 @@ use Mix.Config
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
 config :zaiste, Zaiste.Repo,
-  username: "elixir",
-  password: "elixir",
+  username: "zaiste",
+  password: "password",
   database: "zaiste_test#{System.get_env("MIX_TEST_PARTITION")}",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
